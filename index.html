@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0dccf2",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#101f22",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    keyframes: {
+                        slideUpFade: {
+                            '0%': { opacity: '0', transform: 'translateY(50px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    },
+                    animation: {
+                        'slide-up-fade': 'slideUpFade 4s cubic-bezier(0.1, 0.9, 0.2, 1) forwards',
+                    },
+                },
+            },
+        }
+    </script>
+    <title>DevPortfolio | João Paulo - Desenvolvedor Back-End</title>
+</head>
+
+<body
+    class="bg-[#0a1c76] font-display text-slate-900 dark:text-slate-100 transition-colors duration-300 bg-gradient-to-b from-[#0a1c76] to-black overflow-x-hidden">
+    <div class="relative flex min-h-screen w-full flex-col">
+
+        <header
+            class="sticky top-0 z-50 w-full bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50">
+            <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between relative">
+                <div class="flex items-center gap-2 text-primary">
+                    <span class="material-symbols-outlined text-3xl font-bold">terminal</span>
+                    <span
+                        class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">JoaoPaulo.dev</span>
+                </div>
+                <nav class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#about">Sobre</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#timeline">Trajetória</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#skills">Habilidades</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#projects">Projetos</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <a id="nav-hire-btn" href="#contact"
+                        class="hidden md:flex items-center gap-2 bg-slate-800 text-white px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 border border-slate-700 hover:border-primary/50 opacity-0 pointer-events-none -translate-y-2">
+                        <span class="material-symbols-outlined text-primary text-xl">handshake</span>
+                        Contrate-me
+                    </a>
+
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Abrir Menu"
+                        class="md:hidden text-slate-900 dark:text-white p-2 flex items-center focus:outline-none">
+                        <span id="menu-icon" class="material-symbols-outlined text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-menu"
+                class="md:hidden absolute top-16 left-0 w-full bg-background-light dark:bg-background-dark shadow-xl transition-all duration-300 grid grid-rows-[0fr] opacity-0"
+                style="border-bottom: 1px solid transparent;">
+                <div class="overflow-hidden">
+                    <nav class="flex flex-col p-4 gap-2 border-t border-slate-200 dark:border-slate-800">
+                        <a class="p-4 text-base font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+                            href="#about" onclick="toggleMobileMenu()">Sobre</a>
+                        <a class="p-4 text-base font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+                            href="#timeline" onclick="toggleMobileMenu()">Trajetória</a>
+                        <a class="p-4 text-base font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+                            href="#skills" onclick="toggleMobileMenu()">Habilidades</a>
+                        <a class="p-4 text-base font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+                            href="#projects" onclick="toggleMobileMenu()">Projetos</a>
+                        <a id="nav-hire-btn-mobile" href="#contact" onclick="toggleMobileMenu()"
+                            class="mt-2 w-full flex items-center justify-center gap-2 bg-slate-800 text-white px-5 py-4 rounded-xl text-base font-bold transition-all duration-300 border border-slate-700 hover:border-primary/50 hidden opacity-0 pointer-events-none -translate-y-2">
+                            <span class="material-symbols-outlined text-primary text-xl">handshake</span>
+                            Contrate-me
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <main class="flex-grow">
+
+            <section class="max-w-7xl mx-auto px-6 py-8 md:py-12 lg:py-16">
+                <div
+                    class="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-12 opacity-0 animate-slide-up-fade text-center lg:text-left">
+                    <div class="flex-1 space-y-6 lg:space-y-8 flex flex-col items-center lg:items-start w-full">
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight text-slate-900 dark:text-white tracking-tight">
+                            Olá, eu sou João Paulo, <span class="text-primary block mt-2">Desenvolvedor Back-End</span>
+                        </h1>
+                        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+                            Construo APIs escaláveis com Java e Spring Boot, focado em conteinerização e em manter altos
+                            padrões de qualidade de código. Em busca de me tornar um Desenvolvedor Full Stack.
+                        </p>
+                        <div
+                            class="flex flex-col sm:flex-row w-full sm:w-auto flex-wrap justify-center lg:justify-start gap-4 pt-4">
+                            <a class="w-full sm:w-auto bg-primary text-background-dark px-6 sm:px-8 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/20 transition-all"
+                                href="#projects">
+                                Ver meus projetos
+                            </a>
+                            <a id="hero-hire-btn"
+                                class="w-full sm:w-auto bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white px-6 sm:px-8 py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition-all flex items-center justify-center gap-2 group border border-transparent hover:border-primary/30"
+                                href="#contact">
+                                <span
+                                    class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">handshake</span>
+                                Contrate-me
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex-1 w-full max-w-[260px] sm:max-w-sm lg:max-w-xl mb-4 lg:mb-0">
+                        <div class="relative group mx-auto">
+                            <div
+                                class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-full lg:rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000">
+                            </div>
+                            <div
+                                class="relative bg-slate-200 dark:bg-slate-800 rounded-full lg:rounded-2xl overflow-hidden aspect-square border border-slate-300 dark:border-slate-700 flex items-center justify-center">
+
+                                <img src="img/foto.jpg" alt="João Paulo Santana"
+                                    class="w-full h-full object-cover object-[center_60%]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="min-h-screen flex items-center py-24 scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out"
+                id="about">
+                <div class="max-w-5xl mx-auto px-6">
+                    <div class="rounded-3xl border border-slate-700/50 bg-white/5 p-8 md:p-12 shadow-2xl">
+                        <div class="flex flex-col md:flex-row gap-12 items-center">
+                            <div class="w-full md:w-1/3 flex justify-center">
+                                <div
+                                    class="size-64 bg-primary/20 rounded-full flex items-center justify-center border-4 border-primary p-2">
+                                    <div
+                                        class="w-full h-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden flex items-center justify-center aspect-square">
+
+                                        <img src="img/foto.jpg" alt="João Paulo Avatar"
+                                            class="w-full h-full object-cover object-[center_60%]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full md:w-2/3 text-center md:text-left">
+                                <h2 class="text-3xl font-black mb-6">Sobre Mim</h2>
+                                <p class="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                                    Estou cursando Bacharelado em Sistemas de Informação no Instituto Federal de
+                                    Sergipe. Sou
+                                    proficiente em desenvolvimento backend com Java e Spring Boot.
+                                </p>
+                                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                                    Meu objetivo é evoluir para Full Stack. Tenho diversas certificações através de
+                                    cursos
+                                    da
+                                    Javanauta, incluindo Banco de Dados e Metodologias Ágeis, e foco na entrega de
+                                    resultados eficientes em microsserviços.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="max-w-5xl mx-auto px-6 py-24" id="timeline">
+                <div
+                    class="text-center mb-16 scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                    <h2 class="text-3xl font-bold mb-4">Minha Trajetória</h2>
+                    <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="relative">
+                    <div
+                        class="absolute left-[32px] md:left-1/2 transform -translate-x-1/2 h-full w-1 bg-slate-700/50 rounded-full">
+                    </div>
+
+                    <div class="space-y-12">
+
+                        <div
+                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                            <div class="order-2 md:order-1 md:w-5/12 w-full pl-20 md:pl-0 mt-2 md:mt-0">
+                                <div
+                                    class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
+                                    <h3 class="text-2xl font-bold mb-3 text-primary">Primeiros Passos com HTML e CSS
+                                    </h3>
+                                    <p class="text-slate-600 dark:text-slate-400 mb-4">Meu contato inicial com a
+                                        programação
+                                        aconteceu em 2020. Através das famosas aulas do Gustavo Guanabara, escrevi
+                                        minhas
+                                        primeiras linhas de código em HTML e CSS. Foi ali que a semente do
+                                        desenvolvimento
+                                        de software foi plantada.</p>
+                                    <img src="img/foto guanabara.png" alt="Gustavo Guanabara"
+                                        class="w-full h-48 object-cover object-[center_30%] rounded-xl border border-slate-700/50">
+                                </div>
+                            </div>
+                            <div
+                                class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black text-lg shadow-lg group-hover:scale-110 transition-transform">
+                                2020
+                            </div>
+                            <div class="order-3 md:order-3 md:w-5/12"></div>
+                        </div>
+
+
+                        <div
+                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                            <div class="hidden md:block order-1 md:w-5/12"></div>
+                            <div
+                                class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black text-lg shadow-lg group-hover:scale-110 transition-transform">
+                                2025
+                            </div>
+                            <div class="order-2 md:order-3 md:w-5/12 w-full pl-20 md:pl-0 mt-2 md:mt-0">
+                                <div
+                                    class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
+                                    <h3 class="text-2xl font-bold mb-3 text-primary">Bacharelado no IFS</h3>
+                                    <p class="text-slate-600 dark:text-slate-400">Após um período focado em outras
+                                        áreas,
+                                        voltei a ter contato com código de forma intensa ao ingressar no curso de
+                                        Sistemas
+                                        de Informação no Instituto Federal de Sergipe (IFS). A programação deixou de
+                                        ser
+                                        apenas curiosidade e virou minha futura profissão.</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div
+                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                            <div class="order-2 md:order-1 md:w-5/12 w-full pl-20 md:pl-0 mt-2 md:mt-0">
+                                <div
+                                    class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
+                                    <h3 class="text-2xl font-bold mb-3 text-primary">Explorando o Ecossistema Java
+                                    </h3>
+                                    <p class="text-slate-600 dark:text-slate-400">Minha primeira imersão acadêmica e
+                                        profissional foi no Back-End com Java. Criei projetos estruturados, como o
+                                        Sistema
+                                        de Adoção de Pets (CLI), onde pude aplicar na prática princípios SOLID e
+                                        boas
+                                        práticas de Orientação a Objetos.</p>
+                                </div>
+                            </div>
+                            <div
+                                class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black shadow-lg group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">code</span>
+                            </div>
+                            <div class="order-3 md:order-3 md:w-5/12"></div>
+                        </div>
+
+
+                        <div
+                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                            <div class="hidden md:block order-1 md:w-5/12"></div>
+                            <div
+                                class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black shadow-lg group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">event</span>
+                            </div>
+                            <div class="order-2 md:order-3 md:w-5/12 w-full pl-20 md:pl-0 mt-2 md:mt-0">
+                                <div
+                                    class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
+                                    <h3 class="text-2xl font-bold mb-3 text-primary">Campus Weekend Aracaju</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 mb-4">Participação na Campus
+                                        Weekend.
+                                        Uma experiência incrível onde tive a oportunidade de conhecer pessoalmente o
+                                        professor que iniciou minha trajetória na programação!</p>
+                                    <img src="img/foto com guanabara.jpeg" alt="Foto com Guanabara"
+                                        class="w-full h-72 object-cover object-center rounded-xl border border-slate-700/50">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div
+                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                            <div class="order-2 md:order-1 md:w-5/12 w-full pl-20 md:pl-0 mt-2 md:mt-0">
+                                <div
+                                    class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
+                                    <h3 class="text-2xl font-bold mb-3 text-primary">Spring Boot e Banco de Dados
+                                    </h3>
+                                    <p class="text-slate-600 dark:text-slate-400">Busquei especialização
+                                        conquistando
+                                        certificações em Banco de Dados e Metodologias Ágeis pela Javanauta. Dominei
+                                        o
+                                        framework Spring Boot para construir APIs RESTful robustas, fazendo
+                                        integrações
+                                        com
+                                        bancos como PostgreSQL e MongoDB.</p>
+                                </div>
+                            </div>
+                            <div
+                                class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black shadow-lg group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">database</span>
+                            </div>
+                            <div class="order-3 md:order-3 md:w-5/12"></div>
+                        </div>
+
+
+                        <div
+                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                            <div class="hidden md:block order-1 md:w-5/12"></div>
+                            <div
+                                class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black shadow-lg group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">rocket_launch</span>
+                            </div>
+                            <div class="order-2 md:order-3 md:w-5/12 w-full pl-20 md:pl-0 mt-2 md:mt-0">
+                                <div
+                                    class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
+                                    <h3 class="text-2xl font-bold mb-3 text-primary">O Caminho para o Full Stack
+                                    </h3>
+                                    <p class="text-slate-600 dark:text-slate-400">Hoje desenvolvo microsserviços
+                                        avançados
+                                        com Docker, JWT e análise com SonarQube. Agora meu foco é o Front-End
+                                        (JavaScript/Tailwind/Frameworks) para me tornar finalmente um Desenvolvedor
+                                        Full Stack.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+
+            <section class="py-24 scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out"
+                id="skills">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-bold mb-4">Minhas Habilidades</h2>
+                        <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
+                        <div
+                            class="flex flex-col items-center p-6 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
+                            <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
+                                    alt="Java"
+                                    class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
+                                    title="Java">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"
+                                    alt="Spring Boot"
+                                    class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
+                                    title="Spring Boot">
+                            </div>
+                            <span class="font-bold text-center">Java & Spring Boot</span>
+                        </div>
+                        <div
+                            class="flex flex-col items-center p-6 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
+                            <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+                                    alt="PostgreSQL"
+                                    class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
+                                    title="PostgreSQL">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+                                    alt="MongoDB"
+                                    class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
+                                    title="MongoDB">
+                            </div>
+                            <span class="font-bold text-center">PostgreSQL & MongoDB</span>
+                        </div>
+                        <div
+                            class="flex flex-col items-center p-6 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
+                            <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+                                    alt="Docker"
+                                    class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
+                                    title="Docker">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                                    alt="Git CI/CD"
+                                    class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
+                                    title="Git / CI/CD">
+                            </div>
+                            <span class="font-bold text-center">Docker & CI/CD</span>
+                        </div>
+                        <div
+                            class="flex flex-col items-center p-6 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
+                            <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
+                                    alt="REST APIs"
+                                    class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
+                                    title="APIs REST (Postman)">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg"
+                                    alt="JWT / JSON"
+                                    class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
+                                    title="JWT / JSON">
+                            </div>
+                            <span class="font-bold text-center">APIs REST & JWT</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="max-w-7xl mx-auto px-6 py-24 scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out"
+                id="projects">
+                <div class="flex justify-between items-end mb-16">
+                    <div>
+                        <h2 class="text-4xl font-black mb-4">Projetos em Destaque</h2>
+                        <p class="text-slate-600 dark:text-slate-400">Alguns dos meus trabalhos e projetos pessoais.</p>
+                    </div>
+                    <a class="text-primary font-bold flex items-center gap-1 hover:underline"
+                        href="https://github.com/Ja0Santana" target="_blank">
+                        Ver GitHub <span class="material-symbols-outlined text-sm">open_in_new</span>
+                    </a>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+
+                    <a href="https://github.com/Ja0Santana/BFF-Agendador" target="_blank"
+                        class="group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20 cursor-pointer">
+                        <div class="p-6 flex-grow flex flex-col">
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">BFF-Agendador
+                                e Gestão de Usuários</h3>
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+                                API REST desenvolvida para gerenciamento de usuários com autenticação JWT e banco
+                                PostgreSQL. Documentada via Swagger e analisada no SonarQube para identificar problemas
+                                e code smells.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">Java</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">Spring
+                                    Boot</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">PostgreSQL</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">Docker</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <span
+                                    class="text-sm font-bold text-slate-500 group-hover:text-slate-900 dark:group-hover:text-white transition-colors flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-sm">code</span> Ver Código GitHub</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/Ja0Santana/Sistema_de_adocao_para_pets" target="_blank"
+                        class="group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20 cursor-pointer">
+                        <div class="p-6 flex-grow flex flex-col">
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Sistema de
+                                Adoção de Pets (CLI)</h3>
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+                                CRUD básico CLI para cadastro e gerenciamento de pets utilizando persistência de dados
+                                em arquivos locais. Feito a partir de boas práticas aplicando os princípios SOLID.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">Java</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">CLI</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">SOLID</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <span
+                                    class="text-sm font-bold text-slate-500 group-hover:text-slate-900 dark:group-hover:text-white transition-colors flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-sm">code</span> Ver
+                                    Código GitHub</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            </section>
+
+            <section class="py-24 scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out"
+                id="certificates">
+                <div class="max-w-5xl mx-auto px-6">
+                    <div class="rounded-3xl border border-slate-700/50 bg-white/5 p-8 md:p-12 shadow-2xl">
+                        <div class="text-center mb-16">
+                            <h2 class="text-3xl font-black mb-4">Meus Certificados</h2>
+                            <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+                            <p class="mt-4 text-slate-600 dark:text-slate-400">Certificações obtidas através do
+                                Javanauta.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap justify-center gap-6">
+                            <div onclick="openModal('https://javanauta.blob.core.windows.net/certificado/02350b7e35d4268ede7ef6a8d28c8ebc43d3b48a01354836519915c832e51737-metodologias_ageis-portugues.png')"
+                                class="w-full sm:w-auto min-w-full sm:min-w-[300px] rounded-2xl border border-slate-700/50 shadow-lg bg-slate-800/40 p-6 cursor-pointer hover:border-primary/50 transition-all hover:bg-white/5 group flex items-center justify-between gap-6">
+                                <div class="flex items-center gap-4">
+                                    <span
+                                        class="material-symbols-outlined text-3xl text-primary group-hover:scale-110 transition-transform">workspace_premium</span>
+                                    <h3 class="font-bold text-slate-200 text-left text-lg">Metodologias Ágeis</h3>
+                                </div>
+                                <span
+                                    class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors text-sm">open_in_full</span>
+                            </div>
+                            <div onclick="openModal('https://javanauta.blob.core.windows.net/certificado/02350b7e35d4268ede7ef6a8d28c8ebc43d3b48a01354836519915c832e51737-banco_dados-portugues.png')"
+                                class="w-full sm:w-auto min-w-full sm:min-w-[300px] rounded-2xl border border-slate-700/50 shadow-lg bg-slate-800/40 p-6 cursor-pointer hover:border-primary/50 transition-all hover:bg-white/5 group flex items-center justify-between gap-6">
+                                <div class="flex items-center gap-4">
+                                    <span
+                                        class="material-symbols-outlined text-3xl text-primary group-hover:scale-110 transition-transform">workspace_premium</span>
+                                    <h3 class="font-bold text-slate-200 text-left text-lg">Banco de Dados</h3>
+                                </div>
+                                <span
+                                    class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors text-sm">open_in_full</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="py-24 max-w-7xl mx-auto px-6 scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out"
+                id="contact">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">Contato</h2>
+                    <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+                </div>
+                <div
+                    class="flex flex-col md:flex-row flex-wrap justify-center items-center gap-8 md:gap-16 text-lg w-full max-w-5xl mx-auto">
+                    <div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+                        <span class="material-symbols-outlined text-primary text-3xl">mail</span>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=paulo.jp806@gmail.com" target="_blank"
+                            class="hover:text-primary transition-colors">Email</a>
+                    </div>
+                    <div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+                        <svg class="w-8 h-8 text-primary" fill="currentColor" viewbox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+                            </path>
+                        </svg>
+                        <a href="https://www.linkedin.com/in/joaopaulosantana-dev/" target="_blank"
+                            class="hover:text-primary transition-colors">LinkedIn</a>
+                    </div>
+                    <div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+                        <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+                        <span>Bahia, Brasil</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="py-12 px-6">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary font-bold">terminal</span>
+                    <span class="text-lg font-bold tracking-tight">JoaoPaulo.dev</span>
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400">
+                    © 2026 João Paulo Santana. Todos os direitos reservados.
+                </p>
+                <div class="flex items-center gap-6">
+
+                    <a class="text-slate-500 hover:text-primary transition-colors"
+                        href="https://linkedin.com/in/joaopaulosantana-dev" target="_blank">
+                        <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+                            </path>
+                        </svg>
+                    </a>
+
+                    <a class="text-slate-500 hover:text-primary transition-colors" href="https://github.com/Ja0Santana"
+                        target="_blank">
+                        <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <div id="certModal" onclick="if(event.target === this) closeModal()"
+        class="fixed inset-0 z-[100] hidden flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-opacity duration-300 opacity-0 px-4">
+
+
+        <div
+            class="relative w-full max-w-6xl rounded-3xl border border-slate-700/50 bg-white/5 p-8 md:p-12 shadow-2xl flex flex-col items-center">
+
+
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 md:top-6 md:right-6 text-slate-400 hover:text-white bg-slate-800/50 hover:bg-slate-700/80 p-2 rounded-full transition-colors flex items-center justify-center z-10"
+                title="Fechar (Esc)">
+                <span class="material-symbols-outlined text-xl">close</span>
+            </button>
+
+
+            <div class="flex items-center gap-3 mb-8">
+                <span class="material-symbols-outlined text-primary text-3xl">workspace_premium</span>
+                <h2 class="text-white text-3xl md:text-5xl font-bold text-center">Certificado</h2>
+            </div>
+
+
+            <div class="w-full flex justify-center">
+                <img id="modalImg" src="" alt="Certificado"
+                    class="w-full max-h-[75vh] object-contain rounded-xl border border-slate-700/30 shadow-[0_0_30px_rgba(0,0,0,0.5)] z-10">
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
