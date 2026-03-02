@@ -114,4 +114,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
         hireObserver.observe(heroBtn);
     }
+
+    // Scroll Suave e Centralizado para links internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Se for o botão do menu mobile, fecha o menu antes de rolar
+                if (this.closest('#mobile-menu')) {
+                    toggleMobileMenu();
+                }
+
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const viewportHeight = window.innerHeight;
+                const elementHeight = targetElement.offsetHeight;
+
+                if (elementHeight > viewportHeight * 0.8) {
+                    // Se for maior que 80% da tela, alinha ao topo com offset do header
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    window.scrollTo({
+                        top: elementPosition - headerHeight,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // Se for pequeno, centraliza para dar o efeito premium
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+
+                // Atualiza a URL sem pular (opcional para manter a UX limpa)
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
 });
