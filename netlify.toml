@@ -1,3 +1,3 @@
 [build]
-  command = "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+  command = ""
   publish = "."
