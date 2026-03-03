@@ -6,40 +6,16 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block"
         rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#0dccf2",
-                        "background-light": "#f5f8f8",
-                        "background-dark": "#101f22",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
-                    keyframes: {
-                        slideUpFade: {
-                            '0%': { opacity: '0', transform: 'translateY(50px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    },
-                    animation: {
-                        'slide-up-fade': 'slideUpFade 4s cubic-bezier(0.1, 0.9, 0.2, 1) forwards',
-                    },
-                },
-            },
-        }
-    </script>
-    <title>DevPortfolio | João Paulo - Desenvolvedor Back-End</title>
+
+    <title>DevPortfolio | João Paulo - Desenvolvedor Full-Stack</title>
 </head>
 
 <body
@@ -134,7 +110,7 @@
                             <div
                                 class="relative bg-slate-200 dark:bg-slate-800 rounded-full lg:rounded-2xl overflow-hidden aspect-square border border-slate-300 dark:border-slate-700 flex items-center justify-center">
 
-                                <img src="img/foto.jpg" alt="João Paulo Santana"
+                                <img src="img/foto.webp" alt="João Paulo Santana"
                                     class="w-full h-full object-cover object-[center_60%]">
                             </div>
                         </div>
@@ -154,7 +130,7 @@
                                     <div
                                         class="w-full h-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden flex items-center justify-center aspect-square">
 
-                                        <img src="img/foto.jpg" alt="João Paulo Avatar"
+                                        <img src="img/foto.webp" alt="João Paulo Avatar"
                                             class="w-full h-full object-cover object-[center_60%]">
                                     </div>
                                 </div>
@@ -210,7 +186,7 @@
                                         primeiras linhas de código em HTML e CSS. Foi ali que a semente do
                                         desenvolvimento
                                         de software foi plantada.</p>
-                                    <img src="img/foto guanabara.png" alt="Gustavo Guanabara"
+                                    <img src="img/foto guanabara.webp" alt="Gustavo Guanabara"
                                         class="w-full h-48 object-cover object-[center_30%] rounded-xl border border-slate-700/50">
                                 </div>
                             </div>
@@ -286,7 +262,7 @@
                                         Weekend.
                                         Uma experiência incrível onde tive a oportunidade de conhecer pessoalmente o
                                         professor que iniciou minha trajetória na programação!</p>
-                                    <img src="img/foto com guanabara.jpeg" alt="Foto com Guanabara"
+                                    <img src="img/foto com guanabara.webp" alt="Foto com Guanabara"
                                         class="w-full h-72 object-cover object-center rounded-xl border border-slate-700/50">
                                 </div>
                             </div>
@@ -571,7 +547,7 @@
                             </p>
                         </div>
                         <div class="flex flex-wrap justify-center gap-6">
-                            <div onclick="openModal('https://javanauta.blob.core.windows.net/certificado/02350b7e35d4268ede7ef6a8d28c8ebc43d3b48a01354836519915c832e51737-metodologias_ageis-portugues.png')"
+                            <div onclick="openModal('img/02350b7e35d4268ede7ef6a8d28c8ebc43d3b48a01354836519915c832e51737-metodologias_ageis-portugues.webp')"
                                 class="w-full sm:w-auto min-w-full sm:min-w-[300px] rounded-2xl border border-slate-700/50 shadow-lg bg-slate-800/40 p-6 cursor-pointer hover:border-primary/50 transition-all hover:bg-white/5 group flex items-center justify-between gap-6">
                                 <div class="flex items-center gap-4">
                                     <span
@@ -581,7 +557,7 @@
                                 <span
                                     class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors text-sm">open_in_full</span>
                             </div>
-                            <div onclick="openModal('https://javanauta.blob.core.windows.net/certificado/02350b7e35d4268ede7ef6a8d28c8ebc43d3b48a01354836519915c832e51737-banco_dados-portugues.png')"
+                            <div onclick="openModal('img/02350b7e35d4268ede7ef6a8d28c8ebc43d3b48a01354836519915c832e51737-banco_dados-portugues.webp')"
                                 class="w-full sm:w-auto min-w-full sm:min-w-[300px] rounded-2xl border border-slate-700/50 shadow-lg bg-slate-800/40 p-6 cursor-pointer hover:border-primary/50 transition-all hover:bg-white/5 group flex items-center justify-between gap-6">
                                 <div class="flex items-center gap-4">
                                     <span
