@@ -1,3 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #0dccf2;
+    --color-background-light: #f5f8f8;
+    --color-background-dark: #101f22;
+
+    --font-display: "Inter", sans-serif;
+
+    --radius-default: 0.25rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-full: 9999px;
+
+    --animate-slide-up-fade: slideUpFade 4s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+
+    @keyframes slideUpFade {
+        0% {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
