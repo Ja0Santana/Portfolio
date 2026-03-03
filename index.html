@@ -6,20 +6,13 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block"
-        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
     <title>DevPortfolio | João Paulo - Desenvolvedor Full-Stack</title>
 </head>
 
 <body
-    class="bg-[#0a1c76] font-display text-slate-900 dark:text-slate-100 transition-colors duration-300 bg-gradient-to-b from-[#0a1c76] to-black overflow-x-hidden">
+    class="bg-[#0a1c76] font-display text-slate-900 dark:text-slate-100 transition-colors duration-300 bg-linear-to-b from-[#0a1c76] to-black overflow-x-hidden">
     <div class="relative flex min-h-screen w-full flex-col">
 
         <header
@@ -64,7 +57,7 @@
                         <a class="p-4 text-base font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
                             href="#projects">Projetos</a>
                         <a id="nav-hire-btn-mobile" href="#contact"
-                            class="mt-2 w-full flex items-center justify-center gap-2 bg-slate-800 text-white px-5 py-4 rounded-xl text-base font-bold transition-all duration-300 border border-slate-700 hover:border-primary/50 hidden opacity-0 pointer-events-none -translate-y-2">
+                            class="mt-2 w-full hidden items-center justify-center gap-2 bg-slate-800 text-white px-5 py-4 rounded-xl text-base font-bold transition-all duration-300 border border-slate-700 hover:border-primary/50 opacity-0 pointer-events-none -translate-y-2">
                             <span class="material-symbols-outlined text-primary text-xl">handshake</span>
                             Entrar em contato
                         </a>
@@ -72,7 +65,7 @@
                 </div>
             </div>
         </header>
-        <main class="flex-grow">
+        <main class="grow">
 
             <section class="max-w-7xl mx-auto px-6 py-8 md:py-12 lg:py-16">
                 <div
@@ -105,7 +98,7 @@
                     <div class="flex-1 w-full max-w-[260px] sm:max-w-sm lg:max-w-xl mb-4 lg:mb-0">
                         <div class="relative group mx-auto">
                             <div
-                                class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-full lg:rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000">
+                                class="absolute -inset-1 bg-linear-to-r from-primary to-blue-600 rounded-full lg:rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000">
                             </div>
                             <div
                                 class="relative bg-slate-200 dark:bg-slate-800 rounded-full lg:rounded-2xl overflow-hidden aspect-square border border-slate-300 dark:border-slate-700 flex items-center justify-center">
@@ -119,7 +112,7 @@
             </section>
 
             <section
-                class="min-h-[50vh] flex items-center py-12 md:py-16 scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out"
+                class="min-h-[50vh] flex items-center py-12 md:py-16 scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out"
                 id="about">
                 <div class="max-w-5xl mx-auto px-6">
                     <div class="rounded-3xl border border-slate-700/50 bg-white/5 p-8 md:p-12 shadow-2xl">
@@ -159,7 +152,7 @@
 
             <section class="max-w-5xl mx-auto px-6 py-12 md:py-16" id="timeline">
                 <div
-                    class="text-center mb-16 scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                    class="text-center mb-16 scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
                     <h2 class="text-3xl font-bold mb-4">Minha Trajetória</h2>
                     <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
                 </div>
@@ -172,13 +165,14 @@
                     <div class="space-y-12">
 
                         <div
-                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
                             <div class="order-2 md:order-1 md:w-5/12 w-full pl-20 md:pl-0 mt-2 md:mt-0">
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
                                     <h3 class="text-2xl font-bold mb-3 text-primary">Primeiros Passos com HTML e CSS
                                     </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 mb-4 break-words">Meu contato inicial
+                                    <p class="text-slate-600 dark:text-slate-400 mb-4 wrap-break-word">Meu contato
+                                        inicial
                                         com a
                                         programação
                                         aconteceu em 2020. Através das famosas aulas do Gustavo Guanabara, escrevi
@@ -199,7 +193,7 @@
 
 
                         <div
-                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
                             <div class="hidden md:block order-1 md:w-5/12"></div>
                             <div
                                 class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black text-lg shadow-lg group-hover:scale-110 transition-transform">
@@ -209,7 +203,8 @@
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
                                     <h3 class="text-2xl font-bold mb-3 text-primary">Bacharelado no IFS</h3>
-                                    <p class="text-slate-600 dark:text-slate-400 break-words">Após um período focado em
+                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word">Após um período focado
+                                        em
                                         outras
                                         áreas,
                                         voltei a ter contato com código de forma intensa ao ingressar no curso de
@@ -223,13 +218,13 @@
 
 
                         <div
-                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
                             <div class="order-2 md:order-1 md:w-5/12 w-full pl-20 md:pl-0 mt-2 md:mt-0">
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
                                     <h3 class="text-2xl font-bold mb-3 text-primary">Explorando o Ecossistema Java
                                     </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 break-words">Minha primeira imersão
+                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word">Minha primeira imersão
                                         acadêmica e
                                         profissional foi no Back-End com Java. Criei projetos estruturados, como o
                                         Sistema
@@ -247,7 +242,7 @@
 
 
                         <div
-                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
                             <div class="hidden md:block order-1 md:w-5/12"></div>
                             <div
                                 class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black shadow-lg group-hover:scale-110 transition-transform">
@@ -257,7 +252,7 @@
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
                                     <h3 class="text-2xl font-bold mb-3 text-primary">Campus Weekend Aracaju</h3>
-                                    <p class="text-slate-600 dark:text-slate-400 mb-4 break-words">Participação na
+                                    <p class="text-slate-600 dark:text-slate-400 mb-4 wrap-break-word">Participação na
                                         Campus
                                         Weekend.
                                         Uma experiência incrível onde tive a oportunidade de conhecer pessoalmente o
@@ -270,13 +265,13 @@
 
 
                         <div
-                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
                             <div class="order-2 md:order-1 md:w-5/12 w-full pl-20 md:pl-0 mt-2 md:mt-0">
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
                                     <h3 class="text-2xl font-bold mb-3 text-primary">Spring Boot e Banco de Dados
                                     </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 break-words">Busquei especialização
+                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word">Busquei especialização
                                         conquistando
                                         certificações em Banco de Dados e Metodologias Ágeis pela Javanauta. Dominei
                                         o
@@ -295,7 +290,7 @@
 
 
                         <div
-                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
                             <div class="hidden md:block order-1 md:w-5/12"></div>
                             <div
                                 class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black shadow-lg group-hover:scale-110 transition-transform">
@@ -306,7 +301,7 @@
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
                                     <h3 class="text-2xl font-bold mb-3 text-primary">O Caminho para o Full Stack
                                     </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 break-words">Hoje desenvolvo
+                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word">Hoje desenvolvo
                                         microsserviços
                                         avançados
                                         com Docker, JWT e análise com SonarQube. Agora meu foco é o Front-End
@@ -320,7 +315,7 @@
 
 
             <section
-                class="py-12 md:py-16 scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out"
+                class="py-12 md:py-16 scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out"
                 id="skills">
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="text-center mb-16">
@@ -427,7 +422,7 @@
             </section>
 
             <section
-                class="max-w-7xl mx-auto px-6 py-12 md:py-16 scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out"
+                class="max-w-7xl mx-auto px-6 py-12 md:py-16 scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out"
                 id="projects">
                 <div class="flex justify-between items-end mb-16">
                     <div>
@@ -439,10 +434,10 @@
 
                     <a href="https://github.com/Ja0Santana/BFF-Agendador" target="_blank"
                         class="group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20 cursor-pointer">
-                        <div class="p-6 flex-grow flex flex-col">
+                        <div class="p-6 grow flex flex-col">
                             <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">BFF-Agendador
                                 e Gestão de Usuários</h3>
-                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow">
                                 API REST desenvolvida para gerenciamento de usuários com autenticação JWT e banco
                                 PostgreSQL. Documentada via Swagger e analisada no SonarQube para identificar problemas
                                 e code smells.
@@ -468,10 +463,10 @@
 
                     <a href="https://github.com/Ja0Santana/Sistema_de_adocao_para_pets" target="_blank"
                         class="group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20 cursor-pointer">
-                        <div class="p-6 flex-grow flex flex-col">
+                        <div class="p-6 grow flex flex-col">
                             <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Sistema de
                                 Adoção de Pets (CLI)</h3>
-                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow">
                                 CRUD básico CLI para cadastro e gerenciamento de pets utilizando persistência de dados
                                 em arquivos locais. Feito a partir de boas práticas aplicando os princípios SOLID.
                             </p>
@@ -496,10 +491,10 @@
                     <div class="md:col-span-2 md:max-w-[calc(50%-1rem)] md:mx-auto w-full flex">
                         <a href="https://github.com/Ja0Santana/site_casamento" target="_blank"
                             class="group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20 cursor-pointer w-full">
-                            <div class="p-6 flex-grow flex flex-col">
+                            <div class="p-6 grow flex flex-col">
                                 <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Site de
                                     Casamento Premium</h3>
-                                <p class="text-base text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+                                <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow">
                                     Plataforma completa com lista de presentes interativa, integração real com
                                     MercadoPago (PIX/Cartão),
                                     sistema de validação de segurança via e-mail e design responsivo de alto nível.
@@ -535,7 +530,7 @@
             </section>
 
             <section
-                class="py-12 md:py-16 scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out"
+                class="py-12 md:py-16 scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out"
                 id="certificates">
                 <div class="max-w-5xl mx-auto px-6">
                     <div class="rounded-3xl border border-slate-700/50 bg-white/5 p-8 md:p-12 shadow-2xl">
@@ -573,7 +568,7 @@
             </section>
 
             <section
-                class="py-12 md:py-16 max-w-7xl mx-auto px-6 scroll-animate opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out"
+                class="py-12 md:py-16 max-w-7xl mx-auto px-6 scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out"
                 id="contact">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold mb-4">Contato</h2>
@@ -638,7 +633,7 @@
 
 
     <div id="certModal" onclick="if(event.target === this) closeModal()"
-        class="fixed inset-0 z-[100] hidden flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-opacity duration-300 opacity-0 px-4">
+        class="fixed inset-0 z-100 hidden flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-opacity duration-300 opacity-0 px-4">
 
 
         <div
