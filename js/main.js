@@ -1,8 +1,9 @@
+// Standard scroll restoration management
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
+    // Ensure we start at top without forcing layout during parse
+    window.addEventListener('load', () => window.scrollTo(0, 0), { once: true });
 }
-
-window.scrollTo(0, 0);
 
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
