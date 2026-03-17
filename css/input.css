@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0dccf2;
+  --color-background-light: #f5f8f8;
+  --color-background-dark: #101f22;
+  --font-display: "JetBrains Mono", monospace;
+  --radius-full: 9999px;
+  --animate-slide-up-fade: slideUpFade 4s cubic-bezier(.1, .9, .2, 1) forwards;
+}
+
+@layer base {
+  @font-face {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../fonts/inter-400.ttf) format("truetype");
+  }
+
+  @font-face {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(../fonts/inter-600.ttf) format("truetype");
+  }
+
+  @font-face {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url(../fonts/inter-800.ttf) format("truetype");
+  }
+
+  @font-face {
+    font-family: "Material Symbols Outlined";
+    font-style: normal;
+    font-weight: 100 700;
+    font-display: block;
+    src: url(../fonts/material-symbols.ttf) format("truetype");
+  }
+
+  .material-symbols-outlined {
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga";
+    direction: ltr;
+    font-family: "Material Symbols Outlined";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    display: inline-block;
+  }
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

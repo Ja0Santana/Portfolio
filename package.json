@@ -1,11 +1,17 @@
 {
+  "scripts": {
+    "dev": "npx tailwindcss -i ./css/input.css -o ./dist/styles.css --watch",
+    "build": "npx tailwindcss -i ./css/input.css -o ./dist/styles.css --minify",
+    "preview": "npx serve .",
+    "start": "npm run build && npm run preview"
+  },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.11",
-    "tailwindcss": "^4.2.1"
+    "tailwindcss": "^4.2.0"
   },
   "dependencies": {
     "jimp": "^1.6.0",
-    "sharp": "^0.34.5"
+    "sharp": "^0.33.5"
   }
 }

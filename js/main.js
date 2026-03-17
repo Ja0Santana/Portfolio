@@ -115,6 +115,33 @@ document.addEventListener('DOMContentLoaded', () => {
         hireObserver.observe(heroBtn);
     }
 
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Modal close events
+    const closeBtn = document.getElementById('modal-close-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+
+    const modal = document.getElementById('certModal');
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    }
+
+    // Certificate items
+    document.querySelectorAll('.certificate-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.getAttribute('data-certificate-img');
+            if (img) openModal(img);
+        });
+    });
+
     // Scroll Suave e Centralizado para links internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
