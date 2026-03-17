@@ -6,20 +6,23 @@ window.scrollTo(0, 0);
 
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
-    const icon = document.getElementById('menu-icon');
+    const svg = document.getElementById('menu-icon-svg');
+    const path = svg.querySelector('path');
 
     if (menu.classList.contains('grid-rows-[0fr]')) {
         menu.classList.remove('grid-rows-[0fr]', 'opacity-0');
         menu.classList.add('grid-rows-[1fr]', 'opacity-100');
         menu.style.borderColor = "rgba(148, 163, 184, 0.2)";
 
-        icon.textContent = 'close';
+        // Change to "close" icon path
+        path.setAttribute('d', 'M256,760L200,704L424,480L200,256L256,200L480,424L704,200L760,256L536,480L760,704L704,760L480,536L256,760Z');
     } else {
         menu.classList.remove('grid-rows-[1fr]', 'opacity-100');
         menu.classList.add('grid-rows-[0fr]', 'opacity-0');
         menu.style.borderColor = "transparent";
 
-        icon.textContent = 'menu';
+        // Change back to "menu" icon path
+        path.setAttribute('d', 'M120,720L120,640L840,640L840,720L120,720ZM120,520L120,440L840,440L840,520L120,520ZM120,320L120,240L840,240L840,320L120,320Z');
     }
 }
 
