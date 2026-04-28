@@ -46,6 +46,7 @@ class BorderGlow {
       coneSpread: 25,
       colors: ['#0dccf2', '#38bdf8', '#818cf8'], // Original primary color + purples
       fillOpacity: 0.5,
+      animated: false,
       ...config
     };
     
@@ -94,7 +95,9 @@ class BorderGlow {
     // Ensure outer glow is visible globally
     this.el.style.overflow = 'visible'; 
     this.el.style.border = `1px solid rgba(255,255,255,0.15)`;
-    this.el.style.borderRadius = `${this.config.borderRadius}px`;
+    if (this.config.borderRadius !== null) {
+      this.el.style.borderRadius = typeof this.config.borderRadius === 'number' ? `${this.config.borderRadius}px` : this.config.borderRadius;
+    }
     
     // We don't need a contentWrapper!
     // Since we cleared the parent background and use isolation: isolate,
@@ -182,9 +185,21 @@ class BorderGlow {
     this.el.prepend(this.fillLayer);
     this.el.prepend(this.borderLayer);
     
-    this.el.addEventListener('pointermove', this.handlePointerMove);
-    this.el.addEventListener('pointerenter', this.handlePointerEnter);
-    this.el.addEventListener('pointerleave', this.handlePointerLeave);
+    if (this.config.animated) {
+      this.el.style.setProperty('--border-opacity', '1');
+      this.el.style.setProperty('--glow-opacity', '1');
+      let angle = 0;
+      const tick = () => {
+        angle = (angle + 1) % 360;
+        this.el.style.setProperty('--cursor-angle', `${angle.toFixed(1)}deg`);
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    } else {
+      this.el.addEventListener('pointermove', this.handlePointerMove);
+      this.el.addEventListener('pointerenter', this.handlePointerEnter);
+      this.el.addEventListener('pointerleave', this.handlePointerLeave);
+    }
   }
   
   handlePointerEnter() {
@@ -224,4 +239,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.project-card, .certificate-item, #timeline .bg-white\\/5.rounded-2xl, #skills .grid > div').forEach(el => {
         new BorderGlow(el);
     });
+
+    const photoGlow = document.getElementById('profile-photo-glow');
+    if (photoGlow) {
+        new BorderGlow(photoGlow, {
+            animated: true,
+            borderRadius: null,
+            glowIntensity: 1.5,
+            glowRadius: 50
+        });
+    }
 });

@@ -2194,6 +2194,14 @@
             inherits: false;
             initial-value: 1
         }
+
+        @keyframes breathScale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        .animate-breath-scale {
+            animation: breathScale 4s ease-in-out infinite;
+        }
     </style>
     <title>DevPortfolio | João Paulo - Desenvolvedor Full-Stack</title>
 </head>
@@ -2301,10 +2309,7 @@
                         </div>
                     </div>
                     <div class="flex-1 w-full max-w-[260px] sm:max-w-sm lg:max-w-xl mb-4 lg:mb-0">
-                        <div class="relative group mx-auto">
-                            <div
-                                class="absolute -inset-1 bg-linear-to-r from-primary to-blue-600 rounded-full lg:rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000">
-                            </div>
+                        <div id="profile-photo-glow" class="relative group mx-auto rounded-full lg:rounded-2xl">
                             <div
                                 class="relative bg-slate-200 dark:bg-slate-800 rounded-full lg:rounded-2xl overflow-hidden aspect-square border border-slate-300 dark:border-slate-700 flex items-center justify-center">
 
@@ -2581,15 +2586,15 @@
                             class="flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
                             <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
-                                    alt="PostgreSQL"
+                                    alt="SQL"
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
-                                    title="PostgreSQL" width="56" height="56" loading="lazy">
+                                    title="Bancos Relacionais (SQL)" width="56" height="56" loading="lazy">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
-                                    alt="MongoDB"
+                                    alt="NoSQL"
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
-                                    title="MongoDB" width="56" height="56" loading="lazy">
+                                    title="Bancos Não Relacionais (NoSQL)" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center">PostgreSQL & MongoDB</span>
+                            <span class="font-bold text-center">SQL & NoSQL</span>
                         </div>
                         <div
                             class="flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
@@ -2608,10 +2613,10 @@
                         <div
                             class="flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
                             <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                    alt="JavaScript"
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                                    alt="React"
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
-                                    title="JavaScript (ES6+)" width="56" height="56" loading="lazy">
+                                    title="React" width="56" height="56" loading="lazy">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
                                     alt="Tailwind CSS"
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
@@ -2657,6 +2662,20 @@
                             </div>
                             <span class="font-bold text-center">APIs REST & JWT</span>
                         </div>
+                        <div
+                            class="flex flex-col items-center p-6 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
+                            <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-plain.svg"
+                                    alt="JUnit & Mockito"
+                                    class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all bg-white rounded-md p-1"
+                                    title="JUnit & Mockito" width="56" height="56" loading="lazy">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sonarqube/sonarqube-original.svg"
+                                    alt="SonarQube"
+                                    class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
+                                    title="SonarQube" width="56" height="56" loading="lazy">
+                            </div>
+                            <span class="font-bold text-center">Testes & Qualidade</span>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -2675,14 +2694,13 @@
                     <div
                         class="project-card group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20">
                         <div class="p-6 grow flex flex-col">
-                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">BFF-Agendador
-                                e Gestão de Usuários</h3>
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Agendador de Tarefas Full-Stack</h3>
                             <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow">
-                                API REST desenvolvida para gerenciamento de usuários com autenticação JWT e banco
-                                PostgreSQL. Documentada via Swagger e analisada no SonarQube para identificar problemas
-                                e code smells.
+                                Aplicação Full-Stack com Front-End moderno em React e Vite, integrada a uma API REST em Java e Spring Boot. Possui autenticação JWT, integração com PostgreSQL, e ampla cobertura de testes unitários com JUnit e Mockito. Analisada via SonarQube para qualidade de código.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">React</span>
                                 <span
                                     class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">Java</span>
                                 <span
@@ -2739,10 +2757,9 @@
                         </div>
                     </div>
 
-                    <!-- Novo Projeto: Site de Casamento (Centralizado horizontalmente se for Ã­mpar) -->
-                    <div class="md:col-span-2 md:max-w-[calc(50%-1rem)] md:mx-auto w-full flex">
-                        <div
-                            class="project-card group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20 w-full">
+                    <!-- Projeto: Site de Casamento -->
+                    <div
+                        class="project-card group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20">
                             <div class="p-6 grow flex flex-col">
                                 <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Site de
                                     Casamento Premium</h3>
@@ -2791,7 +2808,50 @@
                                 </div>
                             </div>
                         </div>
+
+                    <!-- Novo Projeto: Synfonia -->
+                    <div
+                        class="project-card group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20">
+                        <div class="p-6 grow flex flex-col">
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Synfonia - Immersive Music Experience</h3>
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow">
+                                Plataforma de música premium focada em imersão e performance. Apresenta UI dinâmica com Framer Motion, Glassmorphism, e integração profunda com a API do Spotify (OAuth). O back-end conta com banco de dados híbrido (PostgreSQL + MongoDB) e blindagem de segurança (Bucket4j, proteção contra IDOR).
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">React</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">Framer Motion</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">Java 21</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">PostgreSQL & MongoDB</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">Security Hardening</span>
+                            </div>
+                            <div class="flex flex-wrap gap-4 mt-auto">
+                                <a href="https://synfonia.me" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="bg-primary text-black px-5 py-2.5 rounded-xl font-bold text-sm hover:scale-105 transition-all shadow-lg shadow-primary/20 flex items-center gap-2"
+                                    style="white-space: nowrap; width: max-content;">
+                                    <svg class="shrink-0" style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 960 960">
+                                        <path
+                                            d="M325,848.5Q252,817 197.5,762.5Q143,708 111.5,635Q80,562 80,479.5Q80,397 111.5,324.5Q143,252 197.5,197.5Q252,143 325,111.5Q398,80 480.5,80Q563,80 635.5,111.5Q708,143 762.5,197.5Q817,252 848.5,324.5Q880,397 880,479.5Q880,562 848.5,635Q817,708 762.5,762.5Q708,817 635.5,848.5Q563,880 480.5,880Q398,880 325,848.5ZM480,798Q506,762 525,723Q544,684 556,640L404,640Q416,684 435,723Q454,762 480,798ZM376,782Q358,749 344.5,713.5Q331,678 322,640L204,640Q233,690 276.5,727Q320,764 376,782ZM584,782Q640,764 683.5,727Q727,690 756,640L638,640Q629,678 615.5,713.5Q602,749 584,782ZM170,560L306,560Q303,540 301.5,520.5Q300,501 300,480Q300,459 301.5,439.5Q303,420 306,400L170,400Q165,420 162.5,439.5Q160,459 160,480Q160,501 162.5,520.5Q165,540 170,560ZM386,560L574,560Q577,540 578.5,520.5Q580,501 580,480Q580,459 578.5,439.5Q577,420 574,400L386,400Q383,420 381.5,439.5Q380,459 380,480Q380,501 381.5,520.5Q383,540 386,560ZM654,560L790,560Q795,540 797.5,520.5Q800,501 800,480Q800,459 797.5,439.5Q795,420 790,400L654,400Q657,420 658.5,439.5Q660,459 660,480Q660,501 658.5,520.5Q657,540 654,560ZM638,320L756,320Q727,270 683.5,233Q640,196 584,178Q602,211 615.5,246.5Q629,282 638,320ZM404,320L556,320Q544,276 525,237Q506,198 480,162Q454,198 435,237Q416,276 404,320ZM204,320L322,320Q331,282 344.5,246.5Q358,211 376,178Q320,196 276.5,233Q233,270 204,320Z" />
+                                    </svg> Ver Site
+                                </a>
+                                <a href="https://github.com/Ja0Santana/Projeto_musicas" target="_blank"
+                                    rel="noopener noreferrer" aria-label="Ver Código do projeto Synfonia no GitHub"
+                                    class="bg-white/5 text-slate-300 px-5 py-2.5 rounded-xl font-bold text-sm border border-slate-700/50 hover:border-primary/50 hover:bg-white/10 transition-all flex items-center gap-2"
+                                    style="white-space: nowrap; width: max-content;">
+                                    <svg class="shrink-0" style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 960 960">
+                                        <path
+                                            d="M320,720L80,480L320,240L377,297L193,481L376,664L320,720ZM640,720L583,663L767,479L584,296L640,240L880,480L640,720Z" />
+                                    </svg> Ver Código GitHub
+                                </a>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </section>
 
