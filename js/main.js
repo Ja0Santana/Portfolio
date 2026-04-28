@@ -27,10 +27,21 @@ function toggleMobileMenu() {
     }
 }
 
-function openModal(imageSrc) {
+function openModal(imageSrc, url) {
     const modal = document.getElementById('certModal');
     const modalImg = document.getElementById('modalImg');
+    const linkBtn = document.getElementById('modal-link-btn');
+    
     modalImg.src = imageSrc;
+    
+    if (linkBtn) {
+        if (url) {
+            linkBtn.href = url;
+            linkBtn.parentElement.classList.remove('hidden');
+        } else {
+            linkBtn.parentElement.classList.add('hidden');
+        }
+    }
 
     modal.classList.remove('hidden');
     modal.classList.add('flex');
@@ -142,7 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.certificate-item').forEach(item => {
         item.addEventListener('click', () => {
             const img = item.getAttribute('data-certificate-img');
-            if (img) openModal(img);
+            const url = item.getAttribute('data-certificate-url');
+            if (img) openModal(img, url);
         });
     });
 
