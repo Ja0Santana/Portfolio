@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html class="dark scroll-smooth" lang="pt-BR">
 
@@ -108,9 +108,14 @@
                 --color-black: #000;
                 --color-white: #fff;
                 --spacing: .25rem;
+                --container-xs: 20rem;
                 --container-sm: 24rem;
+                --container-md: 28rem;
+                --container-lg: 32rem;
                 --container-xl: 36rem;
                 --container-2xl: 42rem;
+                --container-3xl: 48rem;
+                --container-4xl: 56rem;
                 --container-5xl: 64rem;
                 --container-6xl: 72rem;
                 --container-7xl: 80rem;
@@ -130,6 +135,8 @@
                 --text-4xl--line-height: calc(2.5 / 2.25);
                 --text-5xl: 3rem;
                 --text-5xl--line-height: 1;
+                --text-6xl: 3.75rem;
+                --text-6xl--line-height: 1;
                 --text-7xl: 4.5rem;
                 --text-7xl--line-height: 1;
                 --font-weight-medium: 500;
@@ -688,8 +695,32 @@
                 width: 100%
             }
 
+            .max-w-xs {
+                max-width: var(--container-xs)
+            }
+
+            .max-w-md {
+                max-width: var(--container-md)
+            }
+
+            .max-w-lg {
+                max-width: var(--container-lg)
+            }
+
+            .max-w-xl {
+                max-width: var(--container-xl)
+            }
+
             .max-w-2xl {
                 max-width: var(--container-2xl)
+            }
+
+            .max-w-3xl {
+                max-width: var(--container-3xl)
+            }
+
+            .max-w-4xl {
+                max-width: var(--container-4xl)
             }
 
             .max-w-5xl {
@@ -1176,6 +1207,22 @@
                 padding-top: calc(var(--spacing) * 4)
             }
 
+            .pt-12 {
+                padding-top: calc(var(--spacing) * 12)
+            }
+
+            .pt-16 {
+                padding-top: calc(var(--spacing) * 16)
+            }
+
+            .pb-8 {
+                padding-bottom: calc(var(--spacing) * 8)
+            }
+
+            .pb-12 {
+                padding-bottom: calc(var(--spacing) * 12)
+            }
+
             .pl-14 {
                 padding-left: calc(var(--spacing) * 14)
             }
@@ -1225,6 +1272,11 @@
             .text-xl {
                 font-size: var(--text-xl);
                 line-height: var(--tw-leading, var(--text-xl--line-height))
+            }
+
+            .text-6xl {
+                font-size: var(--text-6xl);
+                line-height: var(--tw-leading, var(--text-6xl--line-height))
             }
 
             .text-\[10px\] {
@@ -2226,6 +2278,7 @@
                     <a class="text-sm font-medium hover:text-primary transition-colors" href="#timeline">Trajetória</a>
                     <a class="text-sm font-medium hover:text-primary transition-colors" href="#skills">Habilidades</a>
                     <a class="text-sm font-medium hover:text-primary transition-colors" href="#projects">Projetos</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#certificates">Certificados</a>
                 </nav>
                 <div class="flex items-center gap-4">
                     <a id="nav-hire-btn" href="#contact"
@@ -2262,6 +2315,8 @@
                             href="#skills">Habilidades</a>
                         <a class="p-4 text-base font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
                             href="#projects">Projetos</a>
+                        <a class="p-4 text-base font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+                            href="#certificates">Certificados</a>
                         <a id="nav-hire-btn-mobile" href="#contact"
                             class="mx-auto mt-2 w-full hidden items-center justify-center gap-2 bg-slate-800 text-white px-5 py-4 rounded-xl text-base font-bold transition-all duration-300 border border-slate-700 hover:border-primary/50 opacity-0 pointer-events-none -translate-y-2"
                             style="white-space: nowrap; width: max-content;">
@@ -2277,12 +2332,12 @@
         </header>
         <main class="grow">
 
-            <section class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 lg:py-16">
+            <section class="max-w-7xl mx-auto px-4 md:px-6 pt-12 pb-8 md:pt-16 md:pb-12 lg:pt-16 lg:pb-12">
                 <div
-                    class="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-12 opacity-0 animate-slide-up-fade text-center lg:text-left">
+                    class="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-12 text-center lg:text-left">
                     <div class="flex-1 space-y-6 lg:space-y-8 flex flex-col items-center lg:items-start w-full">
                         <h1
-                            class="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight text-slate-900 dark:text-white tracking-tight">
+                            class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-slate-900 dark:text-white tracking-tight">
                             Olá, eu sou João Paulo, <span class="text-primary block mt-2">Desenvolvedor
                                 Full-Stack</span>
                         </h1>
@@ -2308,7 +2363,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="flex-1 w-full max-w-[260px] sm:max-w-sm lg:max-w-xl mb-4 lg:mb-0">
+                    <div class="flex-1 w-full max-w-[220px] sm:max-w-xs lg:max-w-md mb-4 lg:mb-0">
                         <div id="profile-photo-glow" class="relative group mx-auto rounded-full lg:rounded-2xl">
                             <div
                                 class="relative bg-slate-200 dark:bg-slate-800 rounded-full lg:rounded-2xl overflow-hidden aspect-square border border-slate-300 dark:border-slate-700 flex items-center justify-center">
@@ -2493,7 +2548,7 @@
                                     </h3>
                                     <p class="text-slate-600 dark:text-slate-400 wrap-break-word">Busquei especialização
                                         conquistando
-                                        certificações em Banco de Dados e Metodologias Ãgeis pela Javanauta. Dominei
+                                        certificações em Banco de Dados e Metodologias Ágeis pela Javanauta. Dominei
                                         o
                                         framework Spring Boot para construir APIs RESTful robustas, fazendo
                                         integrações
@@ -3025,7 +3080,7 @@
 
 
         <div
-            class="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-3xl border border-slate-700/50 bg-white/5 p-6 md:p-8 shadow-2xl flex flex-col items-center">
+            class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl border border-slate-700/50 bg-white/5 p-6 md:p-8 shadow-2xl flex flex-col items-center">
 
 
             <button id="modal-close-btn"
@@ -3049,7 +3104,7 @@
 
             <div class="w-full flex justify-center">
                 <img id="modalImg" src="" alt="Certificado"
-                    class="w-full max-h-[50vh] object-contain rounded-xl border border-slate-700/30 shadow-[0_0_30px_rgba(0,0,0,0.5)] z-10">
+                    class="w-full max-h-[45vh] object-contain rounded-xl border border-slate-700/30 shadow-[0_0_30px_rgba(0,0,0,0.5)] z-10">
             </div>
 
             <div class="flex justify-center" style="margin-top: 32px;">

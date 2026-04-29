@@ -94,6 +94,185 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
+    // Lógica de Foco Dinâmente (Mobile Border Glow)
+    let activeInstances = new Set();
+    let currentGlowItem = null;
+    let temporaryGlowItems = new Set(); // Itens que ficam acesos temporariamente após uma ação
+
+    if (window.innerWidth < 1024) {
+        const glowObserverOptions = {
+            threshold: 0.1,
+            rootMargin: '-10% 0px -10% 0px' 
+        };
+
+        const intersectingElements = new Set();
+
+        const updateActiveGlow = () => {
+            if (intersectingElements.size === 0) {
+                activeInstances.forEach(inst => {
+                    // Só apaga se não for o certificado aberto ou um item em "timer" de 2s
+                    if (inst !== (currentGlowItem ? currentGlowItem._borderGlow : null) && !temporaryGlowItems.has(inst)) {
+                        inst.stopAnimation();
+                    }
+                });
+                activeInstances.clear();
+                
+                // Mantém vivos os itens especiais
+                if (currentGlowItem && currentGlowItem._borderGlow) activeInstances.add(currentGlowItem._borderGlow);
+                temporaryGlowItems.forEach(inst => activeInstances.add(inst));
+                return;
+            }
+
+            let bestElement = null;
+            let minDistance = Infinity;
+            const viewportCenter = window.innerHeight / 2;
+
+            intersectingElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const elementCenter = rect.top + (rect.height / 2);
+                const distance = Math.abs(elementCenter - viewportCenter);
+                
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    bestElement = el;
+                }
+            });
+
+            const newActiveInstances = new Set();
+            if (bestElement) {
+                if (bestElement._borderGlow) newActiveInstances.add(bestElement._borderGlow);
+                
+                if (bestElement.closest('#skills')) {
+                    const bestRect = bestElement.getBoundingClientRect();
+                    intersectingElements.forEach(el => {
+                        if (el !== bestElement && el.closest('#skills')) {
+                            const elRect = el.getBoundingClientRect();
+                            if (Math.abs(bestRect.top - elRect.top) < 10) {
+                                if (el._borderGlow) newActiveInstances.add(el._borderGlow);
+                            }
+                        }
+                    });
+                }
+            }
+
+            // Garante que o certificado aberto ou itens temporários continuem brilhando
+            if (currentGlowItem && currentGlowItem._borderGlow) {
+                newActiveInstances.add(currentGlowItem._borderGlow);
+            }
+            temporaryGlowItems.forEach(inst => newActiveInstances.add(inst));
+
+            activeInstances.forEach(inst => {
+                if (!newActiveInstances.has(inst)) inst.stopAnimation();
+            });
+
+            newActiveInstances.forEach(inst => {
+                if (!activeInstances.has(inst)) inst.startAnimation();
+            });
+
+            activeInstances = newActiveInstances;
+        };
+
+        const glowObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    intersectingElements.add(entry.target);
+                } else {
+                    intersectingElements.delete(entry.target);
+                }
+            });
+            updateActiveGlow();
+        }, glowObserverOptions);
+
+        window.addEventListener('scroll', updateActiveGlow, { passive: true });
+
+        setTimeout(() => {
+            const interactiveElements = document.querySelectorAll('#timeline .rounded-2xl.border, .project-card, .certificate-item, #skills .grid > div, #about .rounded-3xl.border');
+            
+            interactiveElements.forEach(el => {
+                glowObserver.observe(el);
+
+                el.addEventListener('click', () => {
+                    const instance = el._borderGlow;
+                    if (instance && !instance.isAnimating) {
+                        instance.startAnimation();
+                        
+                        // Feedback de clique: 2 segundos
+                        temporaryGlowItems.add(instance);
+                        setTimeout(() => {
+                            temporaryGlowItems.delete(instance);
+                            if (!activeInstances.has(instance)) {
+                                instance.stopAnimation();
+                            }
+                        }, 2000);
+                    }
+                });
+            });
+        }, 300);
+    }
+
+    // Função auxiliar para lidar com o brilho ao fechar o modal
+    const handleModalCloseGlow = () => {
+        if (currentGlowItem) {
+            const inst = currentGlowItem._borderGlow;
+            currentGlowItem = null;
+            
+            if (inst) {
+                temporaryGlowItems.add(inst);
+                // Mantém o brilho por mais 2 segundos após fechar
+                setTimeout(() => {
+                    temporaryGlowItems.delete(inst);
+                    if (typeof updateActiveGlow === 'function') {
+                        updateActiveGlow();
+                    } else {
+                        inst.stopAnimation();
+                    }
+                }, 2000);
+            }
+        }
+    };
+
+    const closeBtn = document.getElementById('modal-close-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            closeModal();
+            handleModalCloseGlow();
+        });
+    }
+
+    const modal = document.getElementById('certModal');
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+                handleModalCloseGlow();
+            }
+        });
+    }
+
+    // Tecla Esc também deve acionar o brilho temporário
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.classList.contains('flex')) {
+            closeModal();
+            handleModalCloseGlow();
+        }
+    });
+
+    // Certificate items
+    document.querySelectorAll('.certificate-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.getAttribute('data-certificate-img');
+            const url = item.getAttribute('data-certificate-url');
+            if (img) {
+                openModal(img, url);
+                if (item._borderGlow) {
+                    currentGlowItem = item;
+                    item._borderGlow.startAnimation();
+                    activeInstances.add(item._borderGlow);
+                }
+            }
+        });
+    });
+
     const heroBtn = document.getElementById('hero-hire-btn');
     const navBtn = document.getElementById('nav-hire-btn');
     const navBtnMobile = document.getElementById('nav-hire-btn-mobile');
@@ -136,28 +315,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
     }
 
-    // Modal close events
-    const closeBtn = document.getElementById('modal-close-btn');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeModal);
-    }
-
-    const modal = document.getElementById('certModal');
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-    }
-
-    // Certificate items
-    document.querySelectorAll('.certificate-item').forEach(item => {
-        item.addEventListener('click', () => {
-            const img = item.getAttribute('data-certificate-img');
-            const url = item.getAttribute('data-certificate-url');
-            if (img) openModal(img, url);
-        });
-    });
-
     // Scroll Suave e Centralizado para links internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -176,7 +333,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const viewportHeight = window.innerHeight;
                 const elementHeight = targetElement.offsetHeight;
 
-                if (elementHeight > viewportHeight * 0.8) {
+                if (targetId === '#certificates') {
+                    // Centralização manual com ajuste de 13px para esconder a seção seguinte
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const centerOffset = (viewportHeight / 2) - (elementHeight / 2);
+                    window.scrollTo({
+                        top: elementPosition - centerOffset - 13,
+                        behavior: 'smooth'
+                    });
+                } else if (elementHeight > viewportHeight * 0.8) {
                     // Se for maior que 80% da tela, alinha ao topo com offset do header
                     const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
                     window.scrollTo({

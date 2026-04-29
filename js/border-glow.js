@@ -38,14 +38,14 @@ class BorderGlow {
     this.el = element;
     this.config = {
       edgeSensitivity: 30,
-      glowColor: '190 90 50',    // Adaptive cyan/blue
+      glowColor: '230 60 50',    // Deeper indigo/blue
       backgroundColor: '#0f172a',// Match background
       borderRadius: 16,          
       glowRadius: 40,
       glowIntensity: 1.0,
       coneSpread: 25,
-      colors: ['#0dccf2', '#38bdf8', '#818cf8'], // Original primary color + purples
-      fillOpacity: 0.5,
+      colors: ['#818cf8'], // Only the darker indigo color
+      fillOpacity: 0.2,
       animated: false,
       ...config
     };
@@ -90,18 +90,12 @@ class BorderGlow {
   init() {
     this.el.style.position = 'relative';
     this.el.style.isolation = 'isolate';
-    // Remove conflicting hover borders & backgrounds
     this.el.classList.remove('border-slate-700/50', 'hover:border-primary/50', 'bg-slate-800/40', 'bg-white/5', 'hover:bg-white/10', 'hover:bg-white/5');
-    // Ensure outer glow is visible globally
     this.el.style.overflow = 'visible'; 
     this.el.style.border = `1px solid rgba(255,255,255,0.15)`;
     if (this.config.borderRadius !== null) {
       this.el.style.borderRadius = typeof this.config.borderRadius === 'number' ? `${this.config.borderRadius}px` : this.config.borderRadius;
     }
-    
-    // We don't need a contentWrapper!
-    // Since we cleared the parent background and use isolation: isolate,
-    // elements with z-index: -1 will perfectly sit behind the normal children.
     
     const meshGradients = buildMeshGradients(this.config.colors);
     const borderBg = meshGradients.map(g => `${g} border-box`).join(', ');
@@ -125,8 +119,15 @@ class BorderGlow {
     this.borderLayer = document.createElement('div');
     const angleVar = `var(--cursor-angle)`;
     const spread = this.config.coneSpread;
-    
-    const borderMask = `conic-gradient(from ${angleVar} at center, black ${spread}%, transparent ${spread + 15}%, transparent ${100 - spread - 15}%, black ${100 - spread}%)`;
+    // Máscara definitiva: O brilho só existe na borda (BorderBox - ContentBox)
+    const borderMask = `
+        linear-gradient(black, black) content-box,
+        conic-gradient(from ${angleVar} at center, black ${spread}%, transparent ${spread + 15}%, transparent ${100 - spread - 15}%, black ${100 - spread}%) border-box
+    `;
+    this.borderLayer.style.maskImage = borderMask;
+    this.borderLayer.style.webkitMaskImage = borderMask;
+    this.borderLayer.style.maskComposite = 'exclude';
+    this.borderLayer.style.webkitMaskComposite = 'source-out';
     
     this.borderLayer.style.cssText = baseStyle;
     this.borderLayer.style.background = `
@@ -134,28 +135,19 @@ class BorderGlow {
       linear-gradient(rgba(255,255,255,0) 0% 100%) border-box,
       ${borderBg}
     `;
-    this.borderLayer.style.maskImage = borderMask;
-    this.borderLayer.style.webkitMaskImage = borderMask;
     
     this.fillLayer = document.createElement('div');
     this.fillLayer.style.cssText = baseStyle;
-    this.fillLayer.style.background = fillBg;
+    this.fillLayer.style.background = this.config.colors[0]; // Cor única e sólida
     this.fillLayer.style.opacity = `calc(var(--border-opacity) * ${this.config.fillOpacity})`;
     this.fillLayer.style.mixBlendMode = 'soft-light';
     
-    const fillMasks = `
-        linear-gradient(to bottom, black, black),
-        radial-gradient(ellipse at 50% 50%, black 40%, transparent 65%),
-        radial-gradient(ellipse at 66% 66%, black 5%, transparent 40%),
-        radial-gradient(ellipse at 33% 33%, black 5%, transparent 40%),
-        radial-gradient(ellipse at 66% 33%, black 5%, transparent 40%),
-        radial-gradient(ellipse at 33% 66%, black 5%, transparent 40%),
-        conic-gradient(from ${angleVar} at center, transparent 5%, black 15%, black 85%, transparent 95%)
-    `;
+    // Fundo 100% sólido (sem cones de luz)
+    const fillMasks = `linear-gradient(to bottom, black, black)`;
     this.fillLayer.style.maskImage = fillMasks;
     this.fillLayer.style.webkitMaskImage = fillMasks;
-    this.fillLayer.style.maskComposite = 'subtract, add, add, add, add, add';
-    this.fillLayer.style.webkitMaskComposite = 'source-out, source-over, source-over, source-over, source-over, source-over';
+    this.fillLayer.style.maskComposite = 'source-over';
+    this.fillLayer.style.webkitMaskComposite = 'source-over';
 
     this.glowLayerWrapper = document.createElement('span');
     this.glowLayerWrapper.style.cssText = `
@@ -185,30 +177,57 @@ class BorderGlow {
     this.el.prepend(this.fillLayer);
     this.el.prepend(this.borderLayer);
     
+    this.angle = 45;
+    this.isAnimating = false;
+    this.el._borderGlow = this;
+
     if (this.config.animated) {
-      this.el.style.setProperty('--border-opacity', '1');
-      this.el.style.setProperty('--glow-opacity', '1');
-      let angle = 0;
-      const tick = () => {
-        angle = (angle + 1) % 360;
-        this.el.style.setProperty('--cursor-angle', `${angle.toFixed(1)}deg`);
-        requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
+      this.startAnimation();
     } else {
       this.el.addEventListener('pointermove', this.handlePointerMove);
       this.el.addEventListener('pointerenter', this.handlePointerEnter);
       this.el.addEventListener('pointerleave', this.handlePointerLeave);
     }
   }
+
+  startAnimation() {
+    if (this.isAnimating) return;
+    this.isAnimating = true;
+    
+    // Garantir que comece do zero para evitar flash
+    this.el.style.setProperty('--border-opacity', '0');
+    this.el.style.setProperty('--glow-opacity', '0');
+    
+    // Pequeno delay para o navegador registrar o estado inicial antes de animar
+    requestAnimationFrame(() => {
+        this.el.style.setProperty('--border-opacity', '1');
+        this.el.style.setProperty('--glow-opacity', '1');
+    });
+    
+    const tick = () => {
+      if (!this.isAnimating) return;
+      this.angle = (this.angle + 1.5) % 360;
+      this.el.style.setProperty('--cursor-angle', `${this.angle.toFixed(1)}deg`);
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  stopAnimation() {
+    this.isAnimating = false;
+    this.el.style.setProperty('--border-opacity', '0');
+    this.el.style.setProperty('--glow-opacity', '0');
+  }
   
   handlePointerEnter() {
+    if (this.isAnimating) return;
     this.borderLayer.style.transition = 'opacity 0.25s ease-out';
     this.fillLayer.style.transition = 'opacity 0.25s ease-out';
     this.glowLayerWrapper.style.transition = 'opacity 0.25s ease-out';
   }
   
   handlePointerLeave() {
+    if (this.isAnimating) return;
     this.el.style.setProperty('--border-opacity', '0');
     this.el.style.setProperty('--glow-opacity', '0');
     this.borderLayer.style.transition = 'opacity 0.75s ease-in-out';
@@ -217,6 +236,7 @@ class BorderGlow {
   }
   
   handlePointerMove(e) {
+    if (this.isAnimating) return;
     const rect = this.el.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -236,7 +256,7 @@ class BorderGlow {
 
 // Automatically attach to `.project-card`, `.certificate-item`, timeline boxes and skill cards
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.project-card, .certificate-item, #timeline .bg-white\\/5.rounded-2xl, #skills .grid > div').forEach(el => {
+    document.querySelectorAll('.project-card, .certificate-item, #timeline .rounded-2xl.border, #skills .grid > div, #about .rounded-3xl.border').forEach(el => {
         new BorderGlow(el);
     });
 
