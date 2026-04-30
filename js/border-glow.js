@@ -8,11 +8,11 @@ function buildBoxShadow(glowColor, intensity) {
   const { h, s, l } = parseHSL(glowColor);
   const base = `${h}deg ${s}% ${l}%`;
   const layers = [
-    [0, 0, 0, 1, 100, true], [0, 0, 1, 0, 60, true], [0, 0, 3, 0, 50, true],
-    [0, 0, 6, 0, 40, true], [0, 0, 15, 0, 30, true], [0, 0, 25, 2, 20, true],
-    [0, 0, 50, 2, 10, true],
-    [0, 0, 1, 0, 60, false], [0, 0, 3, 0, 50, false], [0, 0, 6, 0, 40, false],
-    [0, 0, 15, 0, 30, false], [0, 0, 25, 2, 20, false], [0, 0, 50, 2, 10, false],
+    [0, 0, 0, 1, 80, true],
+    [0, 0, 8, 0, 40, true],
+    [0, 0, 2, 0, 60, false],
+    [0, 0, 15, 0, 30, false],
+    [0, 0, 40, 2, 15, false],
   ];
   return layers.map(([x, y, blur, spread, alpha, inset]) => {
     const a = Math.min(alpha * intensity, 100);
@@ -112,8 +112,9 @@ class BorderGlow {
       z-index: -1;
       border: 1px solid transparent;
       opacity: var(--border-opacity);
-      transition: opacity 0.25s ease-out;
+      transition: opacity 0.15s ease-out;
       pointer-events: none;
+      will-change: opacity;
     `;
     
     this.borderLayer = document.createElement('div');
@@ -141,6 +142,7 @@ class BorderGlow {
     this.fillLayer.style.background = this.config.colors[0]; // Cor única e sólida
     this.fillLayer.style.opacity = `calc(var(--border-opacity) * ${this.config.fillOpacity})`;
     this.fillLayer.style.mixBlendMode = 'soft-light';
+    this.fillLayer.style.willChange = 'opacity';
     
     // Fundo 100% sólido (sem cones de luz)
     const fillMasks = `linear-gradient(to bottom, black, black)`;
@@ -158,7 +160,8 @@ class BorderGlow {
       inset: -${this.config.glowRadius}px;
       opacity: var(--glow-opacity);
       mix-blend-mode: plus-lighter;
-      transition: opacity 0.25s ease-out;
+      transition: opacity 0.15s ease-out;
+      will-change: opacity;
     `;
     const glowMask = `conic-gradient(from ${angleVar} at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%)`;
     this.glowLayerWrapper.style.maskImage = glowMask;
@@ -248,7 +251,7 @@ class BorderGlow {
     const borderOp = Math.max(0, (proximity * 100 - colorSensitivity) / (100 - colorSensitivity));
     const glowOp = Math.max(0, (proximity * 100 - this.config.edgeSensitivity) / (100 - this.config.edgeSensitivity));
     
-    this.el.style.setProperty('--cursor-angle', `${angle.toFixed(3)}deg`);
+    this.el.style.setProperty('--cursor-angle', `${angle.toFixed(1)}deg`);
     this.el.style.setProperty('--border-opacity', borderOp.toString());
     this.el.style.setProperty('--glow-opacity', glowOp.toString());
   }

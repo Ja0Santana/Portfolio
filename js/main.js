@@ -5,6 +5,95 @@ if ('scrollRestoration' in history) {
     window.addEventListener('load', () => window.scrollTo(0, 0), { once: true });
 }
 
+// i18n Implementation with Glitch Animation
+const GLITCH_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!?";
+const glitchState = new Map();
+
+function animateTextGlitch(el, targetText, delay) {
+    // Cancela animação anterior no mesmo elemento se existir
+    if (glitchState.has(el)) {
+        clearInterval(glitchState.get(el).interval);
+        clearTimeout(glitchState.get(el).timeout);
+    }
+
+    const timeout = setTimeout(() => {
+        let frame = 0;
+        const interval = setInterval(() => {
+            const output = targetText
+                .split("")
+                .map((char, index) => {
+                    if (char === " " || char === "\n") return char;
+                    if (index < frame) return targetText[index];
+                    return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+                })
+                .join("");
+
+            el.innerHTML = output;
+            frame += 1.8;
+
+            if (frame >= targetText.length) {
+                clearInterval(interval);
+                el.innerHTML = targetText;
+                glitchState.delete(el);
+            }
+        }, 15);
+
+        glitchState.set(el, { interval, timeout });
+    }, delay);
+
+    glitchState.set(el, { timeout });
+}
+
+function updateContent(lang) {
+    if (typeof translations === 'undefined') return;
+    const dict = translations[lang];
+    if (!dict) return;
+
+    document.querySelectorAll('[data-i18n]').forEach((el, index) => {
+        const key = el.getAttribute('data-i18n');
+        const newText = dict[key];
+        if (newText) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.placeholder = newText;
+            } else {
+                // Só anima se o texto for realmente diferente
+                if (el.innerHTML !== newText) {
+                    animateTextGlitch(el, newText, index * 3); // 3ms de stagger para propagação
+                }
+            }
+        }
+    });
+
+    if (dict.page_title) {
+        document.title = dict.page_title;
+    }
+}
+
+function setLanguage(lang) {
+    localStorage.setItem('preferredLanguage', lang);
+    updateContent(lang);
+
+    const toggle = document.querySelector('.language-toggle');
+    if (toggle) {
+        if (lang === 'en') {
+            toggle.classList.add('en');
+            toggle.classList.remove('pt');
+        } else {
+            toggle.classList.add('pt');
+            toggle.classList.remove('en');
+        }
+    }
+}
+
+// Initialize Language as early as possible
+const savedLang = localStorage.getItem('preferredLanguage') || 'pt';
+// Update content immediately if possible, or wait for DOM
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setLanguage(savedLang));
+} else {
+    setLanguage(savedLang);
+}
+
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const svg = document.getElementById('menu-icon-svg');
@@ -31,9 +120,9 @@ function openModal(imageSrc, url) {
     const modal = document.getElementById('certModal');
     const modalImg = document.getElementById('modalImg');
     const linkBtn = document.getElementById('modal-link-btn');
-    
+
     modalImg.src = imageSrc;
-    
+
     if (linkBtn) {
         if (url) {
             linkBtn.href = url;
@@ -94,6 +183,16 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
+    // Language Toggle Listener
+    const toggle = document.querySelector('.language-toggle');
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            const currentLang = localStorage.getItem('preferredLanguage') || 'pt';
+            const newLang = currentLang === 'pt' ? 'en' : 'pt';
+            setLanguage(newLang);
+        });
+    }
+
     // Lógica de Foco Dinâmente (Mobile Border Glow)
     let activeInstances = new Set();
     let currentGlowItem = null;
@@ -101,11 +200,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (window.innerWidth < 1024) {
         const glowObserverOptions = {
-            threshold: 0.1,
-            rootMargin: '-10% 0px -10% 0px' 
+            threshold: 0.01,
+            rootMargin: '-2% 0px -2% 0px'
         };
 
         const intersectingElements = new Set();
+
+        const elementData = new Map(); // Cache de dimensões para evitar reflows
 
         const updateActiveGlow = () => {
             if (intersectingElements.size === 0) {
@@ -116,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 activeInstances.clear();
-                
+
                 // Mantém vivos os itens especiais
                 if (currentGlowItem && currentGlowItem._borderGlow) activeInstances.add(currentGlowItem._borderGlow);
                 temporaryGlowItems.forEach(inst => activeInstances.add(inst));
@@ -125,13 +226,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let bestElement = null;
             let minDistance = Infinity;
-            const viewportCenter = window.innerHeight / 2;
+            // Coordenada do centro da visão em relação ao documento (absoluta)
+            const viewportCenter = window.pageYOffset + (window.innerHeight / 2);
 
             intersectingElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                const elementCenter = rect.top + (rect.height / 2);
+                const data = elementData.get(el);
+                if (!data) return;
+
+                const elementCenter = data.top + (data.height / 2);
                 const distance = Math.abs(elementCenter - viewportCenter);
-                
+
                 if (distance < minDistance) {
                     minDistance = distance;
                     bestElement = el;
@@ -141,13 +245,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const newActiveInstances = new Set();
             if (bestElement) {
                 if (bestElement._borderGlow) newActiveInstances.add(bestElement._borderGlow);
-                
+
                 if (bestElement.closest('#skills')) {
-                    const bestRect = bestElement.getBoundingClientRect();
+                    const bestData = elementData.get(bestElement);
                     intersectingElements.forEach(el => {
                         if (el !== bestElement && el.closest('#skills')) {
-                            const elRect = el.getBoundingClientRect();
-                            if (Math.abs(bestRect.top - elRect.top) < 10) {
+                            const elData = elementData.get(el);
+                            if (elData && Math.abs(bestData.top - elData.top) < 10) {
                                 if (el._borderGlow) newActiveInstances.add(el._borderGlow);
                             }
                         }
@@ -176,18 +280,35 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     intersectingElements.add(entry.target);
+                    // Cacheia as dimensões iniciais. O IntersectionObserver já fornece isso sem forçar reflow.
+                    elementData.set(entry.target, {
+                        top: entry.boundingClientRect.top + window.pageYOffset,
+                        height: entry.boundingClientRect.height
+                    });
                 } else {
                     intersectingElements.delete(entry.target);
+                    elementData.delete(entry.target);
                 }
             });
             updateActiveGlow();
         }, glowObserverOptions);
 
-        window.addEventListener('scroll', updateActiveGlow, { passive: true });
+        // Throttle simples para o scroll
+        let scrollTimeout;
+        const throttledUpdate = () => {
+            if (!scrollTimeout) {
+                scrollTimeout = setTimeout(() => {
+                    updateActiveGlow();
+                    scrollTimeout = null;
+                }, 50); // 20fps melhora a percepção de resposta
+            }
+        };
+
+        window.addEventListener('scroll', throttledUpdate, { passive: true });
 
         setTimeout(() => {
             const interactiveElements = document.querySelectorAll('#timeline .rounded-2xl.border, .project-card, .certificate-item, #skills .grid > div, #about .rounded-3xl.border');
-            
+
             interactiveElements.forEach(el => {
                 glowObserver.observe(el);
 
@@ -195,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const instance = el._borderGlow;
                     if (instance && !instance.isAnimating) {
                         instance.startAnimation();
-                        
+
                         // Feedback de clique: 2 segundos
                         temporaryGlowItems.add(instance);
                         setTimeout(() => {
@@ -215,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentGlowItem) {
             const inst = currentGlowItem._borderGlow;
             currentGlowItem = null;
-            
+
             if (inst) {
                 temporaryGlowItems.add(inst);
                 // Mantém o brilho por mais 2 segundos após fechar

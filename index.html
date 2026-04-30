@@ -2256,6 +2256,60 @@
         .animate-breath-scale {
             animation: breathScale 4s ease-in-out infinite;
         }
+
+        /* Language Toggle Styles */
+        .lang-toggle-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 12px;
+            padding: 4px;
+            width: 80px;
+            height: 38px;
+            cursor: pointer;
+            overflow: hidden;
+            backdrop-blur: md;
+            transition: border-color 0.3s ease;
+        }
+
+        .lang-toggle-container:hover {
+            border-color: var(--color-primary);
+        }
+
+        .lang-slider {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 34px;
+            height: 28px;
+            background: var(--color-primary);
+            border-radius: 8px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+
+        .lang-toggle-container.en .lang-slider {
+            transform: translateX(38px);
+        }
+
+        .lang-text {
+            position: relative;
+            flex: 1;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 800;
+            z-index: 2;
+            color: #94a3b8;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+
+        .lang-toggle-container.pt .lang-text.pt-label,
+        .lang-toggle-container.en .lang-text.en-label {
+            color: #0f172a;
+        }
     </style>
     <title>DevPortfolio | João Paulo - Desenvolvedor Full-Stack</title>
 </head>
@@ -2265,7 +2319,7 @@
     <div class="relative flex min-h-screen w-full flex-col">
 
         <header
-            class="sticky top-0 left-0 z-50 w-full shrink-0 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50">
+            class="fixed top-0 left-0 z-50 w-full shrink-0 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50">
             <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between relative">
                 <div class="flex items-center gap-2 text-primary">
                     <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 960 960">
@@ -2276,21 +2330,28 @@
                         class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">JoaoPaulo.dev</span>
                 </div>
                 <nav class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#about">Sobre</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#timeline">Trajetória</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#skills">Habilidades</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#projects">Projetos</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#certificates">Certificados</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#about" data-i18n="nav_about">Sobre</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#timeline" data-i18n="nav_timeline">Trajetória</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#skills" data-i18n="nav_skills">Habilidades</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#projects" data-i18n="nav_projects">Projetos</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#certificates" data-i18n="nav_certificates">Certificados</a>
                 </nav>
                 <div class="flex items-center gap-4">
+                    <!-- Language Toggle -->
+                    <div id="language-toggle" class="lang-toggle-container language-toggle pt">
+                        <div class="lang-slider"></div>
+                        <span class="lang-text pt-label">PT</span>
+                        <span class="lang-text en-label">EN</span>
+                    </div>
+
                     <a id="nav-hire-btn" href="#contact"
                         class="hidden md:flex items-center gap-2 bg-slate-800 text-white px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 border border-slate-700 hover:border-primary/50 opacity-0 pointer-events-none -translate-y-2"
-                        style="white-space: nowrap; width: max-content;">
+                        style="white-space: nowrap; width: max-content;" data-i18n="nav_contact">
                         <svg class="shrink-0 text-primary" style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 960 960">
                             <path
                                 d="M475,800Q479,800 483,798Q487,796 489,794L817,466Q829,454 834.5,439Q840,424 840,409Q840,393 834.5,378.5Q829,364 817,353L647,183Q636,171 621.5,165.5Q607,160 591,160Q576,160 561,165.5Q546,171 534,183L523,194L597,269Q612,283 619,301Q626,319 626,339Q626,381 597.5,409.5Q569,438 527,438Q507,438 488.5,431Q470,424 456,410L381,336L206,511Q203,514 201.5,517.5Q200,521 200,525Q200,533 206,539.5Q212,546 220,546Q224,546 228,544Q232,542 234,540L370,404L426,460L291,596Q288,599 286.5,602.5Q285,606 285,610Q285,618 291,624Q297,630 305,630Q309,630 313,628Q317,626 319,624L455,489L511,545L376,681Q373,683 371.5,687Q370,691 370,695Q370,703 376,709Q382,715 390,715Q394,715 397.5,713.5Q401,712 404,709L540,574L596,630L460,766Q457,769 455.5,772.5Q454,776 454,780Q454,788 460.5,794Q467,800 475,800ZM474,880Q437,880 408.5,855.5Q380,831 375,794Q341,789 318,766Q295,743 290,709Q256,704 233.5,680.5Q211,657 206,624Q168,619 144,591Q120,563 120,525Q120,505 127.5,486.5Q135,468 149,454L381,223L512,354Q514,357 518,358.5Q522,360 526,360Q535,360 541,354.5Q547,349 547,340Q547,336 545.5,332Q544,328 541,326L398,183Q387,171 372.5,165.5Q358,160 342,160Q327,160 312,165.5Q297,171 285,183L144,325Q135,334 129,346Q123,358 121,370Q119,382 121,394.5Q123,407 129,418L71,476Q54,453 46,425.5Q38,398 40,370Q42,342 54,315.5Q66,289 87,268L228,127Q252,104 281.5,92Q311,80 342,80Q373,80 402.5,92Q432,104 455,127L466,138L477,127Q501,104 530.5,92Q560,80 591,80Q622,80 651.5,92Q681,104 704,127L873,296Q896,319 908,349Q920,379 920,410Q920,441 908,470.5Q896,500 873,523L545,850Q531,864 512.5,872Q494,880 474,880ZM375,320L375,320L375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320L375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320L375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Z" />
                         </svg>
-                        Entrar em contato
+                        <span data-i18n="nav_contact">Entrar em contato</span>
                     </a>
 
                     <button id="mobile-menu-btn" aria-label="Abrir Menu"
@@ -2310,15 +2371,15 @@
                 <div class="overflow-hidden">
                     <nav class="flex flex-col p-4 gap-2 border-t border-slate-200 dark:border-slate-800">
                         <a class="p-4 text-base font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
-                            href="#about">Sobre</a>
+                            href="#about" data-i18n="nav_about">Sobre</a>
                         <a class="p-4 text-base font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
-                            href="#timeline">Trajetória</a>
+                            href="#timeline" data-i18n="nav_timeline">Trajetória</a>
                         <a class="p-4 text-base font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
-                            href="#skills">Habilidades</a>
+                            href="#skills" data-i18n="nav_skills">Habilidades</a>
                         <a class="p-4 text-base font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
-                            href="#projects">Projetos</a>
+                            href="#projects" data-i18n="nav_projects">Projetos</a>
                         <a class="p-4 text-base font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
-                            href="#certificates">Certificados</a>
+                            href="#certificates" data-i18n="nav_certificates">Certificados</a>
                         <a id="nav-hire-btn-mobile" href="#contact"
                             class="mx-auto mt-2 w-full hidden items-center justify-center gap-2 bg-slate-800 text-white px-5 py-4 rounded-xl text-base font-bold transition-all duration-300 border border-slate-700 hover:border-primary/50 opacity-0 pointer-events-none -translate-y-2"
                             style="white-space: nowrap; width: max-content;">
@@ -2326,13 +2387,13 @@
                                 <path
                                     d="M475,800Q479,800 483,798Q487,796 489,794L817,466Q829,454 834.5,439Q840,424 840,409Q840,393 834.5,378.5Q829,364 817,353L647,183Q636,171 621.5,165.5Q607,160 591,160Q576,160 561,165.5Q546,171 534,183L523,194L597,269Q612,283 619,301Q626,319 626,339Q626,381 597.5,409.5Q569,438 527,438Q507,438 488.5,431Q470,424 456,410L381,336L206,511Q203,514 201.5,517.5Q200,521 200,525Q200,533 206,539.5Q212,546 220,546Q224,546 228,544Q232,542 234,540L370,404L426,460L291,596Q288,599 286.5,602.5Q285,606 285,610Q285,618 291,624Q297,630 305,630Q309,630 313,628Q317,626 319,624L455,489L511,545L376,681Q373,683 371.5,687Q370,691 370,695Q370,703 376,709Q382,715 390,715Q394,715 397.5,713.5Q401,712 404,709L540,574L596,630L460,766Q457,769 455.5,772.5Q454,776 454,780Q454,788 460.5,794Q467,800 475,800ZM474,880Q437,880 408.5,855.5Q380,831 375,794Q341,789 318,766Q295,743 290,709Q256,704 233.5,680.5Q211,657 206,624Q168,619 144,591Q120,563 120,525Q120,505 127.5,486.5Q135,468 149,454L381,223L512,354Q514,357 518,358.5Q522,360 526,360Q535,360 541,354.5Q547,349 547,340Q547,336 545.5,332Q544,328 541,326L398,183Q387,171 372.5,165.5Q358,160 342,160Q327,160 312,165.5Q297,171 285,183L144,325Q135,334 129,346Q123,358 121,370Q119,382 121,394.5Q123,407 129,418L71,476Q54,453 46,425.5Q38,398 40,370Q42,342 54,315.5Q66,289 87,268L228,127Q252,104 281.5,92Q311,80 342,80Q373,80 402.5,92Q432,104 455,127L466,138L477,127Q501,104 530.5,92Q560,80 591,80Q622,80 651.5,92Q681,104 704,127L873,296Q896,319 908,349Q920,379 920,410Q920,441 908,470.5Q896,500 873,523L545,850Q531,864 512.5,872Q494,880 474,880ZM375,320L375,320L375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320L375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320L375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Z" />
                             </svg>
-                            Entrar em contato
+                            <span data-i18n="nav_contact">Entrar em contato</span>
                         </a>
                     </nav>
                 </div>
             </div>
         </header>
-        <main class="grow">
+        <main class="grow pt-16">
 
             <section class="max-w-7xl mx-auto px-4 md:px-6 pt-12 pb-8 md:pt-16 md:pb-12 lg:pt-16 lg:pb-12">
                 <div
@@ -2340,17 +2401,17 @@
                     <div class="flex-1 space-y-6 lg:space-y-8 flex flex-col items-center lg:items-start w-full">
                         <h1
                             class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-slate-900 dark:text-white tracking-tight">
-                            Olá, eu sou João Paulo, <span class="text-primary block mt-2">Desenvolvedor
+                            <span data-i18n="hero_greeting">Olá, eu sou João Paulo,</span> <span class="text-primary block mt-2" data-i18n="hero_role">Desenvolvedor
                                 Full-Stack</span>
                         </h1>
-                        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+                        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed" data-i18n="hero_description">
                             Construo APIs escaláveis com Java e Spring Boot, focado em conteinerização e em manter altos
                             padrões de qualidade de código.
                         </p>
                         <div
                             class="flex flex-col sm:flex-row w-full sm:w-auto flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
                             <a class="w-full sm:w-auto bg-primary text-background-dark px-6 sm:px-8 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/20 transition-all"
-                                href="#projects">
+                                data-i18n="hero_projects_btn" href="#projects">
                                 Ver meus projetos
                             </a>
                             <a id="hero-hire-btn"
@@ -2361,7 +2422,7 @@
                                     <path
                                         d="M475,800Q479,800 483,798Q487,796 489,794L817,466Q829,454 834.5,439Q840,424 840,409Q840,393 834.5,378.5Q829,364 817,353L647,183Q636,171 621.5,165.5Q607,160 591,160Q576,160 561,165.5Q546,171 534,183L523,194L597,269Q612,283 619,301Q626,319 626,339Q626,381 597.5,409.5Q569,438 527,438Q507,438 488.5,431Q470,424 456,410L381,336L206,511Q203,514 201.5,517.5Q200,521 200,525Q200,533 206,539.5Q212,546 220,546Q224,546 228,544Q232,542 234,540L370,404L426,460L291,596Q288,599 286.5,602.5Q285,606 285,610Q285,618 291,624Q297,630 305,630Q309,630 313,628Q317,626 319,624L455,489L511,545L376,681Q373,683 371.5,687Q370,691 370,695Q370,703 376,709Q382,715 390,715Q394,715 397.5,713.5Q401,712 404,709L540,574L596,630L460,766Q457,769 455.5,772.5Q454,776 454,780Q454,788 460.5,794Q467,800 475,800ZM474,880Q437,880 408.5,855.5Q380,831 375,794Q341,789 318,766Q295,743 290,709Q256,704 233.5,680.5Q211,657 206,624Q168,619 144,591Q120,563 120,525Q120,505 127.5,486.5Q135,468 149,454L381,223L512,354Q514,357 518,358.5Q522,360 526,360Q535,360 541,354.5Q547,349 547,340Q547,336 545.5,332Q544,328 541,326L398,183Q387,171 372.5,165.5Q358,160 342,160Q327,160 312,165.5Q297,171 285,183L144,325Q135,334 129,346Q123,358 121,370Q119,382 121,394.5Q123,407 129,418L71,476Q54,453 46,425.5Q38,398 40,370Q42,342 54,315.5Q66,289 87,268L228,127Q252,104 281.5,92Q311,80 342,80Q373,80 402.5,92Q432,104 455,127L466,138L477,127Q501,104 530.5,92Q560,80 591,80Q622,80 651.5,92Q681,104 704,127L873,296Q896,319 908,349Q920,379 920,410Q920,441 908,470.5Q896,500 873,523L545,850Q531,864 512.5,872Q494,880 474,880ZM375,320L375,320L375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320L375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320L375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Z" />
                                 </svg>
-                                Entrar em contato
+                                <span data-i18n="hero_contact_btn">Entrar em contato</span>
                             </a>
                         </div>
                     </div>
@@ -2398,14 +2459,14 @@
                                 </div>
                             </div>
                             <div class="w-full md:w-2/3 text-center md:text-left">
-                                <h2 class="text-3xl font-black mb-6">Sobre Mim</h2>
-                                <p class="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                                <h2 class="text-3xl font-black mb-6" data-i18n="about_title">Sobre Mim</h2>
+                                <p class="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed" data-i18n="about_description1">
                                     Sou estudante de Sistemas de Informação no IFS e desenvolvedor Full-Stack.
                                     Embora minha base seja a robustez do Back-End with Java e Spring Boot, transformo
                                     código em
                                     experiências visuais de alto nível, unindo estética e funcionalidade.
                                 </p>
-                                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed" data-i18n="about_description2">
                                     Foco na construção de soluções Full Stack completas, desde APIs escaláveis e
                                     microsserviços
                                     até interfaces modernas e responsivas. Minha missão é entregar projetos que não
@@ -2421,7 +2482,7 @@
             <section class="max-w-5xl mx-auto px-4 md:px-6 py-12 md:py-16" id="timeline">
                 <div
                     class="text-center mb-16 scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
-                    <h2 class="text-3xl font-bold mb-4">Minha Trajetória</h2>
+                    <h2 class="text-3xl font-bold mb-4" data-i18n="timeline_title">Minha Trajetória</h2>
                     <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
                 </div>
 
@@ -2438,9 +2499,9 @@
                             <div class="order-2 md:order-1 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
-                                    <h3 class="text-2xl font-bold mb-3 text-primary">Primeiros Passos com HTML e CSS
+                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_2020_title">Primeiros Passos com HTML e CSS
                                     </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 mb-4 wrap-break-word">Meu contato
+                                    <p class="text-slate-600 dark:text-slate-400 mb-4 wrap-break-word" data-i18n="timeline_2020_description">Meu contato
                                         inicial
                                         com a
                                         programação
@@ -2472,8 +2533,8 @@
                             <div class="order-2 md:order-3 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
-                                    <h3 class="text-2xl font-bold mb-3 text-primary">Bacharelado no IFS</h3>
-                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word">Após um período focado
+                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_2025_title">Bacharelado no IFS</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word" data-i18n="timeline_2025_description">Após um período focado
                                         em
                                         outras
                                         áreas,
@@ -2492,9 +2553,9 @@
                             <div class="order-2 md:order-1 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
-                                    <h3 class="text-2xl font-bold mb-3 text-primary">Explorando o Ecossistema Java
+                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_java_title">Explorando o Ecossistema Java
                                     </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word">Minha primeira imersão
+                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word" data-i18n="timeline_java_description">Minha primeira imersão
                                         acadêmica e
                                         profissional foi no Back-End com Java. Criei projetos estruturados, como o
                                         Sistema
@@ -2527,8 +2588,8 @@
                             <div class="order-2 md:order-3 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
-                                    <h3 class="text-2xl font-bold mb-3 text-primary">Campus Weekend Aracaju</h3>
-                                    <p class="text-slate-600 dark:text-slate-400 mb-4 wrap-break-word">Participação na
+                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_campus_title">Campus Weekend Aracaju</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 mb-4 wrap-break-word" data-i18n="timeline_campus_description">Participação na
                                         Campus
                                         Weekend.
                                         Uma experiência incrível onde tive a oportunidade de conhecer pessoalmente o
@@ -2546,9 +2607,9 @@
                             <div class="order-2 md:order-1 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
-                                    <h3 class="text-2xl font-bold mb-3 text-primary">Spring Boot e Banco de Dados
+                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_spring_title">Spring Boot e Banco de Dados
                                     </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word">Busquei especialização
+                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word" data-i18n="timeline_spring_description">Busquei especialização
                                         conquistando
                                         certificações em Banco de Dados e Metodologias Ágeis pela Javanauta. Dominei
                                         o
@@ -2582,9 +2643,9 @@
                             <div class="order-2 md:order-3 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
-                                    <h3 class="text-2xl font-bold mb-3 text-primary">O Caminho para o Full Stack
+                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_fullstack_title">O Caminho para o Full Stack
                                     </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word">Hoje desenvolvo
+                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word" data-i18n="timeline_fullstack_description">Hoje desenvolvo
                                         microsserviços
                                         avançados
                                         com Docker, JWT e análise com SonarQube. Agora meu foco é o Front-End
@@ -2599,7 +2660,7 @@
                             class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
                             <div class="order-2 md:order-1 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
                                 <div class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative flex items-center justify-center">
-                                    <h3 class="text-2xl font-bold text-primary m-0 text-center">Sempre em evolução...</h3>
+                                    <h3 class="text-2xl font-bold text-primary m-0 text-center" data-i18n="timeline_evolution">Sempre em evolução...</h3>
                                 </div>
                             </div>
                             <div
@@ -2621,7 +2682,7 @@
                 id="skills">
                 <div class="max-w-7xl mx-auto px-4 md:px-6">
                     <div class="text-center mb-16">
-                        <h2 class="text-3xl font-bold mb-4">Minhas Habilidades</h2>
+                        <h2 class="text-3xl font-bold mb-4" data-i18n="skills_title">Minhas Habilidades</h2>
                         <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
@@ -2637,7 +2698,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="Spring Boot" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center">Java & Spring Boot</span>
+                            <span class="font-bold text-center" data-i18n="skills_backend">Java & Spring Boot</span>
                         </div>
                         <div
                             class="flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
@@ -2651,7 +2712,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="Bancos Não Relacionais (NoSQL)" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center">SQL & NoSQL</span>
+                            <span class="font-bold text-center" data-i18n="skills_db">SQL & NoSQL</span>
                         </div>
                         <div
                             class="flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
@@ -2665,7 +2726,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="Git / CI/CD" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center">Docker & CI/CD</span>
+                            <span class="font-bold text-center" data-i18n="skills_devops">Docker & CI/CD</span>
                         </div>
                         <div
                             class="flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
@@ -2679,7 +2740,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="Tailwind CSS" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center">Front-End & Design</span>
+                            <span class="font-bold text-center" data-i18n="skills_frontend">Front-End & Design</span>
                         </div>
                         <div
                             class="flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
@@ -2691,7 +2752,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="Resend (Email Service)" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center">Integrações & Serviços</span>
+                            <span class="font-bold text-center" data-i18n="skills_services">Integrações & Serviços</span>
                         </div>
                         <div
                             class="flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
@@ -2703,7 +2764,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="Vercel (Cloud Frontend)" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center">Cloud & Deployment</span>
+                            <span class="font-bold text-center" data-i18n="skills_cloud">Cloud & Deployment</span>
                         </div>
                         <div
                             class="flex flex-col items-center p-6 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
@@ -2717,7 +2778,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="JWT / JSON" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center">APIs REST & JWT</span>
+                            <span class="font-bold text-center" data-i18n="skills_apis">APIs REST & JWT</span>
                         </div>
                         <div
                             class="flex flex-col items-center p-6 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
@@ -2731,7 +2792,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="SonarQube" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center">Testes & Qualidade</span>
+                            <span class="font-bold text-center" data-i18n="skills_quality">Testes & Qualidade</span>
                         </div>
                     </div>
                 </div>
@@ -2742,8 +2803,8 @@
                 id="projects">
                 <div class="flex justify-between items-end mb-16">
                     <div>
-                        <h2 class="text-4xl font-black mb-4">Projetos em Destaque</h2>
-                        <p class="text-slate-600 dark:text-slate-400">Alguns dos meus trabalhos e projetos pessoais.</p>
+                        <h2 class="text-4xl font-black mb-4" data-i18n="projects_title">Projetos em Destaque</h2>
+                        <p class="text-slate-600 dark:text-slate-400" data-i18n="projects_subtitle">Alguns dos meus trabalhos e projetos pessoais.</p>
                     </div>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8">
@@ -2751,8 +2812,8 @@
                     <div
                         class="project-card group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20">
                         <div class="p-6 grow flex flex-col">
-                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Agendador de Tarefas Full-Stack</h3>
-                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow">
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors" data-i18n="project_scheduler_title">Agendador de Tarefas Full-Stack</h3>
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow" data-i18n="project_scheduler_desc">
                                 Aplicação Full-Stack com Front-End moderno em React e Vite, integrada a uma API REST em Java e Spring Boot. Possui autenticação JWT, integração com PostgreSQL, e ampla cobertura de testes unitários com JUnit e Mockito. Analisada via SonarQube para qualidade de código.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-6">
@@ -2785,9 +2846,9 @@
                     <div
                         class="project-card group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20">
                         <div class="p-6 grow flex flex-col">
-                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Sistema de
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors" data-i18n="project_pets_title">Sistema de
                                 Adoção de Pets (CLI)</h3>
-                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow">
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow" data-i18n="project_pets_desc">
                                 CRUD básico CLI para cadastro e gerenciamento de pets utilizando persistência de dados
                                 em arquivos locais. Feito a partir de boas práticas aplicando os princípios SOLID.
                             </p>
@@ -2808,7 +2869,7 @@
                                     <svg class="shrink-0" style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 960 960">
                                         <path
                                             d="M320,720L80,480L320,240L377,297L193,481L376,664L320,720ZM640,720L583,663L767,479L584,296L640,240L880,480L640,720Z" />
-                                    </svg> Ver Código GitHub
+                                    </svg> <span data-i18n="project_view_github">Ver Código GitHub</span>
                                 </a>
                             </div>
                         </div>
@@ -2818,9 +2879,9 @@
                     <div
                         class="project-card group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20">
                             <div class="p-6 grow flex flex-col">
-                                <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Site de
+                                <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors" data-i18n="project_wedding_title">Site de
                                     Casamento Premium</h3>
-                                <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow">
+                                <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow" data-i18n="project_wedding_desc">
                                     Plataforma completa com lista de presentes interativa, integração real com
                                     MercadoPago (PIX/Cartão),
                                     sistema de validação de segurança via e-mail e design responsivo de alto nível.
@@ -2850,7 +2911,7 @@
                                         <svg class="shrink-0" style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 960 960">
                                             <path
                                                 d="M325,848.5Q252,817 197.5,762.5Q143,708 111.5,635Q80,562 80,479.5Q80,397 111.5,324.5Q143,252 197.5,197.5Q252,143 325,111.5Q398,80 480.5,80Q563,80 635.5,111.5Q708,143 762.5,197.5Q817,252 848.5,324.5Q880,397 880,479.5Q880,562 848.5,635Q817,708 762.5,762.5Q708,817 635.5,848.5Q563,880 480.5,880Q398,880 325,848.5ZM480,798Q506,762 525,723Q544,684 556,640L404,640Q416,684 435,723Q454,762 480,798ZM376,782Q358,749 344.5,713.5Q331,678 322,640L204,640Q233,690 276.5,727Q320,764 376,782ZM584,782Q640,764 683.5,727Q727,690 756,640L638,640Q629,678 615.5,713.5Q602,749 584,782ZM170,560L306,560Q303,540 301.5,520.5Q300,501 300,480Q300,459 301.5,439.5Q303,420 306,400L170,400Q165,420 162.5,439.5Q160,459 160,480Q160,501 162.5,520.5Q165,540 170,560ZM386,560L574,560Q577,540 578.5,520.5Q580,501 580,480Q580,459 578.5,439.5Q577,420 574,400L386,400Q383,420 381.5,439.5Q380,459 380,480Q380,501 381.5,520.5Q383,540 386,560ZM654,560L790,560Q795,540 797.5,520.5Q800,501 800,480Q800,459 797.5,439.5Q795,420 790,400L654,400Q657,420 658.5,439.5Q660,459 660,480Q660,501 658.5,520.5Q657,540 654,560ZM638,320L756,320Q727,270 683.5,233Q640,196 584,178Q602,211 615.5,246.5Q629,282 638,320ZM404,320L556,320Q544,276 525,237Q506,198 480,162Q454,198 435,237Q416,276 404,320ZM204,320L322,320Q331,282 344.5,246.5Q358,211 376,178Q320,196 276.5,233Q233,270 204,320Z" />
-                                        </svg> Ver Site
+                                        </svg> <span data-i18n="project_view_site">Ver Site</span>
                                     </a>
                                     <a href="https://github.com/Ja0Santana/site_casamento" target="_blank"
                                         rel="noopener noreferrer"
@@ -2870,8 +2931,8 @@
                     <div
                         class="project-card group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20">
                         <div class="p-6 grow flex flex-col">
-                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Synfonia - Immersive Music Experience</h3>
-                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow">
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors" data-i18n="project_synfonia_title">Synfonia - Immersive Music Experience</h3>
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow" data-i18n="project_synfonia_desc">
                                 Plataforma de música premium focada em imersão e performance. Apresenta UI dinâmica com Framer Motion, Glassmorphism, e integração profunda com a API do Spotify (OAuth). O back-end conta com banco de dados híbrido (PostgreSQL + MongoDB) e blindagem de segurança (Bucket4j, proteção contra IDOR).
                             </p>
                             <div class="flex flex-wrap gap-2 mb-6">
@@ -2918,9 +2979,9 @@
                 <div class="max-w-5xl mx-auto px-4 md:px-6">
                     <div class="rounded-3xl border border-slate-700/50 bg-white/5 p-8 md:p-12 shadow-2xl">
                         <div class="text-center mb-16">
-                            <h2 class="text-3xl font-black mb-4">Meus Certificados</h2>
+                            <h2 class="text-3xl font-black mb-4" data-i18n="cert_title">Meus Certificados</h2>
                             <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
-                            <p class="mt-4 text-slate-600 dark:text-slate-400">Certificações obtidas através do
+                            <p class="mt-4 text-slate-600 dark:text-slate-400" data-i18n="cert_subtitle">Certificações obtidas através do
                                 Javanauta.
                             </p>
                         </div>
@@ -2935,7 +2996,7 @@
                                         <path
                                             d="M387,548L422,434L330,360L444,360L480,248L516,360L630,360L537,434L572,548L480,477L387,548ZM240,920L240,611Q202,569 181,515Q160,461 160,400Q160,266 253,173Q346,80 480,80Q614,80 707,173Q800,266 800,400Q800,461 779,515Q758,569 720,611L720,920L480,840L240,920ZM650,570Q720,500 720,400Q720,300 650,230Q580,160 480,160Q380,160 310,230Q240,300 240,400Q240,500 310,570Q380,640 480,640Q580,640 650,570ZM320,801L480,760L640,801L640,677Q605,697 564.5,708.5Q524,720 480,720Q436,720 395.5,708.5Q355,697 320,677L320,801ZM480,739L480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739L480,739L480,739Z" />
                                     </svg>
-                                    <h3 class="font-bold text-slate-200 text-left text-lg">Metodologias Ágeis</h3>
+                                    <h3 class="font-bold text-slate-200 text-left text-lg" data-i18n="cert_agile">Metodologias Ágeis</h3>
                                 </div>
                                 <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors"
                                     style="width: 24px; height: 24px;" fill="currentColor" viewBox="120 120 720 720">
@@ -2953,7 +3014,7 @@
                                         <path
                                             d="M387,548L422,434L330,360L444,360L480,248L516,360L630,360L537,434L572,548L480,477L387,548ZM240,920L240,611Q202,569 181,515Q160,461 160,400Q160,266 253,173Q346,80 480,80Q614,80 707,173Q800,266 800,400Q800,461 779,515Q758,569 720,611L720,920L480,840L240,920ZM650,570Q720,500 720,400Q720,300 650,230Q580,160 480,160Q380,160 310,230Q240,300 240,400Q240,500 310,570Q380,640 480,640Q580,640 650,570ZM320,801L480,760L640,801L640,677Q605,697 564.5,708.5Q524,720 480,720Q436,720 395.5,708.5Q355,697 320,677L320,801ZM480,739L480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739L480,739L480,739Z" />
                                     </svg>
-                                    <h3 class="font-bold text-slate-200 text-left text-lg">Java & Spring Boot</h3>
+                                    <h3 class="font-bold text-slate-200 text-left text-lg" data-i18n="cert_java_spring">Java & Spring Boot</h3>
                                 </div>
                                 <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors"
                                     style="width: 24px; height: 24px;" fill="currentColor" viewBox="120 120 720 720">
@@ -2971,7 +3032,7 @@
                                         <path
                                             d="M387,548L422,434L330,360L444,360L480,248L516,360L630,360L537,434L572,548L480,477L387,548ZM240,920L240,611Q202,569 181,515Q160,461 160,400Q160,266 253,173Q346,80 480,80Q614,80 707,173Q800,266 800,400Q800,461 779,515Q758,569 720,611L720,920L480,840L240,920ZM650,570Q720,500 720,400Q720,300 650,230Q580,160 480,160Q380,160 310,230Q240,300 240,400Q240,500 310,570Q380,640 480,640Q580,640 650,570ZM320,801L480,760L640,801L640,677Q605,697 564.5,708.5Q524,720 480,720Q436,720 395.5,708.5Q355,697 320,677L320,801ZM480,739L480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739L480,739L480,739Z" />
                                     </svg>
-                                    <h3 class="font-bold text-slate-200 text-left text-lg">Banco de Dados</h3>
+                                    <h3 class="font-bold text-slate-200 text-left text-lg" data-i18n="cert_database">Banco de Dados</h3>
                                 </div>
                                 <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors"
                                     style="width: 24px; height: 24px;" fill="currentColor" viewBox="120 120 720 720">
@@ -2989,7 +3050,7 @@
                                         <path
                                             d="M387,548L422,434L330,360L444,360L480,248L516,360L630,360L537,434L572,548L480,477L387,548ZM240,920L240,611Q202,569 181,515Q160,461 160,400Q160,266 253,173Q346,80 480,80Q614,80 707,173Q800,266 800,400Q800,461 779,515Q758,569 720,611L720,920L480,840L240,920ZM650,570Q720,500 720,400Q720,300 650,230Q580,160 480,160Q380,160 310,230Q240,300 240,400Q240,500 310,570Q380,640 480,640Q580,640 650,570ZM320,801L480,760L640,801L640,677Q605,697 564.5,708.5Q524,720 480,720Q436,720 395.5,708.5Q355,697 320,677L320,801ZM480,739L480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739L480,739L480,739Z" />
                                     </svg>
-                                    <h3 class="font-bold text-slate-200 text-left text-lg">Front-End com IA</h3>
+                                    <h3 class="font-bold text-slate-200 text-left text-lg" data-i18n="cert_frontend_ai">Front-End com IA</h3>
                                 </div>
                                 <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors"
                                     style="width: 24px; height: 24px;" fill="currentColor" viewBox="120 120 720 720">
@@ -3006,7 +3067,7 @@
                 class="py-12 md:py-16 max-w-7xl mx-auto px-4 md:px-6 scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out"
                 id="contact">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold mb-4">Contato</h2>
+                    <h2 class="text-3xl font-bold mb-4" data-i18n="contact_title">Contato</h2>
                     <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
                 </div>
                 <div
@@ -3017,7 +3078,7 @@
                                 d="M160,800Q127,800 103.5,776.5Q80,753 80,720L80,240Q80,207 103.5,183.5Q127,160 160,160L800,160Q833,160 856.5,183.5Q880,207 880,240L880,720Q880,753 856.5,776.5Q833,800 800,800L160,800ZM480,520L160,320L160,720Q160,720 160,720Q160,720 160,720L800,720Q800,720 800,720Q800,720 800,720L800,320L480,520ZM480,440L800,240L160,240L480,440ZM160,320L160,240L160,240L160,320L160,720Q160,720 160,720Q160,720 160,720L160,720Q160,720 160,720Q160,720 160,720L160,320Z" />
                         </svg>
                         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=paulo.jp806@gmail.com" target="_blank"
-                            rel="noopener noreferrer" class="hover:text-primary transition-colors">Email</a>
+                            rel="noopener noreferrer" class="hover:text-primary transition-colors" data-i18n="contact_email_label">Email</a>
                     </div>
                     <div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
                         <svg class="w-8 h-8 text-primary" fill="currentColor" viewbox="0 0 24 24">
@@ -3026,14 +3087,14 @@
                             </path>
                         </svg>
                         <a href="https://www.linkedin.com/in/joaopaulosantana-dev/" target="_blank"
-                            rel="noopener noreferrer" class="hover:text-primary transition-colors">LinkedIn</a>
+                            rel="noopener noreferrer" class="hover:text-primary transition-colors" data-i18n="contact_linkedin_label">LinkedIn</a>
                     </div>
                     <div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
                         <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 960 960">
                             <path
                                 d="M536.5,456.5Q560,433 560,400Q560,367 536.5,343.5Q513,320 480,320Q447,320 423.5,343.5Q400,367 400,400Q400,433 423.5,456.5Q447,480 480,480Q513,480 536.5,456.5ZM480,774Q602,662 661,570.5Q720,479 720,408Q720,299 650.5,229.5Q581,160 480,160Q379,160 309.5,229.5Q240,299 240,408Q240,479 299,570.5Q358,662 480,774ZM480,880Q319,743 239.5,625.5Q160,508 160,408Q160,258 256.5,169Q353,80 480,80Q607,80 703.5,169Q800,258 800,408Q800,508 720.5,625.5Q641,743 480,880ZM480,400Q480,400 480,400Q480,400 480,400Q480,400 480,400Q480,400 480,400Q480,400 480,400Q480,400 480,400Q480,400 480,400Q480,400 480,400Q480,400 480,400Q480,400 480,400Z" />
                         </svg>
-                        <span>Bahia, Brasil</span>
+                        <span data-i18n="contact_location_label">Bahia, Brasil</span>
                     </div>
                 </div>
             </section>
@@ -3048,7 +3109,7 @@
                     </svg>
                     <span class="text-lg font-bold tracking-tight">JoaoPaulo.dev</span>
                 </div>
-                <p class="text-sm text-slate-500 dark:text-slate-400">
+                <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="footer_rights">
                     © 2026 João Paulo Santana. Todos os direitos reservados.
                 </p>
                 <div class="flex items-center gap-6">
@@ -3100,7 +3161,7 @@
                     <path
                         d="M387,548L422,434L330,360L444,360L480,248L516,360L630,360L537,434L572,548L480,477L387,548ZM240,920L240,611Q202,569 181,515Q160,461 160,400Q160,266 253,173Q346,80 480,80Q614,80 707,173Q800,266 800,400Q800,461 779,515Q758,569 720,611L720,920L480,840L240,920ZM650,570Q720,500 720,400Q720,300 650,230Q580,160 480,160Q380,160 310,230Q240,300 240,400Q240,500 310,570Q380,640 480,640Q580,640 650,570ZM320,801L480,760L640,801L640,677Q605,697 564.5,708.5Q524,720 480,720Q436,720 395.5,708.5Q355,697 320,677L320,801ZM480,739L480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739L480,739L480,739Z" />
                 </svg>
-                <h2 class="text-white text-3xl md:text-5xl font-bold text-center">Certificado</h2>
+                <h2 class="text-white text-3xl md:text-5xl font-bold text-center" data-i18n="modal_certificate">Certificado</h2>
             </div>
 
 
@@ -3115,13 +3176,14 @@
                     <svg class="shrink-0" style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                     </svg>
-                    <span>Abrir na Web</span>
+                    <span data-i18n="certificates_view">Abrir na Web</span>
                 </a>
             </div>
         </div>
     </div>
 
     <script src="js/border-glow.js" defer></script>
+    <script src="js/translations.js" defer></script>
     <script src="js/main.js" defer></script>
 </body>
 
