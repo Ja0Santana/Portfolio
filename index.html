@@ -2310,6 +2310,151 @@
         .lang-toggle-container.en .lang-text.en-label {
             color: #0f172a;
         }
+
+        html, body, .custom-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: #334155 #0f172a;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 9999px;
+            border: 2px solid #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0dccf2;
+        }
+
+        .skills-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .skills-modal-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .skills-modal-card {
+            position: relative;
+            width: 100%;
+            max-width: 640px;
+            max-height: 85vh;
+            background: #090d16 !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(13, 204, 242, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            color: #f8fafc;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            transform: scale(0.96);
+            transition: transform 0.25s ease;
+        }
+
+        .skills-modal-backdrop.active .skills-modal-card {
+            transform: scale(1);
+        }
+
+        .skills-modal-tab-btn {
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.05);
+            color: #94a3b8;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .skills-modal-tab-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .skills-modal-tab-btn.active {
+            background: #0dccf2 !important;
+            color: #090d16 !important;
+            font-weight: 700 !important;
+            border-color: transparent !important;
+            box-shadow: 0 4px 12px rgba(13, 204, 242, 0.3);
+        }
+
+        .skills-tabs-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            overflow-x: auto;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            margin-bottom: 16px;
+            padding: 2px 8px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .skills-tabs-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .skills-tab-nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: #94a3b8;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .skills-tab-nav-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(13, 204, 242, 0.4);
+        }
+
+        .skill-item-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 18px 20px;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .skill-item-card:hover {
+            border-color: rgba(13, 204, 242, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
     </style>
     <title>DevPortfolio | João Paulo - Desenvolvedor Full-Stack</title>
 </head>
@@ -2686,8 +2831,8 @@
                         <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-                        <div
-                            class="flex flex-col items-center p-6 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
+                        <div data-skill-category="backend"
+                            class="relative flex flex-col items-center p-6 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-all duration-300 group hover:bg-white/5 cursor-pointer hover:scale-[1.02]">
                             <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
                                     alt="Java"
@@ -2699,9 +2844,12 @@
                                     title="Spring Boot" width="56" height="56" loading="lazy">
                             </div>
                             <span class="font-bold text-center" data-i18n="skills_backend">Java & Spring Boot</span>
+                            <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
+                                <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
+                            </svg>
                         </div>
-                        <div
-                            class="flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
+                        <div data-skill-category="database"
+                            class="relative flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-all duration-300 group hover:bg-white/5 cursor-pointer hover:scale-[1.02]">
                             <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
                                     alt="SQL"
@@ -2713,9 +2861,12 @@
                                     title="Bancos Não Relacionais (NoSQL)" width="56" height="56" loading="lazy">
                             </div>
                             <span class="font-bold text-center" data-i18n="skills_db">SQL & NoSQL</span>
+                            <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
+                                <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
+                            </svg>
                         </div>
-                        <div
-                            class="flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
+                        <div data-skill-category="devops"
+                            class="relative flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-all duration-300 group hover:bg-white/5 cursor-pointer hover:scale-[1.02]">
                             <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
                                     alt="Docker"
@@ -2727,9 +2878,12 @@
                                     title="Git / CI/CD" width="56" height="56" loading="lazy">
                             </div>
                             <span class="font-bold text-center" data-i18n="skills_devops">Docker & CI/CD</span>
+                            <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
+                                <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
+                            </svg>
                         </div>
-                        <div
-                            class="flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
+                        <div data-skill-category="frontend"
+                            class="relative flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-all duration-300 group hover:bg-white/5 cursor-pointer hover:scale-[1.02]">
                             <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
                                     alt="React"
@@ -2741,9 +2895,12 @@
                                     title="Tailwind CSS" width="56" height="56" loading="lazy">
                             </div>
                             <span class="font-bold text-center" data-i18n="skills_frontend">Front-End & Design</span>
+                            <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
+                                <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
+                            </svg>
                         </div>
-                        <div
-                            class="flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
+                        <div data-skill-category="integrations"
+                            class="relative flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-all duration-300 group hover:bg-white/5 cursor-pointer hover:scale-[1.02]">
                             <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
                                 <img src="https://cdn.simpleicons.org/mercadopago/009EE3" alt="Mercado Pago"
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
@@ -2753,9 +2910,12 @@
                                     title="Resend (Email Service)" width="56" height="56" loading="lazy">
                             </div>
                             <span class="font-bold text-center" data-i18n="skills_services">Integrações & Serviços</span>
+                            <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
+                                <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
+                            </svg>
                         </div>
-                        <div
-                            class="flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
+                        <div data-skill-category="cloud"
+                            class="relative flex flex-col items-center p-4 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-all duration-300 group hover:bg-white/5 cursor-pointer hover:scale-[1.02]">
                             <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
                                 <img src="https://cdn.simpleicons.org/railway/white" alt="Railway"
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
@@ -2765,9 +2925,12 @@
                                     title="Vercel (Cloud Frontend)" width="56" height="56" loading="lazy">
                             </div>
                             <span class="font-bold text-center" data-i18n="skills_cloud">Cloud & Deployment</span>
+                            <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
+                                <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
+                            </svg>
                         </div>
-                        <div
-                            class="flex flex-col items-center p-6 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
+                        <div data-skill-category="apis"
+                            class="relative flex flex-col items-center p-6 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-all duration-300 group hover:bg-white/5 cursor-pointer hover:scale-[1.02]">
                             <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
                                     alt="REST APIs"
@@ -2779,9 +2942,12 @@
                                     title="JWT / JSON" width="56" height="56" loading="lazy">
                             </div>
                             <span class="font-bold text-center" data-i18n="skills_apis">APIs REST & JWT</span>
+                            <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
+                                <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
+                            </svg>
                         </div>
-                        <div
-                            class="flex flex-col items-center p-6 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-colors group hover:bg-white/5">
+                        <div data-skill-category="testing"
+                            class="relative flex flex-col items-center p-6 md:p-8 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg hover:border-primary/50 transition-all duration-300 group hover:bg-white/5 cursor-pointer hover:scale-[1.02]">
                             <div class="flex gap-4 mb-4 md:mb-5 group-hover:scale-110 transition-transform">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-plain.svg"
                                     alt="JUnit & Mockito"
@@ -2793,6 +2959,9 @@
                                     title="SonarQube" width="56" height="56" loading="lazy">
                             </div>
                             <span class="font-bold text-center" data-i18n="skills_quality">Testes & Qualidade</span>
+                            <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
+                                <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -3048,9 +3217,27 @@
                                     <svg class="shrink-0 w-8 h-8 text-primary group-hover:scale-110 transition-transform"
                                         fill="currentColor" viewBox="80 80 800 840">
                                         <path
-                                            d="M387,548L422,434L330,360L444,360L480,248L516,360L630,360L537,434L572,548L480,477L387,548ZM240,920L240,611Q202,569 181,515Q160,461 160,400Q160,266 253,173Q346,80 480,80Q614,80 707,173Q800,266 800,400Q800,461 779,515Q758,569 720,611L720,920L480,840L240,920ZM650,570Q720,500 720,400Q720,300 650,230Q580,160 480,160Q380,160 310,230Q240,300 240,400Q240,500 310,570Q380,640 480,640Q580,640 650,570ZM320,801L480,760L640,801L640,677Q605,697 564.5,708.5Q524,720 480,720Q436,720 395.5,708.5Q355,697 320,677L320,801ZM480,739L480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739L480,739L480,739Z" />
+                                            d="M387,548L422,434L330,360L444,360L480,248L516,360L630,360L537,434L572,548L480,477L387,548ZM240,920L240,611Q202,569 181,515Q160,461 160,400Q160,266 253,173Q346,80 480,80Q614,80 707,173Q800,266 800,400Q800,461 779,515Q758,569 720,611L720,920L480,840L240,920ZM650,570Q720,500 720,400Q720,300 650,230Q580,160 480,160Q380,160 310,230Q240,300 240,400Q240,500 310,570Q380,640 480,640Q580,640 650,570ZM320,801L480,760L640,801L640,677Q605,697 564.5,708.5Q524,720 480,720Q436,720 395.5,708.5Q355,697 320,677L320,801ZM480,739L480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739L480,739L480,739Z" />
                                     </svg>
                                     <h3 class="font-bold text-slate-200 text-left text-lg" data-i18n="cert_frontend_ai">Front-End com IA</h3>
+                                </div>
+                                <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors"
+                                    style="width: 24px; height: 24px;" fill="currentColor" viewBox="120 120 720 720">
+                                    <path
+                                        d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
+                                </svg>
+                            </div>
+                            <div data-certificate-img="img/certificado_Imersao_arquitetura_web_com_ia.png"
+                                data-certificate-url="https://cursos.alura.com.br/immersion/imersao-arquitetura-web/user/paulo-jp806/certificate"
+                                class="certificate-item rounded-2xl border border-slate-700/50 shadow-lg bg-slate-800/40 p-6 cursor-pointer hover:border-primary/50 transition-all hover:bg-white/5 group flex items-center justify-between gap-6"
+                                style="width: 100%; max-width: 380px;">
+                                <div class="flex items-center gap-4">
+                                    <svg class="shrink-0 w-8 h-8 text-primary group-hover:scale-110 transition-transform"
+                                        fill="currentColor" viewBox="80 80 800 840">
+                                        <path
+                                            d="M387,548L422,434L330,360L444,360L480,248L516,360L630,360L537,434L572,548L480,477L387,548ZM240,920L240,611Q202,569 181,515Q160,461 160,400Q160,266 253,173Q346,80 480,80Q614,80 707,173Q800,266 800,400Q800,461 779,515Q758,569 720,611L720,920L480,840L240,920ZM650,570Q720,500 720,400Q720,300 650,230Q580,160 480,160Q380,160 310,230Q240,300 240,400Q240,500 310,570Q380,640 480,640Q580,640 650,570ZM320,801L480,760L640,801L640,677Q605,697 564.5,708.5Q524,720 480,720Q436,720 395.5,708.5Q355,697 320,677L320,801ZM480,739L480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739L480,739L480,739Z" />
+                                    </svg>
+                                    <h3 class="font-bold text-slate-200 text-left text-lg" data-i18n="cert_web_arch_ai">Arquitetura Web com IA</h3>
                                 </div>
                                 <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors"
                                     style="width: 24px; height: 24px;" fill="currentColor" viewBox="120 120 720 720">
@@ -3180,6 +3367,48 @@
                 </a>
             </div>
         </div>
+    </div>
+
+    <div id="skills-modal" role="dialog" aria-modal="true" aria-labelledby="skills-modal-title" class="skills-modal-backdrop">
+      <div id="skills-modal-container" class="skills-modal-card">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+          <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div id="skills-modal-icon" style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; padding-top: 2px;"></div>
+            <div>
+              <h3 id="skills-modal-title" style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff; letter-spacing: -0.01em;"></h3>
+              <p id="skills-modal-subtitle" style="margin: 2px 0 0 0; font-size: 13px; color: #94a3b8; font-weight: 400;" data-i18n="skills_modal_subtitle"></p>
+            </div>
+          </div>
+          <button id="skills-modal-close" style="background: rgba(255, 255, 255, 0.06); border: none; color: #94a3b8; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease;" title="Fechar (Esc)" aria-label="Close modal">
+            <svg style="width: 18px; height: 18px; display: block;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 16px;">
+          <button id="skills-tab-prev" class="skills-tab-nav-btn" aria-label="Anterior" title="Anterior">
+            <svg style="width: 14px; height: 14px; display: block;" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <div class="skills-tabs-container" id="skills-tabs-wrapper" style="margin-bottom: 0;">
+            <button data-skills-tab="backend" class="skills-modal-tab-btn" data-i18n="skills_tab_backend">Backend</button>
+            <button data-skills-tab="frontend" class="skills-modal-tab-btn" data-i18n="skills_tab_frontend">Frontend</button>
+            <button data-skills-tab="database" class="skills-modal-tab-btn" data-i18n="skills_tab_database">Banco de Dados</button>
+            <button data-skills-tab="devops" class="skills-modal-tab-btn" data-i18n="skills_tab_devops">DevOps</button>
+            <button data-skills-tab="integrations" class="skills-modal-tab-btn" data-i18n="skills_tab_integrations">Integrações</button>
+            <button data-skills-tab="cloud" class="skills-modal-tab-btn" data-i18n="skills_tab_cloud">Cloud</button>
+            <button data-skills-tab="apis" class="skills-modal-tab-btn" data-i18n="skills_tab_apis">APIs REST</button>
+            <button data-skills-tab="testing" class="skills-modal-tab-btn" data-i18n="skills_tab_testing">Testes & Qualidade</button>
+          </div>
+          <button id="skills-tab-next" class="skills-tab-nav-btn" aria-label="Próximo" title="Próximo">
+            <svg style="width: 14px; height: 14px; display: block;" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <div id="skills-modal-body" style="display: flex; flex-direction: column; gap: 14px; flex: 1; overflow-y: auto; padding-right: 4px; transition: opacity 0.2s ease;" class="custom-scrollbar">
+        </div>
+      </div>
     </div>
 
     <script src="js/border-glow.js" defer></script>

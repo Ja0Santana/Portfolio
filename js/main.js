@@ -6,6 +6,9 @@ if ('scrollRestoration' in history) {
 }
 
 // i18n Implementation with Glitch Animation
+let activeSkillCategory = null;
+let lastFocusedElement = null;
+
 const GLITCH_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!?";
 const glitchState = new Map();
 
@@ -52,13 +55,12 @@ function updateContent(lang) {
     document.querySelectorAll('[data-i18n]').forEach((el, index) => {
         const key = el.getAttribute('data-i18n');
         const newText = dict[key];
-        if (newText) {
+        if (newText && typeof newText === 'string') {
             if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                 el.placeholder = newText;
             } else {
-                // Só anima se o texto for realmente diferente
                 if (el.innerHTML !== newText) {
-                    animateTextGlitch(el, newText, index * 3); // 3ms de stagger para propagação
+                    animateTextGlitch(el, newText, index * 3);
                 }
             }
         }
@@ -69,8 +71,24 @@ function updateContent(lang) {
     }
 }
 
+function getStoredLanguage() {
+    try {
+        return localStorage.getItem('preferredLanguage') || 'pt';
+    } catch (storageError) {
+        return 'pt';
+    }
+}
+
+function setStoredLanguage(lang) {
+    try {
+        localStorage.setItem('preferredLanguage', lang);
+    } catch (storageError) {
+        return;
+    }
+}
+
 function setLanguage(lang) {
-    localStorage.setItem('preferredLanguage', lang);
+    setStoredLanguage(lang);
     updateContent(lang);
 
     const toggle = document.querySelector('.language-toggle');
@@ -83,11 +101,13 @@ function setLanguage(lang) {
             toggle.classList.remove('en');
         }
     }
+
+    if (typeof activeSkillCategory !== 'undefined' && activeSkillCategory) {
+        openSkillsModal(activeSkillCategory, false);
+    }
 }
 
-// Initialize Language as early as possible
-const savedLang = localStorage.getItem('preferredLanguage') || 'pt';
-// Update content immediately if possible, or wait for DOM
+const savedLang = getStoredLanguage();
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => setLanguage(savedLang));
 } else {
@@ -183,11 +203,20 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Language Toggle Listener
+    setTimeout(() => {
+        document.querySelectorAll('.scroll-animate.opacity-0').forEach(animatedEl => {
+            const elBounds = animatedEl.getBoundingClientRect();
+            if (elBounds.top < window.innerHeight && elBounds.bottom > 0) {
+                animatedEl.classList.remove('opacity-0', 'translate-y-12');
+                animatedEl.classList.add('opacity-100', 'translate-y-0');
+            }
+        });
+    }, 150);
+
     const toggle = document.querySelector('.language-toggle');
     if (toggle) {
         toggle.addEventListener('click', () => {
-            const currentLang = localStorage.getItem('preferredLanguage') || 'pt';
+            const currentLang = getStoredLanguage();
             const newLang = currentLang === 'pt' ? 'en' : 'pt';
             setLanguage(newLang);
         });
@@ -482,4 +511,230 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    document.querySelectorAll('[data-skill-category]').forEach(cardElement => {
+        cardElement.addEventListener('click', () => {
+            const categoryKey = cardElement.getAttribute('data-skill-category');
+            openSkillsModal(categoryKey);
+        });
+    });
+
+    document.querySelectorAll('[data-skills-tab]').forEach(tabBtn => {
+        tabBtn.addEventListener('click', () => {
+            const categoryKey = tabBtn.getAttribute('data-skills-tab');
+            switchSkillsTab(categoryKey);
+        });
+    });
+
+    const SKILL_CATEGORIES_ORDER = ['backend', 'frontend', 'database', 'devops', 'integrations', 'cloud', 'apis', 'testing'];
+
+    document.getElementById('skills-tab-prev')?.addEventListener('click', () => {
+        const currentIndex = SKILL_CATEGORIES_ORDER.indexOf(activeSkillCategory || 'backend');
+        const prevIndex = (currentIndex - 1 + SKILL_CATEGORIES_ORDER.length) % SKILL_CATEGORIES_ORDER.length;
+        switchSkillsTab(SKILL_CATEGORIES_ORDER[prevIndex]);
+    });
+
+    document.getElementById('skills-tab-next')?.addEventListener('click', () => {
+        const currentIndex = SKILL_CATEGORIES_ORDER.indexOf(activeSkillCategory || 'backend');
+        const nextIndex = (currentIndex + 1) % SKILL_CATEGORIES_ORDER.length;
+        switchSkillsTab(SKILL_CATEGORIES_ORDER[nextIndex]);
+    });
+
+    document.getElementById('skills-modal-close')?.addEventListener('click', closeSkillsModal);
+
+    document.getElementById('skills-modal')?.addEventListener('click', (clickEvent) => {
+        if (clickEvent.target === document.getElementById('skills-modal')) {
+            closeSkillsModal();
+        }
+    });
+
+    if (window.location.hash.startsWith('#skills-')) {
+        const categoryFromHash = window.location.hash.replace('#skills-', '');
+        setTimeout(() => openSkillsModal(categoryFromHash, false), 300);
+    }
+});
+
+const LUCIDE_ICONS = {
+    server: `<svg style="width: 24px; height: 24px; display: block;" class="text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>`,
+    code2: `<svg style="width: 24px; height: 24px; display: block;" class="text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>`,
+    database: `<svg style="width: 24px; height: 24px; display: block;" class="text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>`,
+    wrench: `<svg style="width: 24px; height: 24px; display: block;" class="text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+    handshake: `<svg style="width: 24px; height: 24px; display: block;" class="text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a6 6 0 0 1-6 6h0a6 6 0 0 1-6-6V8Z"/></svg>`,
+    plug: `<svg style="width: 24px; height: 24px; display: block;" class="text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a6 6 0 0 1-6 6h0a6 6 0 0 1-6-6V8Z"/></svg>`,
+    cloud: `<svg style="width: 24px; height: 24px; display: block;" class="text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>`,
+    key: `<svg style="width: 24px; height: 24px; display: block;" class="text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3"/></svg>`,
+    flaskConical: `<svg style="width: 24px; height: 24px; display: block;" class="text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 2v7.31L4.75 18.5a2 2 0 0 0 1.7 3h11.1a2 2 0 0 0 1.7-3L14 9.31V2"/><path d="M8.5 2h7"/></svg>`,
+    link: `<svg style="width: 13px; height: 13px; shrink: 0; display: inline-block; vertical-align: middle;" class="text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`
+};
+
+function getScrollbarWidth() {
+    return window.innerWidth - document.documentElement.clientWidth;
+}
+
+function lockBodyScroll() {
+    const scrollbarWidth = getScrollbarWidth();
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+    document.body.classList.add('overflow-hidden');
+}
+
+function unlockBodyScroll() {
+    document.body.style.paddingRight = '';
+    document.body.classList.remove('overflow-hidden');
+}
+
+function renderSkillItemHtml(item, projectsLabel) {
+    let projectsHtml = '';
+    if (item.projects && item.projects.length > 0) {
+        const badges = item.projects.map(projectItem =>
+            `<a href="${projectItem.url}" onclick="closeSkillsModal()" style="display: inline-flex; align-items: center; gap: 4px; text-decoration: none; color: #0dccf2; font-weight: 500; font-size: 12px;">
+                ${LUCIDE_ICONS.link} <span>${projectItem.name}</span>
+            </a>`
+        ).join('<span style="color: #475569;">•</span>');
+
+        projectsHtml = `
+            <div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.06); display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 12px;">
+                <span style="color: #94a3b8; font-weight: 500;">${projectsLabel}</span>
+                <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">${badges}</div>
+            </div>
+        `;
+    }
+
+    const badgeText = item.level || item.tag || '';
+    const levelBadge = badgeText ? `<span style="font-size: 11px; font-weight: 600; color: #0dccf2; background: rgba(13, 204, 242, 0.1); border: 1px solid rgba(13, 204, 242, 0.2); padding: 2px 10px; border-radius: 6px; flex-shrink: 0;">${badgeText}</span>` : '';
+
+    return `
+        <div class="skill-item-card">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px;">
+                <h4 style="margin: 0; font-size: 15px; font-weight: 600; color: #f8fafc; display: flex; align-items: center; gap: 8px;">
+                    <span style="width: 6px; height: 6px; border-radius: 50%; background: #0dccf2; display: inline-block;"></span>
+                    ${item.name}
+                </h4>
+                ${levelBadge}
+            </div>
+            <p style="margin: 0; font-size: 13px; color: #cbd5e1; line-height: 1.6; font-weight: 400;">
+                ${item.description}
+            </p>
+            ${projectsHtml}
+        </div>
+    `;
+}
+
+function updateModalTabs(activeCategoryKey) {
+    const tabsWrapper = document.getElementById('skills-tabs-wrapper');
+    document.querySelectorAll('[data-skills-tab]').forEach(tabBtn => {
+        const tabKey = tabBtn.getAttribute('data-skills-tab');
+        if (tabKey === activeCategoryKey) {
+            tabBtn.classList.add('active');
+            if (tabsWrapper) {
+                const btnLeft = tabBtn.offsetLeft;
+                const btnWidth = tabBtn.offsetWidth;
+                const wrapperWidth = tabsWrapper.clientWidth;
+                const targetScrollLeft = btnLeft - (wrapperWidth / 2) + (btnWidth / 2);
+                tabsWrapper.scrollTo({ left: targetScrollLeft, behavior: 'smooth' });
+            }
+        } else {
+            tabBtn.classList.remove('active');
+        }
+    });
+}
+
+function openSkillsModal(categoryKey, isUpdateHashNeeded = true) {
+    const currentLang = getStoredLanguage();
+    const categoryData = translations[currentLang]?.skills_categories?.[categoryKey];
+    const modalLabels = translations[currentLang];
+
+    if (!categoryData || !modalLabels) return;
+
+    activeSkillCategory = categoryKey;
+    lastFocusedElement = document.activeElement;
+
+    const modalIconEl = document.getElementById('skills-modal-icon');
+    if (modalIconEl) {
+        modalIconEl.innerHTML = LUCIDE_ICONS[categoryData.icon] || LUCIDE_ICONS.server;
+    }
+
+    const modalTitleEl = document.getElementById('skills-modal-title');
+    if (modalTitleEl) {
+        modalTitleEl.textContent = categoryData.title;
+    }
+
+    const modalSubtitleEl = document.getElementById('skills-modal-subtitle');
+    if (modalSubtitleEl) {
+        modalSubtitleEl.textContent = categoryData.subtitle;
+    }
+
+    const bodyContainer = document.getElementById('skills-modal-body');
+    if (bodyContainer) {
+        bodyContainer.style.opacity = '0';
+        bodyContainer.innerHTML = categoryData.items
+            .map(techItem => renderSkillItemHtml(techItem, modalLabels.skills_applied_projects))
+            .join('');
+        setTimeout(() => {
+            bodyContainer.style.opacity = '1';
+        }, 50);
+    }
+
+    updateModalTabs(categoryKey);
+
+    const modal = document.getElementById('skills-modal');
+
+    if (modal) {
+        modal.classList.add('active');
+        lockBodyScroll();
+
+        if (isUpdateHashNeeded) {
+            history.replaceState(null, '', `#skills-${categoryKey}`);
+        }
+
+        const closeBtn = document.getElementById('skills-modal-close');
+        if (closeBtn) closeBtn.focus();
+    }
+}
+
+function switchSkillsTab(categoryKey) {
+    openSkillsModal(categoryKey, true);
+}
+
+function closeSkillsModal() {
+    const modal = document.getElementById('skills-modal');
+
+    if (!modal || !modal.classList.contains('active')) return;
+
+    modal.classList.remove('active');
+    unlockBodyScroll();
+    activeSkillCategory = null;
+
+    if (window.location.hash.startsWith('#skills-')) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+
+    if (lastFocusedElement) {
+        lastFocusedElement.focus();
+    }
+}
+
+document.addEventListener('keydown', (keyboardEvent) => {
+    const modal = document.getElementById('skills-modal');
+    if (!modal || modal.classList.contains('opacity-0')) return;
+
+    if (keyboardEvent.key === 'Escape') {
+        closeSkillsModal();
+        return;
+    }
+
+    if (keyboardEvent.key === 'Tab') {
+        const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusableElements.length === 0) return;
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (keyboardEvent.shiftKey && document.activeElement === firstElement) {
+            lastElement.focus();
+            keyboardEvent.preventDefault();
+        } else if (!keyboardEvent.shiftKey && document.activeElement === lastElement) {
+            firstElement.focus();
+            keyboardEvent.preventDefault();
+        }
+    }
 });
