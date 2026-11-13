@@ -2483,7 +2483,7 @@
                 </nav>
                 <div class="flex items-center gap-4">
                     <!-- Language Toggle -->
-                    <div id="language-toggle" class="lang-toggle-container language-toggle pt">
+                    <div id="language-toggle" role="button" tabindex="0" aria-label="Alternar idioma / Toggle language" class="lang-toggle-container language-toggle pt">
                         <div class="lang-slider"></div>
                         <span class="lang-text pt-label">PT</span>
                         <span class="lang-text en-label">EN</span>
@@ -2491,7 +2491,7 @@
 
                     <a id="nav-hire-btn" href="#contact"
                         class="hidden md:flex items-center gap-2 bg-slate-800 text-white px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 border border-slate-700 hover:border-primary/50 opacity-0 pointer-events-none -translate-y-2"
-                        style="white-space: nowrap; width: max-content;" data-i18n="nav_contact">
+                        style="white-space: nowrap; width: max-content;">
                         <svg class="shrink-0 text-primary" style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 960 960">
                             <path
                                 d="M475,800Q479,800 483,798Q487,796 489,794L817,466Q829,454 834.5,439Q840,424 840,409Q840,393 834.5,378.5Q829,364 817,353L647,183Q636,171 621.5,165.5Q607,160 591,160Q576,160 561,165.5Q546,171 534,183L523,194L597,269Q612,283 619,301Q626,319 626,339Q626,381 597.5,409.5Q569,438 527,438Q507,438 488.5,431Q470,424 456,410L381,336L206,511Q203,514 201.5,517.5Q200,521 200,525Q200,533 206,539.5Q212,546 220,546Q224,546 228,544Q232,542 234,540L370,404L426,460L291,596Q288,599 286.5,602.5Q285,606 285,610Q285,618 291,624Q297,630 305,630Q309,630 313,628Q317,626 319,624L455,489L511,545L376,681Q373,683 371.5,687Q370,691 370,695Q370,703 376,709Q382,715 390,715Q394,715 397.5,713.5Q401,712 404,709L540,574L596,630L460,766Q457,769 455.5,772.5Q454,776 454,780Q454,788 460.5,794Q467,800 475,800ZM474,880Q437,880 408.5,855.5Q380,831 375,794Q341,789 318,766Q295,743 290,709Q256,704 233.5,680.5Q211,657 206,624Q168,619 144,591Q120,563 120,525Q120,505 127.5,486.5Q135,468 149,454L381,223L512,354Q514,357 518,358.5Q522,360 526,360Q535,360 541,354.5Q547,349 547,340Q547,336 545.5,332Q544,328 541,326L398,183Q387,171 372.5,165.5Q358,160 342,160Q327,160 312,165.5Q297,171 285,183L144,325Q135,334 129,346Q123,358 121,370Q119,382 121,394.5Q123,407 129,418L71,476Q54,453 46,425.5Q38,398 40,370Q42,342 54,315.5Q66,289 87,268L228,127Q252,104 281.5,92Q311,80 342,80Q373,80 402.5,92Q432,104 455,127L466,138L477,127Q501,104 530.5,92Q560,80 591,80Q622,80 651.5,92Q681,104 704,127L873,296Q896,319 908,349Q920,379 920,410Q920,441 908,470.5Q896,500 873,523L545,850Q531,864 512.5,872Q494,880 474,880ZM375,320L375,320L375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320L375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320L375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Q375,320 375,320Z" />
@@ -2546,12 +2546,10 @@
                     <div class="flex-1 space-y-6 lg:space-y-8 flex flex-col items-center lg:items-start w-full">
                         <h1
                             class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-slate-900 dark:text-white tracking-tight">
-                            <span data-i18n="hero_greeting">Olá, eu sou João Paulo,</span> <span class="text-primary block mt-2" data-i18n="hero_role">Desenvolvedor
-                                Full-Stack</span>
+                            <span data-i18n="hero_greeting">Olá, eu sou João Paulo,</span> <span class="text-primary block mt-2" data-i18n="hero_role">Engenheiro de Software | Full-Stack Developer</span>
                         </h1>
                         <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed" data-i18n="hero_description">
-                            Construo APIs escaláveis com Java e Spring Boot, focado em conteinerização e em manter altos
-                            padrões de qualidade de código.
+                            Construo sistemas distribuídos e APIs resilientes, com foco em processamento assíncrono, integridade de dados, controle de concorrência e idempotência — aplicando engenharia de software sólida e agnóstica à stack.
                         </p>
                         <div
                             class="flex flex-col sm:flex-row w-full sm:w-auto flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
@@ -2606,17 +2604,10 @@
                             <div class="w-full md:w-2/3 text-center md:text-left">
                                 <h2 class="text-3xl font-black mb-6" data-i18n="about_title">Sobre Mim</h2>
                                 <p class="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed" data-i18n="about_description1">
-                                    Sou estudante de Sistemas de Informação no IFS e desenvolvedor Full-Stack.
-                                    Embora minha base seja a robustez do Back-End with Java e Spring Boot, transformo
-                                    código em
-                                    experiências visuais de alto nível, unindo estética e funcionalidade.
+                                    Sou estudante de Sistemas de Informação no IFS, monitor acadêmico de Programação Orientada a Objetos e de Estruturas de Dados, e atuo no desenvolvimento de software em produção. Minha engenharia é guiada por fundamentos: algoritmos eficientes, análise de complexidade (Big-O), arquitetura limpa e testes automatizados rigorosos.
                                 </p>
                                 <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed" data-i18n="about_description2">
-                                    Foco na construção de soluções Full Stack completas, desde APIs escaláveis e
-                                    microsserviços
-                                    até interfaces modernas e responsivas. Minha missão é entregar projetos que não
-                                    apenas funcionem
-                                    com perfeição técnica, mas que também encantem pelo design e usabilidade.
+                                    Atuo desde a concepção de arquiteturas backend resilientes — com mensageria, filas assíncronas, caching com Redis e bancos relacionais/NoSQL — até interfaces web modernas e reativas. Meu objetivo não é apenas usar ferramentas, mas resolver problemas reais de concorrência, consistência transacional e performance com rigor técnico.
                                 </p>
                             </div>
                         </div>
@@ -2633,7 +2624,7 @@
 
                 <div class="relative">
                     <!-- Linha Mobile (Trimmed at the bottom to stop at the center of the last circle) -->
-                    <div class="md:hidden absolute left-[32px] transform -translate-x-1/2 w-1 bg-slate-700/50 rounded-full" style="top: 0; bottom: 120px;"></div>
+                    <div class="md:hidden absolute left-[32px] transform -translate-x-1/2 w-1 bg-slate-700/50 rounded-full" style="top: 0; bottom: 48px;"></div>
                     <!-- Linha Desktop (Trimmed at the bottom to stop at the center of the last circle) -->
                     <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-slate-700/50 rounded-full" style="top: 0; bottom: 48px;"></div>
 
@@ -2644,18 +2635,9 @@
                             <div class="order-2 md:order-1 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
-                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_2020_title">Primeiros Passos com HTML e CSS
-                                    </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 mb-4 wrap-break-word" data-i18n="timeline_2020_description">Meu contato
-                                        inicial
-                                        com a
-                                        programação
-                                        aconteceu em 2020. Através das famosas aulas do Gustavo Guanabara, escrevi
-                                        minhas
-                                        primeiras linhas de código em HTML e CSS. Foi ali que a semente do
-                                        desenvolvimento
-                                        de software foi plantada.</p>
-                                    <img src="img/foto guanabara.webp" alt="Curso com Guanabara"
+                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_2020_title">Primeiros Passos com Programação & Lógica</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 mb-4 wrap-break-word" data-i18n="timeline_2020_description">Meu contato inicial com computação aconteceu em 2020, quando escrevi minhas primeiras linhas de código e construí as bases da lógica de programação e algoritmos fundamentais.</p>
+                                    <img src="img/foto guanabara.webp" alt="Primeiros passos na programação"
                                         class="w-full h-48 object-cover object-center rounded-xl" width="550"
                                         height="460" loading="lazy" />
                                 </div>
@@ -2667,7 +2649,6 @@
                             <div class="order-3 md:order-3 md:w-5/12"></div>
                         </div>
 
-
                         <div
                             class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
                             <div class="hidden md:block order-1 md:w-5/12"></div>
@@ -2678,35 +2659,19 @@
                             <div class="order-2 md:order-3 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
-                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_2025_title">Bacharelado no IFS</h3>
-                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word" data-i18n="timeline_2025_description">Após um período focado
-                                        em
-                                        outras
-                                        áreas,
-                                        voltei a ter contato com código de forma intensa ao ingressar no curso de
-                                        Sistemas
-                                        de Informação no Instituto Federal de Sergipe (IFS). A programação deixou de
-                                        ser
-                                        apenas curiosidade e virou minha futura profissão.</p>
+                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_2025_title">Bacharelado em Sistemas de Informação — IFS</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word" data-i18n="timeline_2025_description">Ingresso no Instituto Federal de Sergipe (IFS). O estudo sistemático de computação teórica, sistemas operacionais, banco de dados e arquitetura de software transformou a paixão por tecnologia em formação de engenharia sólida.</p>
                                 </div>
                             </div>
                         </div>
-
 
                         <div
                             class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
                             <div class="order-2 md:order-1 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
-                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_java_title">Explorando o Ecossistema Java
-                                    </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word" data-i18n="timeline_java_description">Minha primeira imersão
-                                        acadêmica e
-                                        profissional foi no Back-End com Java. Criei projetos estruturados, como o
-                                        Sistema
-                                        de Adoção de Pets (CLI), onde pude aplicar na prática princípios SOLID e
-                                        boas
-                                        práticas de Orientação a Objetos.</p>
+                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_poo_title">Monitoria de Programação Orientada a Objetos — IFS</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word" data-i18n="timeline_poo_description">Atuação oficial prestando suporte técnico a alunos de graduação em Java, aprofundando o ensino de princípios SOLID, Clean Code, abstração, herança/polimorfismo e design patterns para sistemas corporativos.</p>
                                 </div>
                             </div>
                             <div
@@ -2719,51 +2684,9 @@
                             <div class="order-3 md:order-3 md:w-5/12"></div>
                         </div>
 
-
                         <div
                             class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
                             <div class="hidden md:block order-1 md:w-5/12"></div>
-                            <div
-                                class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black shadow-lg group-hover:scale-110 transition-transform">
-                                <svg class="w-8 h-8 text-[#0a1c76]" fill="currentColor" viewBox="0 0 960 960">
-                                    <path
-                                        d="M509,691Q480,662 480,620Q480,578 509,549Q538,520 580,520Q622,520 651,549Q680,578 680,620Q680,662 651,691Q622,720 580,720Q538,720 509,691ZM200,880Q167,880 143.5,856.5Q120,833 120,800L120,240Q120,207 143.5,183.5Q167,160 200,160L240,160L240,80L320,80L320,160L640,160L640,80L720,80L720,160L760,160Q793,160 816.5,183.5Q840,207 840,240L840,800Q840,833 816.5,856.5Q793,880 760,880L200,880ZM200,800L760,800Q760,800 760,800Q760,800 760,800L760,400L200,400L200,800Q200,800 200,800ZM200,320L760,320L760,240Q760,240 760,240Q760,240 760,240L200,240Q200,240 200,240Q200,240 200,240L200,320ZM200,320L200,240Q200,240 200,240Q200,240 200,240L200,240Q200,240 200,240Q200,240 200,240L200,320Z" />
-                                </svg>
-                            </div>
-                            <div class="order-2 md:order-3 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
-                                <div
-                                    class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
-                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_campus_title">Campus Weekend Aracaju</h3>
-                                    <p class="text-slate-600 dark:text-slate-400 mb-4 wrap-break-word" data-i18n="timeline_campus_description">Participação na
-                                        Campus
-                                        Weekend.
-                                        Uma experiência incrível onde tive a oportunidade de conhecer pessoalmente o
-                                        professor que iniciou minha trajetória na programação!</p>
-                                    <img src="img/foto com guanabara.webp" alt="Foto com Guanabara"
-                                        class="w-full h-72 object-cover object-center rounded-xl border border-slate-700/50"
-                                        width="1286" height="857" loading="lazy">
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div
-                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
-                            <div class="order-2 md:order-1 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
-                                <div
-                                    class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
-                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_spring_title">Spring Boot e Banco de Dados
-                                    </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word" data-i18n="timeline_spring_description">Busquei especialização
-                                        conquistando
-                                        certificações em Banco de Dados e Metodologias Ágeis pela Javanauta. Dominei
-                                        o
-                                        framework Spring Boot para construir APIs RESTful robustas, fazendo
-                                        integrações
-                                        com
-                                        bancos como PostgreSQL e MongoDB.</p>
-                                </div>
-                            </div>
                             <div
                                 class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black shadow-lg group-hover:scale-110 transition-transform">
                                 <svg class="w-8 h-8 text-[#0a1c76]" fill="currentColor" viewBox="0 0 960 960">
@@ -2771,32 +2694,11 @@
                                         d="M480,840Q329,840 224.5,793.5Q120,747 120,680L120,280Q120,214 225.5,167Q331,120 480,120Q629,120 734.5,167Q840,214 840,280L840,680Q840,747 735.5,793.5Q631,840 480,840ZM480,361Q569,361 659,335.5Q749,310 760,281Q749,252 659.5,226Q570,200 480,200Q389,200 301.5,225.5Q214,251 200,281Q214,311 301.5,336Q389,361 480,361ZM480,560Q522,560 561,556Q600,552 635.5,544.5Q671,537 702.5,526Q734,515 760,501L760,381Q734,395 702.5,406Q671,417 635.5,424.5Q600,432 561,436Q522,440 480,440Q438,440 398,436Q358,432 322.5,424.5Q287,417 256,406Q225,395 200,381L200,501Q225,515 256,526Q287,537 322.5,544.5Q358,552 398,556Q438,560 480,560ZM480,760Q526,760 573.5,753Q621,746 661,734.5Q701,723 728,708.5Q755,694 760,679L760,581Q734,595 702.5,606Q671,617 635.5,624.5Q600,632 561,636Q522,640 480,640Q438,640 398,636Q358,632 322.5,624.5Q287,617 256,606Q225,595 200,581L200,680Q205,695 231.5,709Q258,723 298,734.5Q338,746 386,753Q434,760 480,760Z" />
                                 </svg>
                             </div>
-                            <div class="order-3 md:order-3 md:w-5/12"></div>
-                        </div>
-
-
-                        <div
-                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
-                            <div class="hidden md:block order-1 md:w-5/12"></div>
-                            <div
-                                class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black shadow-lg group-hover:scale-110 transition-transform">
-                                <svg class="w-8 h-8 text-[#0a1c76]" fill="currentColor" viewBox="0 0 960 960">
-                                    <path
-                                        d="M226,401L304,434Q318,406 333,380Q348,354 366,328L310,317Q310,317 310,317Q310,317 310,317L226,401ZM368,484L482,597Q524,581 572,548Q620,515 662,473Q732,403 771.5,317.5Q811,232 806,160Q734,155 648,194.5Q562,234 492,304Q450,346 417,394Q384,442 368,484ZM523,362.5Q523,329 546,306Q569,283 603,283Q637,283 660,306Q683,329 683,362.5Q683,396 660,419Q637,442 603,442Q569,442 546,419Q523,396 523,362.5ZM565,740L649,656Q649,656 649,656Q649,656 649,656L638,600Q612,618 586,632.5Q560,647 532,661L565,740ZM878,87Q897,208 854.5,322.5Q812,437 708,541Q708,541 708,541Q708,541 708,541L728,640Q732,660 726,679Q720,698 706,712L538,880L454,683L283,512L86,428L253,260Q267,246 286.5,240Q306,234 326,238L425,258Q425,258 425,258Q425,258 425,258Q529,154 643,111Q757,68 878,87ZM157,639Q192,604 242.5,603.5Q293,603 328,638Q363,673 362.5,723.5Q362,774 327,809Q302,834 243.5,852Q185,870 82,884Q96,781 114,722.5Q132,664 157,639ZM214,695Q204,705 194,731.5Q184,758 180,785Q207,781 233.5,771.5Q260,762 270,752Q282,740 283,723Q284,706 272,694Q260,682 243,682.5Q226,683 214,695Z" />
-                                </svg>
-                            </div>
                             <div class="order-2 md:order-3 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
                                 <div
                                     class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
-                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_fullstack_title">O Caminho para o Full Stack
-                                    </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word" data-i18n="timeline_fullstack_description">Hoje desenvolvo
-                                        microsserviços
-                                        avançados
-                                        com Docker, JWT e análise com SonarQube. Agora meu foco é o Front-End
-                                        (JavaScript / Tailwind / React / Angular) para me tornar finalmente um
-                                        Desenvolvedor
-                                        Full Stack.</p>
+                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_dsa_title">Monitoria de Estruturas de Dados I — IFS</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word" data-i18n="timeline_dsa_description">Orientação a estudantes na implementação e manipulação de diferentes estruturas de dados lineares e não lineares: listas encadeadas, pilhas, filas, árvores binárias e tabelas hash, com foco em alocação de memória e organização de dados.</p>
                                 </div>
                             </div>
                         </div>
@@ -2804,10 +2706,25 @@
                         <div
                             class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
                             <div class="order-2 md:order-1 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
-                                <div class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative flex items-center justify-center">
-                                    <h3 class="text-2xl font-bold text-primary m-0 text-center" data-i18n="timeline_evolution">Sempre em evolução...</h3>
+                                <div
+                                    class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative">
+                                    <h3 class="text-2xl font-bold mb-3 text-primary" data-i18n="timeline_production_title">Engenharia em Produção: Concorrência e Mensageria (2026)</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 wrap-break-word" data-i18n="timeline_production_description">Atuação no mercado desenvolvendo aplicações em produção com arquitetura de microsserviços, processamento assíncrono com filas (BullMQ e Amazon SQS), controle transacional de concorrência e idempotência com Redis.</p>
                                 </div>
                             </div>
+                            <div
+                                class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black shadow-lg group-hover:scale-110 transition-transform">
+                                <svg class="w-8 h-8 text-[#0a1c76]" fill="currentColor" viewBox="0 0 960 960">
+                                    <path
+                                        d="M226,401L304,434Q318,406 333,380Q348,354 366,328L310,317Q310,317 310,317Q310,317 310,317L226,401ZM368,484L482,597Q524,581 572,548Q620,515 662,473Q732,403 771.5,317.5Q811,232 806,160Q734,155 648,194.5Q562,234 492,304Q450,346 417,394Q384,442 368,484ZM523,362.5Q523,329 546,306Q569,283 603,283Q637,283 660,306Q683,329 683,362.5Q683,396 660,419Q637,442 603,442Q569,442 546,419Q523,396 523,362.5ZM565,740L649,656Q649,656 649,656Q649,656 649,656L638,600Q612,618 586,632.5Q560,647 532,661L565,740ZM878,87Q897,208 854.5,322.5Q812,437 708,541Q708,541 708,541Q708,541 708,541L728,640Q732,660 726,679Q720,698 706,712L538,880L454,683L283,512L86,428L253,260Q267,246 286.5,240Q306,234 326,238L425,258Q425,258 425,258Q425,258 425,258Q529,154 643,111Q757,68 878,87ZM157,639Q192,604 242.5,603.5Q293,603 328,638Q363,673 362.5,723.5Q362,774 327,809Q302,834 243.5,852Q185,870 82,884Q96,781 114,722.5Q132,664 157,639ZM214,695Q204,705 194,731.5Q184,758 180,785Q207,781 233.5,771.5Q260,762 270,752Q282,740 283,723Q284,706 272,694Q260,682 243,682.5Q226,683 214,695Z" />
+                                </svg>
+                            </div>
+                            <div class="order-3 md:order-3 md:w-5/12"></div>
+                        </div>
+
+                        <div
+                            class="relative flex flex-col md:flex-row justify-between md:items-center w-full group scroll-animate opacity-0 translate-y-12 transition-all duration-1200 ease-out">
+                            <div class="hidden md:block order-1 md:w-5/12"></div>
                             <div
                                 class="z-10 flex items-center justify-center order-1 md:order-2 w-16 h-16 rounded-full self-start md:self-auto border-4 border-[#0a1c76] bg-primary text-[#0a1c76] font-black shadow-lg group-hover:scale-110 transition-transform">
                                 <svg class="w-8 h-8 text-[#0a1c76]" fill="currentColor" viewBox="0 0 960 960">
@@ -2816,9 +2733,13 @@
                                     <circle cx="720" cy="480" r="80" />
                                 </svg>
                             </div>
-                            <div class="hidden md:block order-3 md:order-3 md:w-5/12"></div>
+                            <div class="order-2 md:order-3 md:w-5/12 w-full pl-14 md:pl-0 mt-2 md:mt-0">
+                                <div class="bg-white/5 rounded-2xl border border-slate-700/50 p-6 md:p-8 shadow-lg hover:border-primary/50 transition-colors relative flex items-center justify-center">
+                                    <h3 class="text-2xl font-bold text-primary m-0 text-center" data-i18n="timeline_evolution">Sempre em evolução...</h3>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </div></div>
             </section>
 
 
@@ -2827,7 +2748,7 @@
                 id="skills">
                 <div class="max-w-7xl mx-auto px-4 md:px-6">
                     <div class="text-center mb-16">
-                        <h2 class="text-3xl font-bold mb-4" data-i18n="skills_title">Minhas Habilidades</h2>
+                        <h2 class="text-3xl font-bold mb-4" data-i18n="skills_title">Habilidades & Fundamentos</h2>
                         <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
@@ -2843,7 +2764,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="Spring Boot" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center" data-i18n="skills_backend">Java & Spring Boot</span>
+                            <span class="font-bold text-center" data-i18n="skills_backend">Backend & Concorrência</span>
                             <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
                                 <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
                             </svg>
@@ -2860,7 +2781,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="Bancos Não Relacionais (NoSQL)" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center" data-i18n="skills_db">SQL & NoSQL</span>
+                            <span class="font-bold text-center" data-i18n="skills_db">Bancos de Dados & Redis</span>
                             <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
                                 <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
                             </svg>
@@ -2877,7 +2798,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="Git / CI/CD" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center" data-i18n="skills_devops">Docker & CI/CD</span>
+                            <span class="font-bold text-center" data-i18n="skills_devops">Docker & Mensageria</span>
                             <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
                                 <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
                             </svg>
@@ -2894,7 +2815,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="Tailwind CSS" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center" data-i18n="skills_frontend">Front-End & Design</span>
+                            <span class="font-bold text-center" data-i18n="skills_frontend">Front-End & UI Reativa</span>
                             <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
                                 <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
                             </svg>
@@ -2909,7 +2830,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="Resend (Email Service)" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center" data-i18n="skills_services">Integrações & Serviços</span>
+                            <span class="font-bold text-center" data-i18n="skills_services">Integrações & Webhooks</span>
                             <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
                                 <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
                             </svg>
@@ -2941,7 +2862,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="JWT / JSON" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center" data-i18n="skills_apis">APIs REST & JWT</span>
+                            <span class="font-bold text-center" data-i18n="skills_apis">APIs REST & Idempotência</span>
                             <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
                                 <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
                             </svg>
@@ -2958,7 +2879,7 @@
                                     class="w-12 h-12 md:w-14 md:h-14 drop-shadow-md hover:drop-shadow-xl transition-all"
                                     title="SonarQube" width="56" height="56" loading="lazy">
                             </div>
-                            <span class="font-bold text-center" data-i18n="skills_quality">Testes & Qualidade</span>
+                            <span class="font-bold text-center" data-i18n="skills_quality">Testes & Qualidade de Código</span>
                             <svg class="shrink-0 text-slate-500 group-hover:text-primary transition-colors" style="position: absolute !important; bottom: 12px !important; right: 12px !important; width: 18px; height: 18px;" fill="currentColor" viewBox="120 120 720 720" title="Clique para expandir">
                                 <path d="M120,840L120,520L200,520L200,704L704,200L520,200L520,120L840,120L840,440L760,440L760,256L256,760L440,760L440,840L120,840Z" />
                             </svg>
@@ -2973,7 +2894,7 @@
                 <div class="flex justify-between items-end mb-16">
                     <div>
                         <h2 class="text-4xl font-black mb-4" data-i18n="projects_title">Projetos em Destaque</h2>
-                        <p class="text-slate-600 dark:text-slate-400" data-i18n="projects_subtitle">Alguns dos meus trabalhos e projetos pessoais.</p>
+                        <p class="text-slate-600 dark:text-slate-400" data-i18n="projects_subtitle">Projetos reais com foco em desafios de engenharia, concorrência e consistência de dados.</p>
                     </div>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8">
@@ -2983,7 +2904,7 @@
                         <div class="p-6 grow flex flex-col">
                             <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors" data-i18n="project_scheduler_title">Agendador de Tarefas Full-Stack</h3>
                             <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow" data-i18n="project_scheduler_desc">
-                                Aplicação Full-Stack com Front-End moderno em React e Vite, integrada a uma API REST em Java e Spring Boot. Possui autenticação JWT, integração com PostgreSQL, e ampla cobertura de testes unitários com JUnit e Mockito. Analisada via SonarQube para qualidade de código.
+                                Aplicação Full-Stack com separação estrita de camadas e foco em testabilidade. Possui autenticação stateless JWT, integração com PostgreSQL via Docker e cobertura abrangente de testes unitários com JUnit e Mockito, auditada via SonarQube para assegurar zero code smells e alta manutenibilidade.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-6">
                                 <span
@@ -3006,7 +2927,7 @@
                                     <svg class="shrink-0" style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 960 960">
                                         <path
                                             d="M320,720L80,480L320,240L377,297L193,481L376,664L320,720ZM640,720L583,663L767,479L584,296L640,240L880,480L640,720Z" />
-                                    </svg> Ver Código GitHub
+                                    </svg> <span data-i18n="project_view_github">Ver Código GitHub</span>
                                 </a>
                             </div>
                         </div>
@@ -3015,24 +2936,32 @@
                     <div
                         class="project-card group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20">
                         <div class="p-6 grow flex flex-col">
-                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors" data-i18n="project_pets_title">Sistema de
-                                Adoção de Pets (CLI)</h3>
-                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow" data-i18n="project_pets_desc">
-                                CRUD básico CLI para cadastro e gerenciamento de pets utilizando persistência de dados
-                                em arquivos locais. Feito a partir de boas práticas aplicando os princípios SOLID.
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors" data-i18n="project_clinic_title">Sistema de Gestão Clínica e Financeira</h3>
+                            <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow" data-i18n="project_clinic_desc">
+                                Aplicação corporativa Full-Stack para gestão administrativa, financeira e operacional. Implementa controle rigoroso de concorrência em agendamentos via transações no PostgreSQL, mecanismos de idempotência com Redis para evitar requisições duplicadas e processamento assíncrono resiliente a falhas com BullMQ.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-6">
                                 <span
-                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">Java</span>
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">TypeScript</span>
                                 <span
-                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">CLI</span>
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">NestJS</span>
                                 <span
-                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">SOLID</span>
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">React</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">PostgreSQL</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">Prisma</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">Redis</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">BullMQ</span>
+                                <span
+                                    class="text-[10px] px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20 font-bold">Docker</span>
                             </div>
                             <div class="flex gap-4 mt-auto">
-                                <a href="https://github.com/Ja0Santana/Sistema_de_adocao_para_pets" target="_blank"
+                                <a href="https://github.com/Ja0Santana" target="_blank"
                                     rel="noopener noreferrer"
-                                    aria-label="Ver Código do projeto Sistema de Adoção de Pets no GitHub"
+                                    aria-label="Ver Código do projeto Sistema de Gestão Clínica no GitHub"
                                     class="bg-white/5 text-slate-300 px-5 py-2.5 rounded-xl font-bold text-sm border border-slate-700/50 hover:border-primary/50 hover:bg-white/10 transition-all flex items-center gap-2"
                                     style="white-space: nowrap; width: max-content;">
                                     <svg class="shrink-0" style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 960 960">
@@ -3048,13 +2977,10 @@
                     <div
                         class="project-card group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20">
                             <div class="p-6 grow flex flex-col">
-                                <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors" data-i18n="project_wedding_title">Site de
-                                    Casamento Premium</h3>
-                                <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow" data-i18n="project_wedding_desc">
-                                    Plataforma completa com lista de presentes interativa, integração real com
-                                    MercadoPago (PIX/Cartão),
-                                    sistema de validação de segurança via e-mail e design responsivo de alto nível.
-                                    <span class="block mt-2 font-medium text-primary">Hospedado na Vercel (Frontend) e
+                                <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors" data-i18n="project_wedding_title">Plataforma de Pagamentos em Produção</h3>
+                                <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow">
+                                    <span data-i18n="project_wedding_desc">Plataforma web em produção utilizada com recebimento real de transações financeiras via Mercado Pago. Focada em integridade transacional, consumo assíncrono de Webhooks com retentativas, validação de segurança via e-mail e persistência ACID com PostgreSQL.</span>
+                                    <span class="block mt-2 font-medium text-primary" data-i18n="project_wedding_host">Hospedado na Vercel (Frontend) e
                                         no Railway (Backend).</span>
                                 </p>
                                 <div class="flex flex-wrap gap-2 mb-6">
@@ -3100,9 +3026,9 @@
                     <div
                         class="project-card group rounded-2xl overflow-hidden flex flex-col bg-white/5 hover:bg-white/10 transition-colors shadow-lg hover:shadow-primary/5 border border-transparent hover:border-primary/20">
                         <div class="p-6 grow flex flex-col">
-                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors" data-i18n="project_synfonia_title">Synfonia - Immersive Music Experience</h3>
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors" data-i18n="project_synfonia_title">Synfonia — Plataforma Musical Imersiva</h3>
                             <p class="text-base text-slate-600 dark:text-slate-400 mb-6 grow" data-i18n="project_synfonia_desc">
-                                Plataforma de música premium focada em imersão e performance. Apresenta UI dinâmica com Framer Motion, Glassmorphism, e integração profunda com a API do Spotify (OAuth). O back-end conta com banco de dados híbrido (PostgreSQL + MongoDB) e blindagem de segurança (Bucket4j, proteção contra IDOR).
+                                Plataforma de mídia premium focada em segurança defensiva e performance. Apresenta Rate Limiting via Bucket4j, blindagem contra vulnerabilidades IDOR/BOLA, persistência híbrida (PostgreSQL para integridade relacional e MongoDB para documentos) e autenticação segura via OAuth2 com Spotify.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-6">
                                 <span
@@ -3124,7 +3050,7 @@
                                     <svg class="shrink-0" style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 960 960">
                                         <path
                                             d="M325,848.5Q252,817 197.5,762.5Q143,708 111.5,635Q80,562 80,479.5Q80,397 111.5,324.5Q143,252 197.5,197.5Q252,143 325,111.5Q398,80 480.5,80Q563,80 635.5,111.5Q708,143 762.5,197.5Q817,252 848.5,324.5Q880,397 880,479.5Q880,562 848.5,635Q817,708 762.5,762.5Q708,817 635.5,848.5Q563,880 480.5,880Q398,880 325,848.5ZM480,798Q506,762 525,723Q544,684 556,640L404,640Q416,684 435,723Q454,762 480,798ZM376,782Q358,749 344.5,713.5Q331,678 322,640L204,640Q233,690 276.5,727Q320,764 376,782ZM584,782Q640,764 683.5,727Q727,690 756,640L638,640Q629,678 615.5,713.5Q602,749 584,782ZM170,560L306,560Q303,540 301.5,520.5Q300,501 300,480Q300,459 301.5,439.5Q303,420 306,400L170,400Q165,420 162.5,439.5Q160,459 160,480Q160,501 162.5,520.5Q165,540 170,560ZM386,560L574,560Q577,540 578.5,520.5Q580,501 580,480Q580,459 578.5,439.5Q577,420 574,400L386,400Q383,420 381.5,439.5Q380,459 380,480Q380,501 381.5,520.5Q383,540 386,560ZM654,560L790,560Q795,540 797.5,520.5Q800,501 800,480Q800,459 797.5,439.5Q795,420 790,400L654,400Q657,420 658.5,439.5Q660,459 660,480Q660,501 658.5,520.5Q657,540 654,560ZM638,320L756,320Q727,270 683.5,233Q640,196 584,178Q602,211 615.5,246.5Q629,282 638,320ZM404,320L556,320Q544,276 525,237Q506,198 480,162Q454,198 435,237Q416,276 404,320ZM204,320L322,320Q331,282 344.5,246.5Q358,211 376,178Q320,196 276.5,233Q233,270 204,320Z" />
-                                    </svg> Ver Site
+                                    </svg> <span data-i18n="project_view_site">Ver Site</span>
                                 </a>
                                 <a href="https://github.com/Ja0Santana/Projeto_musicas" target="_blank"
                                     rel="noopener noreferrer" aria-label="Ver Código do projeto Synfonia no GitHub"
@@ -3133,7 +3059,7 @@
                                     <svg class="shrink-0" style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 960 960">
                                         <path
                                             d="M320,720L80,480L320,240L377,297L193,481L376,664L320,720ZM640,720L583,663L767,479L584,296L640,240L880,480L640,720Z" />
-                                    </svg> Ver Código GitHub
+                                    </svg> <span data-i18n="project_view_github">Ver Código GitHub</span>
                                 </a>
                             </div>
                         </div>
@@ -3325,7 +3251,7 @@
     </div>
 
 
-    <div id="certModal"
+    <div id="certModal" role="dialog" aria-modal="true" aria-labelledby="modal-cert-title"
         class="fixed inset-0 z-100 hidden flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-opacity duration-300 opacity-0 px-4 py-6">
 
 
@@ -3348,7 +3274,7 @@
                     <path
                         d="M387,548L422,434L330,360L444,360L480,248L516,360L630,360L537,434L572,548L480,477L387,548ZM240,920L240,611Q202,569 181,515Q160,461 160,400Q160,266 253,173Q346,80 480,80Q614,80 707,173Q800,266 800,400Q800,461 779,515Q758,569 720,611L720,920L480,840L240,920ZM650,570Q720,500 720,400Q720,300 650,230Q580,160 480,160Q380,160 310,230Q240,300 240,400Q240,500 310,570Q380,640 480,640Q580,640 650,570ZM320,801L480,760L640,801L640,677Q605,697 564.5,708.5Q524,720 480,720Q436,720 395.5,708.5Q355,697 320,677L320,801ZM480,739L480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739Q480,739 480,739L480,739L480,739Z" />
                 </svg>
-                <h2 class="text-white text-3xl md:text-5xl font-bold text-center" data-i18n="modal_certificate">Certificado</h2>
+                <h2 id="modal-cert-title" class="text-white text-3xl md:text-5xl font-bold text-center" data-i18n="modal_certificate">Certificado</h2>
             </div>
 
 
@@ -3392,13 +3318,13 @@
             <svg style="width: 14px; height: 14px; display: block;" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
           </button>
           <div class="skills-tabs-container" id="skills-tabs-wrapper" style="margin-bottom: 0;">
-            <button data-skills-tab="backend" class="skills-modal-tab-btn" data-i18n="skills_tab_backend">Backend</button>
-            <button data-skills-tab="frontend" class="skills-modal-tab-btn" data-i18n="skills_tab_frontend">Frontend</button>
-            <button data-skills-tab="database" class="skills-modal-tab-btn" data-i18n="skills_tab_database">Banco de Dados</button>
-            <button data-skills-tab="devops" class="skills-modal-tab-btn" data-i18n="skills_tab_devops">DevOps</button>
+            <button data-skills-tab="backend" class="skills-modal-tab-btn" data-i18n="skills_tab_backend">Backend & Concorrência</button>
+            <button data-skills-tab="frontend" class="skills-modal-tab-btn" data-i18n="skills_tab_frontend">Frontend & UI</button>
+            <button data-skills-tab="database" class="skills-modal-tab-btn" data-i18n="skills_tab_database">Banco de Dados & Cache</button>
+            <button data-skills-tab="devops" class="skills-modal-tab-btn" data-i18n="skills_tab_devops">DevOps & Mensageria</button>
             <button data-skills-tab="integrations" class="skills-modal-tab-btn" data-i18n="skills_tab_integrations">Integrações</button>
             <button data-skills-tab="cloud" class="skills-modal-tab-btn" data-i18n="skills_tab_cloud">Cloud</button>
-            <button data-skills-tab="apis" class="skills-modal-tab-btn" data-i18n="skills_tab_apis">APIs REST</button>
+            <button data-skills-tab="apis" class="skills-modal-tab-btn" data-i18n="skills_tab_apis">APIs & Segurança</button>
             <button data-skills-tab="testing" class="skills-modal-tab-btn" data-i18n="skills_tab_testing">Testes & Qualidade</button>
           </div>
           <button id="skills-tab-next" class="skills-tab-nav-btn" aria-label="Próximo" title="Próximo">

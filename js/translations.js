@@ -1,5 +1,6 @@
 const translations = {
     pt: {
+        page_title: "DevPortfolio | João Paulo - Engenheiro de Software Full-Stack",
         nav_about: "Sobre",
         nav_timeline: "Trajetória",
         nav_skills: "Habilidades",
@@ -7,144 +8,141 @@ const translations = {
         nav_certificates: "Certificados",
         nav_contact: "Entrar em contato",
         hero_greeting: "Olá, eu sou João Paulo,",
-        hero_role: "Desenvolvedor Full-Stack",
-        hero_description: "Construo APIs escaláveis com Java e Spring Boot, focado em conteinerização e em manter altos padrões de qualidade de código.",
+        hero_role: "Engenheiro de Software | Full-Stack Developer",
+        hero_description: "Construo sistemas distribuídos e APIs resilientes, com foco em processamento assíncrono, integridade de dados, controle de concorrência e idempotência — aplicando engenharia de software sólida e agnóstica à stack.",
         hero_projects_btn: "Ver meus projetos",
         hero_contact_btn: "Entrar em contato",
         about_title: "Sobre Mim",
-        about_description1: "Sou estudante de Sistemas de Informação no IFS e desenvolvedor Full-Stack. Embora minha base seja a robustez do Back-End com Java e Spring Boot, transformo código em experiências visuais de alto nível, unindo estética e funcionalidade.",
-        about_description2: "Foco na construção de soluções Full Stack completas, desde APIs escaláveis e microsserviços até interfaces modernas e responsivas. Minha missão é entregar projetos que não apenas funcionem com perfeição técnica, mas que também encantem pelo design e usabilidade.",
+        about_description1: "Sou estudante de Sistemas de Informação no IFS, monitor acadêmico de Programação Orientada a Objetos e de Estruturas de Dados, e atuo no desenvolvimento de software em produção. Minha engenharia é guiada por fundamentos: algoritmos eficientes, análise de complexidade (Big-O), arquitetura limpa e testes automatizados rigorosos.",
+        about_description2: "Atuo desde a concepção de arquiteturas backend resilientes — com mensageria, filas assíncronas, caching com Redis e bancos relacionais/NoSQL — até interfaces web modernas e reativas. Meu objetivo não é apenas usar ferramentas, mas resolver problemas reais de concorrência, consistência transacional e performance com rigor técnico.",
         timeline_title: "Minha Trajetória",
-        timeline_2020_title: "Primeiros Passos com HTML e CSS",
-        timeline_2020_description: "Meu contato inicial com a programação aconteceu em 2020. Através das famosas aulas do Gustavo Guanabara, escrevi minhas primeiras linhas de código em HTML e CSS. Foi ali que a semente do desenvolvimento de software foi plantada.",
-        timeline_2025_title: "Bacharelado no IFS",
-        timeline_2025_description: "Após um período focado em outras áreas, voltei a ter contato com código de forma intensa ao ingressar no curso de Sistemas de Informação no Instituto Federal de Sergipe (IFS). A programação deixou de apenas curiosidade e virou minha futura profissão.",
-        timeline_java_title: "Explorando o Ecossistema Java",
-        timeline_java_description: "Minha primeira imersão acadêmica e profissional foi no Back-End com Java. Criei projetos estruturados, como o Sistema de Adoção de Pets (CLI), onde pude aplicar na prática princípios SOLID e boas práticas de Orientação a Objetos.",
-        timeline_campus_title: "Campus Weekend Aracaju",
-        timeline_campus_description: "Participação na Campus Weekend. Uma experiência incrível onde tive a oportunidade de conhecer pessoalmente o professor que iniciou minha trajetória na programação!",
-        timeline_spring_title: "Spring Boot e Banco de Dados",
-        timeline_spring_description: "Busquei especialização conquistando certificações em Banco de Dados e Metodologias Ágeis pela Javanauta. Dominei o framework Spring Boot para construir APIs RESTful robustas, fazendo integrações com bancos como PostgreSQL e MongoDB.",
-        timeline_fullstack_title: "O Caminho para o Full Stack",
-        timeline_fullstack_description: "Hoje desenvolvo microsserviços avançados com Docker, JWT e análise com SonarQube. Agora meu foco é o Front-End (JavaScript / Tailwind / React / Angular) para me tornar finalmente um Desenvolvedor Full Stack.",
+        timeline_2020_title: "Primeiros Passos com Programação & Lógica",
+        timeline_2020_description: "Meu contato inicial com computação aconteceu em 2020, quando escrevi minhas primeiras linhas de código e construí as bases da lógica de programação e algoritmos fundamentais.",
+        timeline_2025_title: "Bacharelado em Sistemas de Informação — IFS",
+        timeline_2025_description: "Ingresso no Instituto Federal de Sergipe (IFS). O estudo sistemático de computação teórica, sistemas operacionais, banco de dados e arquitetura de software transformou a paixão por tecnologia em formação de engenharia sólida.",
+        timeline_poo_title: "Monitoria de Programação Orientada a Objetos — IFS",
+        timeline_poo_description: "Atuação oficial prestando suporte técnico a alunos de graduação em Java, aprofundando o ensino de princípios SOLID, Clean Code, abstração, herança/polimorfismo e design patterns para sistemas corporativos.",
+        timeline_dsa_title: "Monitoria de Estruturas de Dados I — IFS",
+        timeline_dsa_description: "Orientação a estudantes na implementação e manipulação de diferentes estruturas de dados lineares e não lineares: listas encadeadas, pilhas, filas, árvores binárias e tabelas hash, com foco em alocação de memória e organização de dados.",
+        timeline_production_title: "Engenharia em Produção: Concorrência e Mensageria (2026)",
+        timeline_production_description: "Atuação no mercado desenvolvendo aplicações em produção com arquitetura de microsserviços, processamento assíncrono com filas (BullMQ e Amazon SQS), controle transacional de concorrência e idempotência com Redis.",
         timeline_evolution: "Sempre em evolução...",
-        skills_title: "Habilidades & Tecnologias",
-        skills_backend: "Back-End & Core",
-        skills_frontend: "Front-End & UI",
-        skills_tools: "Ferramentas & DevOps",
+        skills_title: "Habilidades & Fundamentos",
+        skills_backend: "Backend & Concorrência",
+        skills_db: "Bancos de Dados & Redis",
+        skills_devops: "Docker & Mensageria",
+        skills_frontend: "Front-End & UI Reativa",
+        skills_services: "Integrações & Webhooks",
+        skills_cloud: "Cloud & Deployment",
+        skills_apis: "APIs REST & Idempotência",
+        skills_quality: "Testes & Qualidade de Código",
+        skills_click_hint: "Clique para ver uso prático →",
+        skills_modal_subtitle: "Aplicação prática desses fundamentos e tecnologias em projetos reais",
+        skills_applied_projects: "Projetos relacionados:",
+        skills_tab_backend: "Backend & Concorrência",
+        skills_tab_frontend: "Frontend & UI",
+        skills_tab_database: "Banco de Dados & Cache",
+        skills_tab_devops: "DevOps & Mensageria",
+        skills_tab_integrations: "Integrações",
+        skills_tab_cloud: "Cloud",
+        skills_tab_apis: "APIs & Segurança",
+        skills_tab_testing: "Testes & Qualidade",
         projects_title: "Projetos em Destaque",
-        projects_view_code: "Ver Código",
-        projects_view_live: "Live Demo",
-        certificates_title: "Certificados",
-        certificates_view: "Abrir na Web",
-        contact_title: "Contato",
-        contact_email: "Email",
-        contact_linkedin: "LinkedIn",
-        contact_location: "Bahia, Brasil",
-        footer_rights: "© 2026 João Paulo Santana. Todos os direitos reservados.",
-        modal_certificate: "Certificado",
-        modal_close: "Fechar (Esc)",
+        projects_subtitle: "Projetos reais com foco em desafios de engenharia, concorrência e consistência de dados.",
         project_scheduler_title: "Agendador de Tarefas Full-Stack",
-        project_scheduler_desc: "Aplicação Full-Stack com Front-End moderno em React e Vite, integrada a uma API REST em Java e Spring Boot. Possui autenticação JWT, integração com PostgreSQL, e ampla cobertura de testes unitários com JUnit e Mockito. Analisada via SonarQube para qualidade de código.",
-        project_pets_title: "Sistema de Adoção de Pets (CLI)",
-        project_pets_desc: "Sistema robusto de gerenciamento de adoção de pets via Linha de Comando (CLI). Desenvolvido em Java utilizando princípios SOLID, Clean Code e gerenciamento eficiente de estruturas de dados.",
-        project_wedding_title: "Site de Casamento Premium",
-        project_wedding_desc: "Plataforma completa com lista de presentes interativa, integração real com MercadoPago (PIX/Cartão), sistema de validação de segurança via e-mail e design responsivo de alto nível.",
-        project_synfonia_title: "Synfonia - Immersive Music Experience",
-        project_synfonia_desc: "Plataforma de música premium focada em imersão e performance. Apresenta UI dinâmica com Framer Motion, Glassmorphism, e integração profunda com a API do Spotify (OAuth). O back-end conta com banco de dados híbrido (PostgreSQL + MongoDB) e blindagem de segurança.",
+        project_scheduler_desc: "Aplicação Full-Stack com separação estrita de camadas e foco em testabilidade. Possui autenticação stateless JWT, integração com PostgreSQL via Docker e cobertura abrangente de testes unitários com JUnit e Mockito, auditada via SonarQube para assegurar zero code smells e alta manutenibilidade.",
+        project_clinic_title: "Sistema de Gestão Clínica e Financeira",
+        project_clinic_desc: "Aplicação corporativa Full-Stack para gestão administrativa, financeira e operacional. Implementa controle rigoroso de concorrência em agendamentos via transações no PostgreSQL, mecanismos de idempotência com Redis para evitar requisições duplicadas e processamento assíncrono resiliente a falhas com BullMQ.",
+        project_wedding_title: "Plataforma de Pagamentos em Produção",
+        project_wedding_desc: "Plataforma web em produção utilizada com recebimento real de transações financeiras via Mercado Pago. Focada em integridade transacional, consumo assíncrono de Webhooks com retentativas, validação de segurança via e-mail e persistência ACID com PostgreSQL.",
+        project_wedding_host: "Hospedado na Vercel (Frontend) e no Railway (Backend).",
+        project_synfonia_title: "Synfonia — Plataforma Musical Imersiva",
+        project_synfonia_desc: "Plataforma de mídia premium focada em segurança defensiva e performance. Apresenta Rate Limiting via Bucket4j, blindagem contra vulnerabilidades IDOR/BOLA, persistência híbrida (PostgreSQL para integridade relacional e MongoDB para documentos) e autenticação segura via OAuth2 com Spotify.",
         project_view_github: "Ver Código GitHub",
         project_view_site: "Ver Site",
         cert_title: "Meus Certificados",
-        cert_subtitle: "Certificações obtidas através do Javanauta.",
+        cert_subtitle: "Certificações acadêmicas e de especialização profissional.",
         cert_agile: "Metodologias Ágeis",
         cert_java_spring: "Java & Spring Boot",
         cert_database: "Banco de Dados",
         cert_frontend_ai: "Front-End com IA",
         cert_web_arch_ai: "Arquitetura Web com IA",
+        contact_title: "Contato",
         contact_email_label: "Email",
         contact_linkedin_label: "LinkedIn",
         contact_location_label: "Bahia, Brasil",
-        skills_db: "SQL & NoSQL",
-        skills_devops: "Docker & CI/CD",
-        skills_services: "Integrações & Serviços",
-        skills_cloud: "Cloud & Deployment",
-        skills_apis: "APIs REST & JWT",
-        skills_quality: "Testes & Qualidade",
-        skills_click_hint: "Clique para ver uso prático →",
-        skills_modal_subtitle: "Como utilizo essas tecnologias no dia a dia",
-        skills_applied_projects: "Projetos relacionados:",
-        skills_tab_backend: "Backend",
-        skills_tab_frontend: "Frontend",
-        skills_tab_database: "Banco de Dados",
-        skills_tab_devops: "DevOps",
+        footer_rights: "© 2026 João Paulo Santana. Todos os direitos reservados.",
+        modal_certificate: "Certificado",
+        modal_close: "Fechar (Esc)",
+        certificates_view: "Abrir na Web",
         skills_categories: {
             backend: {
-                title: "Desenvolvimento Backend",
-                subtitle: "APIs RESTful em Java, segurança JWT, consumo de APIs e persistência",
+                title: "Backend, Concorrência & Arquitetura",
+                subtitle: "Design de APIs RESTful, concorrência, idempotência e microsserviços",
                 icon: "server",
                 items: [
                     {
+                        name: "Controle de Concorrência & Idempotência",
+                        level: "Engenharia Core",
+                        description: "Implementação de bloqueios no banco de dados para prevenção de race conditions/double booking e mecanismos de idempotência com chaves temporizadas em Redis para eliminar requisições duplicadas.",
+                        projects: [
+                            { name: "Sistema de Gestão Clínica", url: "#projects" },
+                            { name: "Plataforma de Casamento", url: "#projects" }
+                        ]
+                    },
+                    {
                         name: "Java 17/21 & Spring Boot 3",
                         level: "Especialização",
-                        description: "Arquitetura limpa em camadas (Controller, Service, Repository), gerenciamento de dependências via Gradle e construção de Web APIs robustas e performáticas.",
+                        description: "Arquitetura em camadas (Controller, Service, Repository), Inversão de Controle (IoC), Spring Data JPA, segurança stateless e construção de Web APIs resilientes e escaláveis.",
                         projects: [
                             { name: "Synfonia Backend", url: "#projects" },
-                            { name: "Site de Casamento Backend", url: "#projects" }
+                            { name: "Plataforma de Casamento", url: "#projects" },
+                            { name: "Agendador Full-Stack", url: "#projects" }
                         ]
                     },
                     {
-                        name: "Spring Security & Autenticação JWT",
-                        level: "Segurança",
-                        description: "Implementação de filtros de autenticação stateless (JwtAuthenticationFilter), geração e validação de tokens JWT, controle de acesso e Rate Limiting para proteção contra abuso.",
+                        name: "TypeScript, Node.js & NestJS",
+                        level: "Produção",
+                        description: "Desenvolvimento de APIs robustas utilizando padrões corporativos, injeção de dependência nativa, validações de payload com Pipes/DTOs e integração ORM com Prisma.",
                         projects: [
-                            { name: "Synfonia Backend", url: "#projects" }
+                            { name: "Sistema de Gestão Clínica", url: "#projects" }
                         ]
                     },
                     {
-                        name: "Spring Data JPA & Hibernate",
-                        level: "Persistência",
-                        description: "Mapeamento O/R de entidades complexas, gerenciamento de transações bancárias/pagamentos, consultas customizadas e integridade referencial.",
-                        projects: [
-                            { name: "Synfonia Backend", url: "#projects" },
-                            { name: "Site de Casamento Backend", url: "#projects" }
-                        ]
+                        name: "Python & FastAPI",
+                        level: "Backend Assíncrono",
+                        description: "Criação de Web APIs assíncronas de alto desempenho com tipagem estática via Pydantic, SQLAlchemy, execução de background jobs e suítes completas de testes automatizados.",
+                        projects: []
                     },
                     {
-                        name: "Integrações REST & Webhooks (RestClient)",
-                        level: "Integrações",
-                        description: "Consumo de APIs externas utilizando Spring RestClient (Spotify Web API, iTunes Search API) e tratamento de Webhooks assíncronos para confirmação de pagamentos em tempo real.",
+                        name: "Princípios SOLID & Clean Code",
+                        level: "Fundamentos",
+                        description: "Aplicação rigorosa de responsabilidade única, aberto/fechado, substituição de Liskov, segregação de interfaces e inversão de dependência em bases de código complexas.",
                         projects: [
-                            { name: "Synfonia Backend", url: "#projects" },
-                            { name: "Site de Casamento Backend", url: "#projects" }
-                        ]
-                    },
-                    {
-                        name: "Serviço de E-mails Transacionais",
-                        level: "Comunicação",
-                        description: "Envio assíncrono de e-mails de confirmação e códigos de verificação com JavaMailSender e templates HTML dinâmicos via Thymeleaf.",
-                        projects: [
-                            { name: "Site de Casamento Backend", url: "#projects" }
+                            { name: "Monitoria POO - IFS", url: "#timeline" },
+                            { name: "Sistema de Gestão Clínica", url: "#projects" }
                         ]
                     }
                 ]
             },
             frontend: {
-                title: "Desenvolvimento Frontend",
-                subtitle: "Interfaces reativas com React, gerenciamento de estado e Tailwind CSS",
+                title: "Front-End & Interfaces Reativas",
+                subtitle: "Arquitetura de componentes reutilizáveis, gerenciamento de estado e UX moderna",
                 icon: "code2",
                 items: [
                     {
-                        name: "React & Vite",
+                        name: "React & TypeScript",
                         level: "Em Produção",
-                        description: "Criação de SPAs modernas, arquitetura baseada em componentes reutilizáveis, roteamento seguro com PrivateRoute e empacotamento ultrarrápido com Vite.",
+                        description: "Construção de SPAs modernas e tipadas, arquitetura orientada a componentes, controle de formulários complexos e consumo eficiente de APIs REST.",
                         projects: [
+                            { name: "Sistema de Gestão Clínica", url: "#projects" },
                             { name: "Synfonia Frontend", url: "#projects" }
                         ]
                     },
                     {
-                        name: "Gerenciamento de Estado (Context API)",
+                        name: "Gerenciamento de Estado (Context API & Hooks)",
                         level: "Arquitetura",
-                        description: "Centralização de estados complexos através de múltiplos contextos (AudioContext, ThemeContext, ImportContext) e hooks customizados (useAudio) para controle de mídia em tempo real.",
+                        description: "Centralização de estados globais através de múltiplos contextos e hooks customizados para sincronização de dados e reprodução multimídia em tempo real.",
                         projects: [
                             { name: "Synfonia Frontend", url: "#projects" }
                         ]
@@ -155,83 +153,102 @@ const translations = {
                         description: "Estilização utilitária avançada, suporte a temas dinâmicos (Dark Mode), componentes acessíveis, animações fluídas e layouts responsivos para mobile e desktop.",
                         projects: [
                             { name: "Synfonia Frontend", url: "#projects" },
-                            { name: "Site de Casamento Frontend", url: "#projects" }
+                            { name: "Plataforma de Casamento", url: "#projects" }
                         ]
                     },
                     {
-                        name: "JavaScript Moderno (ES6+) & DOM",
-                        level: "Linguagem Base",
-                        description: "Manipulação assíncrona com Async/Await, Fetch API, consumo de SDKs de pagamento (Mercado Pago Checkout) e manipulação dinâmica da DOM.",
+                        name: "Comunicação em Tempo Real (Socket.IO)",
+                        level: "Interatividade",
+                        description: "Atualização bidirecional de eventos e sincronização instantânea de estado da aplicação sem necessidade de pooling HTTP.",
                         projects: [
-                            { name: "Site de Casamento Frontend", url: "#projects" }
+                            { name: "Sistema de Gestão Clínica", url: "#projects" }
                         ]
                     }
                 ]
             },
             database: {
-                title: "Bancos de Dados",
-                subtitle: "Modelagem relacional (SQL) e dados orientados a documentos",
+                title: "Bancos de Dados, Cache & Persistência",
+                subtitle: "Modelagem relacional transacional, cache em memória e NoSQL",
                 icon: "database",
                 items: [
                     {
-                        name: "PostgreSQL & MySQL",
-                        level: "Relacional",
-                        description: "Modelagem relacional (DER/MER), relacionamentos (@OneToMany, @ManyToMany), escritas de DDL/DML, integridade de dados e gerenciamento de transações.",
+                        name: "PostgreSQL & Modelagem Relacional (SQL)",
+                        level: "ACID Transacional",
+                        description: "Modelagem entidade-relacionamento (DER), integridade referencial, consultas otimizadas, transações ACID e bloqueios para prevenção de concorrência.",
                         projects: [
-                            { name: "Site de Casamento", url: "#projects" },
+                            { name: "Sistema de Gestão Clínica", url: "#projects" },
+                            { name: "Plataforma de Casamento", url: "#projects" },
                             { name: "Synfonia", url: "#projects" }
                         ]
                     },
                     {
+                        name: "Redis (Cache, Filas & Idempotência)",
+                        level: "Em Memória",
+                        description: "Utilização do Redis como chave-valor de alta velocidade para deduplicação idempotente de requisições, armazenamento de sessões e backend de mensageria.",
+                        projects: [
+                            { name: "Sistema de Gestão Clínica", url: "#projects" }
+                        ]
+                    },
+                    {
                         name: "MongoDB",
-                        level: "NoSQL",
-                        description: "Modelagem orientada a documentos para armazenamento não estruturado, eventos e dados de microsserviços.",
-                        projects: []
+                        level: "NoSQL Documental",
+                        description: "Modelagem orientada a documentos para armazenamento não estruturado de metadados, catálogo de mídias e logs de auditoria.",
+                        projects: [
+                            { name: "Synfonia", url: "#projects" }
+                        ]
                     }
                 ]
             },
             devops: {
-                title: "Ferramentas & DevOps",
-                subtitle: "Containerização, versionamento e automação de CI/CD",
+                title: "DevOps, Mensageria & Infraestrutura",
+                subtitle: "Filas assíncronas, containerização padronizada e automação CI/CD",
                 icon: "wrench",
                 items: [
                     {
+                        name: "Processamento Assíncrono (BullMQ & Amazon SQS)",
+                        level: "Mensageria",
+                        description: "Arquitetura orientada a filas de tarefas em segundo plano com suporte a retentativas exponenciais, dead-letter queues e processamento paralelo distribuído.",
+                        projects: [
+                            { name: "Sistema de Gestão Clínica", url: "#projects" }
+                        ]
+                    },
+                    {
                         name: "Docker & Docker Compose",
                         level: "Ambiente",
-                        description: "Criação de imagens otimizadas para Java/Spring Boot e React, orquestração multi-container para padronização rigorosa entre desenvolvimento e produção.",
+                        description: "Criação de imagens otimizadas para microserviços e orquestração multi-container padronizada entre desenvolvimento, homologação e produção.",
                         projects: [
-                            { name: "Synfonia", url: "#projects" },
-                            { name: "Site de Casamento", url: "#projects" }
+                            { name: "Sistema de Gestão Clínica", url: "#projects" },
+                            { name: "Synfonia", url: "#projects" }
                         ]
                     },
                     {
                         name: "Git & GitHub Actions (CI/CD)",
                         level: "Automação",
-                        description: "Controle de versão com Gitflow e criação de workflows automatizados para validação de build, testes contínuos e deploy automatizado em nuvem.",
+                        description: "Pipelines automatizados de integração contínua (CI) e entrega contínua (CD) para execução de suíte de testes, verificação de build e deploy em nuvem.",
                         projects: [
                             { name: "Synfonia", url: "#projects" },
-                            { name: "Site de Casamento", url: "#projects" }
+                            { name: "Agendador Full-Stack", url: "#projects" }
                         ]
                     }
                 ]
             },
             integrations: {
-                title: "Integrações & Serviços",
-                subtitle: "APIs de terceiros, gateways de pagamento e Webhooks assíncronos",
+                title: "Integrações, Pagamentos & Webhooks",
+                subtitle: "Consumo de Web APIs de terceiros, gateways de pagamento e eventos assíncronos",
                 icon: "plug",
                 items: [
                     {
                         name: "Mercado Pago SDK & Webhooks",
-                        level: "Pagamentos",
-                        description: "Checkout transparente para recebimento via Pix e tratamento assíncrono de notificações de Webhook para confirmação de transações em tempo real no Site de Casamento.",
+                        level: "Pagamentos em Produção",
+                        description: "Checkout transparente com recebimento via Pix e cartão, e tratamento assíncrono tolerante a falhas de notificações de Webhook para liquidação transacional.",
                         projects: [
-                            { name: "Site de Casamento Backend", url: "#projects" }
+                            { name: "Plataforma de Casamento", url: "#projects" }
                         ]
                     },
                     {
-                        name: "Spring RestClient (APIs Spotify & iTunes)",
-                        level: "Web APIs",
-                        description: "Consumo eficiente de Web APIs REST utilizando o RestClient do Spring Boot 3 com fluxo OAuth2 para autenticação no Spotify e consolidação de metadados no Synfonia.",
+                        name: "Spring RestClient & OAuth2 (Spotify API)",
+                        level: "APIs Externas",
+                        description: "Consumo eficiente de Web APIs RESTful com Spring RestClient, fluxo seguro de autenticação OAuth2 e agregação de dados multimídia.",
                         projects: [
                             { name: "Synfonia Backend", url: "#projects" }
                         ]
@@ -239,72 +256,89 @@ const translations = {
                 ]
             },
             cloud: {
-                title: "Cloud & Deployment",
-                subtitle: "Hospedagem em nuvem, plataformas PaaS e entrega contínua",
+                title: "Cloud & Hospedagem",
+                subtitle: "Deploy distribuído, monitoramento de serviços e provisionamento em nuvem",
                 icon: "cloud",
                 items: [
                     {
-                        name: "Azure Static Web Apps & Netlify",
-                        level: "Cloud Frontend",
-                        description: "Hospedagem e distribuição global de aplicações React/SPAs integradas a pipelines de deploy automático acionados a cada commit no repositório.",
+                        name: "Railway & Microsoft Azure",
+                        level: "Cloud Backend",
+                        description: "Implantação e gerenciamento de aplicações backend conteinerizadas via Docker, gerenciamento seguro de secrets/variáveis e bancos gerenciados.",
                         projects: [
-                            { name: "Synfonia Frontend", url: "#projects" }
+                            { name: "Synfonia", url: "#projects" },
+                            { name: "Plataforma de Casamento", url: "#projects" }
                         ]
                     },
                     {
-                        name: "Railway & Cloud Hosting",
-                        level: "Cloud Backend",
-                        description: "Implantação de microsserviços e APIs em Java/Spring Boot containerizadas via Docker, com gerenciamento seguro de variáveis de ambiente e banco PostgreSQL gerenciado.",
+                        name: "Vercel & Netlify",
+                        level: "Cloud Frontend",
+                        description: "Distribuição global e escalabilidade estática de aplicações React/SPAs integradas a pipelines automatizados orientados a Git.",
                         projects: [
-                            { name: "Synfonia Backend", url: "#projects" },
-                            { name: "Site de Casamento Backend", url: "#projects" }
+                            { name: "Plataforma de Casamento", url: "#projects" }
                         ]
                     }
                 ]
             },
             apis: {
-                title: "APIs REST & JWT",
-                subtitle: "Segurança de endpoints, documentação e contratos DTO",
+                title: "APIs REST, Idempotência & Segurança",
+                subtitle: "Design de contratos, segurança defensiva e mitigação de vulnerabilidades",
                 icon: "key",
                 items: [
                     {
-                        name: "Spring Security & Autenticação JWT",
-                        level: "Segurança",
-                        description: "Implementação de arquitetura de segurança stateless (JwtAuthenticationFilter), emissão e validação de tokens JWT, controle de acessos por rota e proteção contra abusos via Rate Limiting.",
+                        name: "Mecanismos de Idempotência",
+                        level: "Confiabilidade",
+                        description: "Implementação de cabeçalhos de idempotência com controle de ciclo de vida no Redis para garantir que requisições repetidas não causem mutações duplicadas.",
                         projects: [
-                            { name: "Synfonia Backend", url: "#projects" }
+                            { name: "Sistema de Gestão Clínica", url: "#projects" }
                         ]
                     },
                     {
-                        name: "Postman & Testes de Endpoints",
-                        level: "Validação",
-                        description: "Construção de coleções organizadas de requisições, validação de contratos de payloads DTO de entrada/saída, verificação de cabeçalhos e automação de testes de APIs.",
+                        name: "Segurança Stateless (JWT, Argon2 & RBAC)",
+                        level: "Segurança Defensiva",
+                        description: "Arquitetura de autenticação stateless com tokens JWT, hashing seguro de senhas com Argon2, controle de acesso baseado em papéis (RBAC) e proteção contra IDOR/BOLA.",
                         projects: [
                             { name: "Synfonia Backend", url: "#projects" },
-                            { name: "Site de Casamento Backend", url: "#projects" }
+                            { name: "Sistema de Gestão Clínica", url: "#projects" }
+                        ]
+                    },
+                    {
+                        name: "Rate Limiting & Mitigação de Abusos",
+                        level: "Proteção de Borda",
+                        description: "Implementação de limitação de taxa de requisições por IP e usuário (Token Bucket com Bucket4j) para defesa contra ataques de negação de serviço e scraping.",
+                        projects: [
+                            { name: "Synfonia Backend", url: "#projects" }
                         ]
                     }
                 ]
             },
             testing: {
-                title: "Testes & Qualidade",
-                subtitle: "Testes unitários automatizados e análise estática de código",
+                title: "Testes Automatizados & Qualidade de Software",
+                subtitle: "Pirâmide de testes, cobertura contínua e análise estática de código",
                 icon: "flaskConical",
                 items: [
                     {
                         name: "JUnit 5 & Mockito",
-                        level: "Testes Unitários",
-                        description: "Desenvolvimento de testes unitários para validação de regras de negócio na camada de serviço, isolamento de dependências de banco com Mocks e aplicação do padrão AAA.",
+                        level: "Testes Unitários & Integração",
+                        description: "Desenvolvimento de suítes de testes unitários e de integração em Java, isolamento de dependências com Mocks e aplicação estrita do padrão AAA (Arrange, Act, Assert).",
                         projects: [
-                            { name: "Synfonia Backend", url: "#projects" }
+                            { name: "Synfonia Backend", url: "#projects" },
+                            { name: "Agendador Full-Stack", url: "#projects" }
                         ]
                     },
                     {
-                        name: "SonarQube & Qualidade de Código",
-                        level: "Qualidade",
-                        description: "Análise estática contínua de código para acompanhamento de métricas de cobertura de testes, detecção de vulnerabilidades de segurança, correção de bugs e eliminação de code smells.",
+                        name: "Jest, Vitest & Pytest",
+                        level: "Testes Automatizados",
+                        description: "Criação de testes unitários e de integração em Node/TypeScript e Python com foco em cobertura de regras de negócio, mocks de serviços externos e testes E2E.",
                         projects: [
-                            { name: "Synfonia Backend", url: "#projects" }
+                            { name: "Sistema de Gestão Clínica", url: "#projects" }
+                        ]
+                    },
+                    {
+                        name: "SonarQube & Análise Estática",
+                        level: "Qualidade Contínua",
+                        description: "Inspeção estática contínua de código para controle de métricas de cobertura, eliminação de code smells, débito técnico e prevenção de vulnerabilidades de segurança.",
+                        projects: [
+                            { name: "Agendador Full-Stack", url: "#projects" }
                         ]
                     }
                 ]
@@ -312,109 +346,149 @@ const translations = {
         }
     },
     en: {
+        page_title: "DevPortfolio | João Paulo - Full-Stack Software Engineer",
         nav_about: "About",
         nav_timeline: "Timeline",
         nav_skills: "Skills",
         nav_projects: "Projects",
         nav_certificates: "Certificates",
-        nav_contact: "Contact",
-        nav_resume: "Resume",
-        hero_role: "Full-Stack Developer",
-        hero_tagline: "Building scalable Web APIs with Java & Spring Boot, and modern interfaces with React & Tailwind CSS.",
-        hero_available: "Available for new opportunities",
-        hero_view_projects: "View Projects",
-        hero_contact_btn: "Get in Touch",
+        nav_contact: "Get in touch",
+        hero_greeting: "Hello, I am João Paulo,",
+        hero_role: "Software Engineer | Full-Stack Developer",
+        hero_description: "Building resilient distributed systems and APIs, focused on asynchronous processing, data integrity, concurrency control, and idempotency — applying solid, stack-agnostic software engineering.",
+        hero_projects_btn: "View my projects",
+        hero_contact_btn: "Get in touch",
         about_title: "About Me",
-        about_p1: "Full-Stack Developer focused on building robust Web APIs and modern web applications. Specialized in Java 17/21 and Spring Boot, creating RESTful architectures with high performance, security, and testability.",
-        about_p2: "On the front-end, I build reactive, accessible, user-friendly interfaces using React, JavaScript, and Tailwind CSS. I also have experience with relational database modeling (PostgreSQL/MySQL), Docker containerization, and automated CI/CD pipelines.",
-        about_stat_exp: "Years Experience",
-        about_stat_projects: "Completed Projects",
-        about_stat_certs: "Certifications",
-        skills_title: "Skills & Technologies",
-        skills_subtitle: "Technologies I master and apply in software development",
-        skills_backend: "Java & Spring Boot",
-        skills_db: "SQL & Databases",
-        skills_devops: "Docker & CI/CD",
-        skills_frontend: "Front-End & Design",
-        skills_services: "Integrations & Services",
+        about_description1: "I am an Information Systems undergraduate at IFS, an academic teaching assistant in Object-Oriented Programming and Data Structures, and an active software developer building production systems. My engineering is driven by core computer science fundamentals: efficient algorithms, Big-O complexity analysis, clean architecture patterns, and thoroughly tested code.",
+        about_description2: "I work across the full lifecycle: from architecting resilient backends — using message queues, asynchronous processing, Redis caching, and relational/NoSQL databases — to modern, reactive web interfaces. My focus goes beyond specific tools: solving real-world challenges in concurrency, transactional consistency, and system performance with technical rigor.",
+        timeline_title: "My Journey",
+        timeline_2020_title: "First Steps with Programming & Logic",
+        timeline_2020_description: "My initial immersion into computing happened in 2020, writing my first lines of code and establishing foundational skills in programming logic and core algorithms.",
+        timeline_2025_title: "Bachelor's Degree in Information Systems — IFS",
+        timeline_2025_description: "Enrolled at the Federal Institute of Sergipe (IFS). Systematic study of theoretical computer science, operating systems, databases, and software architecture shaped my engineering mindset.",
+        timeline_poo_title: "Teaching Assistant: Object-Oriented Programming — IFS",
+        timeline_poo_description: "Official undergraduate teaching assistant for Java and OOP at IFS, tutoring students in SOLID principles, Clean Code, abstraction, polymorphism, and architectural design patterns.",
+        timeline_dsa_title: "Teaching Assistant: Data Structures I — IFS",
+        timeline_dsa_description: "Tutoring university students on implementing and manipulating linear and non-linear data structures: linked lists, stacks, queues, binary trees, and hash tables, focusing on memory allocation and data organization.",
+        timeline_production_title: "Production Engineering: Concurrency & Messaging (2026)",
+        timeline_production_description: "Building production-grade applications with microservice architecture, asynchronous queue processing (BullMQ & Amazon SQS), database concurrency control, and Redis idempotency.",
+        timeline_evolution: "Always evolving...",
+        skills_title: "Skills & Fundamentals",
+        skills_backend: "Backend & Concurrency",
+        skills_db: "Databases & Redis",
+        skills_devops: "Docker & Messaging",
+        skills_frontend: "Front-End & Reactive UI",
+        skills_services: "Integrations & Webhooks",
         skills_cloud: "Cloud & Deployment",
-        skills_apis: "REST APIs & JWT",
-        skills_quality: "Testing & Quality",
+        skills_apis: "REST APIs & Idempotency",
+        skills_quality: "Testing & Code Quality",
         skills_click_hint: "Click to view practical usage →",
-        skills_modal_subtitle: "Practical application of these technologies in my projects",
+        skills_modal_subtitle: "Practical application of these fundamentals and technologies in real-world systems",
         skills_applied_projects: "Related projects:",
-        skills_tab_backend: "Backend",
-        skills_tab_frontend: "Frontend",
-        skills_tab_database: "Database",
-        skills_tab_devops: "DevOps",
+        skills_tab_backend: "Backend & Concurrency",
+        skills_tab_frontend: "Frontend & UI",
+        skills_tab_database: "Databases & Cache",
+        skills_tab_devops: "DevOps & Messaging",
+        skills_tab_integrations: "Integrations",
+        skills_tab_cloud: "Cloud",
+        skills_tab_apis: "APIs & Security",
+        skills_tab_testing: "Testing & Quality",
+        projects_title: "Featured Projects",
+        projects_subtitle: "Real-world projects focused on engineering challenges, concurrency, and data consistency.",
+        project_scheduler_title: "Full-Stack Task Scheduler",
+        project_scheduler_desc: "Full-Stack architecture featuring strict separation of concerns and testability. Features stateless JWT authentication, Dockerized PostgreSQL integration, and comprehensive test coverage with JUnit and Mockito, continuously audited via SonarQube for zero code smells and high maintainability.",
+        project_clinic_title: "Clinical & Financial Management Platform",
+        project_clinic_desc: "Full-Stack enterprise platform for administrative, financial, and operational clinic management. Features robust scheduling concurrency control via PostgreSQL transactions, Redis idempotency mechanisms to eliminate duplicate requests, and fault-tolerant background processing with BullMQ.",
+        project_wedding_title: "Production Payment Platform",
+        project_wedding_desc: "Production web platform processing live financial transactions via Mercado Pago. Focused on transactional integrity, fault-tolerant asynchronous webhook consumption with retries, email security verification, and ACID persistence with PostgreSQL.",
+        project_wedding_host: "Hosted on Vercel (Frontend) and Railway (Backend).",
+        project_synfonia_title: "Synfonia — Immersive Audio Platform",
+        project_synfonia_desc: "Premium media platform built for defensive security and performance. Features Token Bucket Rate Limiting (Bucket4j), IDOR/BOLA vulnerability mitigation, hybrid persistence (PostgreSQL for relational integrity and MongoDB for documents), and OAuth2 authentication with Spotify.",
+        project_view_github: "View GitHub Code",
+        project_view_site: "View Live Site",
+        cert_title: "My Certificates",
+        cert_subtitle: "Academic and professional specialization certifications.",
+        cert_agile: "Agile Methodologies",
+        cert_java_spring: "Java & Spring Boot",
+        cert_database: "Databases",
+        cert_frontend_ai: "Front-End with AI",
+        cert_web_arch_ai: "Web Architecture with AI",
+        contact_title: "Contact",
+        contact_email_label: "Email",
+        contact_linkedin_label: "LinkedIn",
+        contact_location_label: "Bahia, Brazil",
+        footer_rights: "© 2026 João Paulo Santana. All rights reserved.",
+        modal_certificate: "Certificate",
+        modal_close: "Close (Esc)",
+        certificates_view: "Open on Web",
         skills_categories: {
             backend: {
-                title: "Backend Development",
-                subtitle: "RESTful APIs in Java, JWT security, API integrations, and persistence",
+                title: "Backend, Concurrency & Architecture",
+                subtitle: "RESTful API design, concurrency, idempotency, and microservices",
                 icon: "server",
                 items: [
                     {
+                        name: "Concurrency Control & Idempotency",
+                        level: "Core Engineering",
+                        description: "Implementing database locks to eliminate race conditions/double booking and Redis-backed idempotency mechanisms to guarantee safe request retries without duplicate mutations.",
+                        projects: [
+                            { name: "Clinical Management Platform", url: "#projects" },
+                            { name: "Wedding Payment Platform", url: "#projects" }
+                        ]
+                    },
+                    {
                         name: "Java 17/21 & Spring Boot 3",
                         level: "Specialization",
-                        description: "Clean layered architecture (Controller, Service, Repository), dependency management via Gradle, and construction of robust, high-performance Web APIs.",
+                        description: "Layered architecture (Controller, Service, Repository), Inversion of Control (IoC), Spring Data JPA, stateless security, and high-performance Web APIs.",
                         projects: [
                             { name: "Synfonia Backend", url: "#projects" },
-                            { name: "Wedding Website Backend", url: "#projects" }
+                            { name: "Wedding Payment Platform", url: "#projects" },
+                            { name: "Full-Stack Scheduler", url: "#projects" }
                         ]
                     },
                     {
-                        name: "Spring Security & JWT Auth",
-                        level: "Security",
-                        description: "Stateless authentication filters (JwtAuthenticationFilter), JWT token generation and validation, Role-Based Access Control (RBAC), and Rate Limiting protection.",
+                        name: "TypeScript, Node.js & NestJS",
+                        level: "In Production",
+                        description: "Enterprise backend development featuring native dependency injection, modular design, payload validation via Pipes/DTOs, and Prisma ORM integration.",
                         projects: [
-                            { name: "Synfonia Backend", url: "#projects" }
+                            { name: "Clinical Management Platform", url: "#projects" }
                         ]
                     },
                     {
-                        name: "Spring Data JPA & Hibernate",
-                        level: "Persistence",
-                        description: "Object-Relational Mapping (ORM) of complex entities, transactional gift/payment processing, custom query methods, and referential integrity.",
-                        projects: [
-                            { name: "Synfonia Backend", url: "#projects" },
-                            { name: "Wedding Website Backend", url: "#projects" }
-                        ]
+                        name: "Python & FastAPI",
+                        level: "Async Backend",
+                        description: "High-performance asynchronous Web APIs with static typing via Pydantic, SQLAlchemy, background worker jobs, and automated test coverage.",
+                        projects: []
                     },
                     {
-                        name: "REST Integrations & Webhooks (RestClient)",
-                        level: "Integrations",
-                        description: "Consuming external REST APIs using Spring RestClient (Spotify Web API, iTunes Search API) and handling asynchronous Webhooks for real-time Mercado Pago payment notifications.",
+                        name: "SOLID Principles & Clean Code",
+                        level: "Fundamentals",
+                        description: "Rigorous execution of Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion across complex codebases.",
                         projects: [
-                            { name: "Synfonia Backend", url: "#projects" },
-                            { name: "Wedding Website Backend", url: "#projects" }
-                        ]
-                    },
-                    {
-                        name: "Transactional Email Service",
-                        level: "Communication",
-                        description: "Asynchronous email dispatch for confirmation and verification codes using JavaMailSender and dynamic HTML templates rendered with Thymeleaf.",
-                        projects: [
-                            { name: "Wedding Website Backend", url: "#projects" }
+                            { name: "OOP Teaching Assistant - IFS", url: "#timeline" },
+                            { name: "Clinical Management Platform", url: "#projects" }
                         ]
                     }
                 ]
             },
             frontend: {
-                title: "Frontend Development",
-                subtitle: "Reactive interfaces with React, state management, and Tailwind CSS",
+                title: "Frontend & Reactive User Interfaces",
+                subtitle: "Component-driven design, state management, and modern UX",
                 icon: "code2",
                 items: [
                     {
-                        name: "React & Vite",
+                        name: "React & TypeScript",
                         level: "In Production",
-                        description: "Building modern SPAs, component-driven architecture, protected routing with PrivateRoute, and ultra-fast bundling powered by Vite.",
+                        description: "Building modern typed SPAs, reusable component hierarchy, complex form state handling, and optimized REST API data fetching.",
                         projects: [
+                            { name: "Clinical Management Platform", url: "#projects" },
                             { name: "Synfonia Frontend", url: "#projects" }
                         ]
                     },
                     {
-                        name: "State Management (Context API)",
+                        name: "State Management (Context API & Hooks)",
                         level: "Architecture",
-                        description: "Centralizing complex application state across multiple contexts (AudioContext, ThemeContext, ImportContext) and custom hooks (useAudio) for real-time audio playback.",
+                        description: "Centralizing global state across decoupled contexts and custom hooks for real-time media synchronization and application workflows.",
                         projects: [
                             { name: "Synfonia Frontend", url: "#projects" }
                         ]
@@ -422,86 +496,105 @@ const translations = {
                     {
                         name: "Tailwind CSS & Responsive Design",
                         level: "UI/UX",
-                        description: "Utility-first styling, dynamic theme toggling (Dark Mode), accessible glassmorphism UI components, and fluid responsive layouts.",
+                        description: "Advanced utility styling, dynamic theme toggling (Dark Mode), accessible components, smooth animations, and fluid multi-device layouts.",
                         projects: [
                             { name: "Synfonia Frontend", url: "#projects" },
-                            { name: "Wedding Website Frontend", url: "#projects" }
+                            { name: "Wedding Payment Platform", url: "#projects" }
                         ]
                     },
                     {
-                        name: "Modern JavaScript (ES6+) & DOM",
-                        level: "Core Stack",
-                        description: "Async/Await patterns, Fetch API, third-party SDK integrations (Mercado Pago Checkout), and native DOM interactions.",
+                        name: "Real-Time Communication (Socket.IO)",
+                        level: "Interactivity",
+                        description: "Bidirectional WebSocket communication for instant state sync and real-time user notification workflows.",
                         projects: [
-                            { name: "Wedding Website Frontend", url: "#projects" }
+                            { name: "Clinical Management Platform", url: "#projects" }
                         ]
                     }
                 ]
             },
             database: {
-                title: "Databases",
-                subtitle: "Relational data modeling (SQL) and document-oriented storage",
+                title: "Databases, Caching & Persistence",
+                subtitle: "ACID relational modeling, in-memory caching, and document storage",
                 icon: "database",
                 items: [
                     {
-                        name: "PostgreSQL & MySQL",
-                        level: "Relational",
-                        description: "Data modeling (ER diagrams), entity relationships (@OneToMany, @ManyToMany), DDL/DML queries, data integrity, and ACID transaction support.",
+                        name: "PostgreSQL & Relational Data Modeling (SQL)",
+                        level: "ACID Transactions",
+                        description: "Entity-Relationship modeling (ERD), referential integrity, query optimization, ACID transactions, and database-level row locking for concurrency safety.",
                         projects: [
-                            { name: "Wedding Website", url: "#projects" },
+                            { name: "Clinical Management Platform", url: "#projects" },
+                            { name: "Wedding Payment Platform", url: "#projects" },
                             { name: "Synfonia", url: "#projects" }
                         ]
                     },
                     {
+                        name: "Redis (Cache, Queues & Idempotency)",
+                        level: "In-Memory",
+                        description: "Using Redis for ultra-low latency key-value caching, request deduplication tokens (idempotency), session management, and message queue storage.",
+                        projects: [
+                            { name: "Clinical Management Platform", url: "#projects" }
+                        ]
+                    },
+                    {
                         name: "MongoDB",
-                        level: "NoSQL",
-                        description: "Document-oriented modeling for unstructured datasets, logs, and microservice task storage.",
-                        projects: []
+                        level: "Document NoSQL",
+                        description: "Document-oriented modeling for flexible unstructured metadata, media catalog indexing, and audit logging.",
+                        projects: [
+                            { name: "Synfonia", url: "#projects" }
+                        ]
                     }
                 ]
             },
             devops: {
-                title: "Tools & DevOps",
-                subtitle: "Containerization, version control, and CI/CD automation",
+                title: "DevOps, Messaging & Infrastructure",
+                subtitle: "Asynchronous background queues, containerization, and CI/CD automation",
                 icon: "wrench",
                 items: [
                     {
+                        name: "Asynchronous Processing (BullMQ & Amazon SQS)",
+                        level: "Message Queues",
+                        description: "Producer-consumer queue architectures with exponential backoff retries, dead-letter fallbacks, and distributed job execution.",
+                        projects: [
+                            { name: "Clinical Management Platform", url: "#projects" }
+                        ]
+                    },
+                    {
                         name: "Docker & Docker Compose",
                         level: "Environment",
-                        description: "Creating optimized container images for Java/Spring Boot and React, multi-container orchestration for environment parity between dev and prod.",
+                        description: "Creating optimized container images and multi-container development and production orchestration for seamless environment parity.",
                         projects: [
-                            { name: "Synfonia", url: "#projects" },
-                            { name: "Wedding Website", url: "#projects" }
+                            { name: "Clinical Management Platform", url: "#projects" },
+                            { name: "Synfonia", url: "#projects" }
                         ]
                     },
                     {
                         name: "Git & GitHub Actions (CI/CD)",
                         level: "Automation",
-                        description: "Gitflow branching strategies and automated CI/CD workflows for build verification, continuous testing, and cloud deployment.",
+                        description: "Continuous integration (CI) and continuous delivery (CD) pipelines automating test suites, build validations, and push-to-cloud deployments.",
                         projects: [
                             { name: "Synfonia", url: "#projects" },
-                            { name: "Wedding Website", url: "#projects" }
+                            { name: "Full-Stack Scheduler", url: "#projects" }
                         ]
                     }
                 ]
             },
             integrations: {
-                title: "Integrations & Services",
-                subtitle: "Third-party APIs, payment gateways, and asynchronous Webhooks",
+                title: "Integrations, Payments & Webhooks",
+                subtitle: "Third-party Web APIs, payment gateways, and asynchronous event consumption",
                 icon: "plug",
                 items: [
                     {
                         name: "Mercado Pago SDK & Webhooks",
-                        level: "Payments",
-                        description: "Seamless gift checkout integration via Pix and real-time asynchronous Webhook processing for payment confirmation.",
+                        level: "Production Payments",
+                        description: "Transparent checkout with Pix and Credit Card payment integration, plus fault-tolerant asynchronous webhook notification processing.",
                         projects: [
-                            { name: "Wedding Website Backend", url: "#projects" }
+                            { name: "Wedding Payment Platform", url: "#projects" }
                         ]
                     },
                     {
-                        name: "Spring RestClient (Spotify & iTunes APIs)",
-                        level: "Web APIs",
-                        description: "High-performance API consumption using Spring RestClient with OAuth2 authentication (Spotify Web API) and unified media search (iTunes API).",
+                        name: "Spring RestClient & OAuth2 (Spotify API)",
+                        level: "External APIs",
+                        description: "High-performance REST API consumption with Spring RestClient, OAuth2 authentication handshakes, and media aggregation.",
                         projects: [
                             { name: "Synfonia Backend", url: "#projects" }
                         ]
@@ -509,72 +602,89 @@ const translations = {
                 ]
             },
             cloud: {
-                title: "Cloud & Deployment",
-                subtitle: "Cloud hosting, PaaS platforms, and continuous delivery",
+                title: "Cloud & Hosting Platforms",
+                subtitle: "Distributed deployments, cloud secrets management, and automated provisioning",
                 icon: "cloud",
                 items: [
                     {
-                        name: "Azure Static Web Apps & Netlify",
-                        level: "Frontend Cloud",
-                        description: "Global hosting and distribution of React SPAs and static web applications, integrated with push-to-deploy automated workflows.",
+                        name: "Railway & Microsoft Azure",
+                        level: "Backend Cloud",
+                        description: "Deploying and scaling containerized backend services via Docker, managing environment security, and provisioning managed PostgreSQL instances.",
                         projects: [
-                            { name: "Synfonia Frontend", url: "#projects" }
+                            { name: "Synfonia", url: "#projects" },
+                            { name: "Wedding Payment Platform", url: "#projects" }
                         ]
                     },
                     {
-                        name: "Railway & Cloud Hosting",
-                        level: "Backend Cloud",
-                        description: "Deployment of Java/Spring Boot microservices containerized with Docker, featuring environment variable security and managed PostgreSQL.",
+                        name: "Vercel & Netlify",
+                        level: "Frontend Cloud",
+                        description: "Global static asset and SPA distribution with instant Git-triggered deployments and CDN caching.",
                         projects: [
-                            { name: "Synfonia Backend", url: "#projects" },
-                            { name: "Wedding Website Backend", url: "#projects" }
+                            { name: "Wedding Payment Platform", url: "#projects" }
                         ]
                     }
                 ]
             },
             apis: {
-                title: "REST APIs & JWT",
-                subtitle: "Endpoint security, documentation, and DTO contracts",
+                title: "REST APIs, Idempotency & Security",
+                subtitle: "API contract engineering, defensive security, and vulnerability mitigation",
                 icon: "key",
                 items: [
                     {
-                        name: "Spring Security & JWT Auth",
-                        level: "Security",
-                        description: "Stateless security architecture (JwtAuthenticationFilter), JWT token issuance and validation, route-based authorization, and Rate Limiting.",
+                        name: "Idempotency Architecture",
+                        level: "Reliability",
+                        description: "Designing idempotency keys and Redis TTL caching to ensure retry-safe network operations without double execution of critical business logic.",
                         projects: [
-                            { name: "Synfonia Backend", url: "#projects" }
+                            { name: "Clinical Management Platform", url: "#projects" }
                         ]
                     },
                     {
-                        name: "Postman & Endpoint Testing",
-                        level: "Validation",
-                        description: "Organized request collections, DTO payload contract validation, header verification, and automated API testing.",
+                        name: "Stateless Security (JWT, Argon2 & RBAC)",
+                        level: "Defensive Security",
+                        description: "Stateless authentication via JWT, robust password hashing with Argon2, Role-Based Access Control (RBAC), and IDOR/BOLA mitigations.",
                         projects: [
                             { name: "Synfonia Backend", url: "#projects" },
-                            { name: "Wedding Website Backend", url: "#projects" }
+                            { name: "Clinical Management Platform", url: "#projects" }
+                        ]
+                    },
+                    {
+                        name: "Rate Limiting & Abuse Defense",
+                        level: "Edge Defense",
+                        description: "Configuring Token Bucket rate limiters (Bucket4j) per client IP and user account to protect endpoints against brute force and DoS.",
+                        projects: [
+                            { name: "Synfonia Backend", url: "#projects" }
                         ]
                     }
                 ]
             },
             testing: {
-                title: "Testing & Quality",
-                subtitle: "Automated unit testing and static code analysis",
+                title: "Automated Testing & Software Quality",
+                subtitle: "Test pyramid, automated coverage, and static code inspection",
                 icon: "flaskConical",
                 items: [
                     {
                         name: "JUnit 5 & Mockito",
-                        level: "Unit Testing",
-                        description: "Unit testing for business rule validation in the service layer, database dependency isolation using Mocks, and AAA pattern execution.",
+                        level: "Unit & Integration Tests",
+                        description: "Developing comprehensive unit and integration test suites in Java, dependency mocking, and strict adherence to the AAA (Arrange, Act, Assert) pattern.",
                         projects: [
-                            { name: "Synfonia Backend", url: "#projects" }
+                            { name: "Synfonia Backend", url: "#projects" },
+                            { name: "Full-Stack Scheduler", url: "#projects" }
                         ]
                     },
                     {
-                        name: "SonarQube & Code Quality",
-                        level: "Quality",
-                        description: "Continuous static code analysis for test coverage metrics tracking, vulnerability detection, bug fixes, and code smell elimination.",
+                        name: "Jest, Vitest & Pytest",
+                        level: "Automated Testing",
+                        description: "Writing unit and integration tests across Node/TypeScript and Python ecosystems covering critical business logic and API contracts.",
                         projects: [
-                            { name: "Synfonia Backend", url: "#projects" }
+                            { name: "Clinical Management Platform", url: "#projects" }
+                        ]
+                    },
+                    {
+                        name: "SonarQube & Static Analysis",
+                        level: "Quality Assurance",
+                        description: "Continuous automated static code inspection tracking coverage metrics, code smell resolution, and software debt management.",
+                        projects: [
+                            { name: "Full-Stack Scheduler", url: "#projects" }
                         ]
                     }
                 ]

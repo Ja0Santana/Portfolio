@@ -59,8 +59,8 @@ function updateContent(lang) {
             if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                 el.placeholder = newText;
             } else {
-                if (el.innerHTML !== newText) {
-                    animateTextGlitch(el, newText, index * 3);
+                if (el.innerHTML.trim() !== newText.trim()) {
+                    animateTextGlitch(el, newText, index * 2);
                 }
             }
         }
@@ -89,6 +89,7 @@ function setStoredLanguage(lang) {
 
 function setLanguage(lang) {
     setStoredLanguage(lang);
+    document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
     updateContent(lang);
 
     const toggle = document.querySelector('.language-toggle');
@@ -96,9 +97,11 @@ function setLanguage(lang) {
         if (lang === 'en') {
             toggle.classList.add('en');
             toggle.classList.remove('pt');
+            toggle.setAttribute('aria-checked', 'true');
         } else {
             toggle.classList.add('pt');
             toggle.classList.remove('en');
+            toggle.setAttribute('aria-checked', 'false');
         }
     }
 
@@ -215,10 +218,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const toggle = document.querySelector('.language-toggle');
     if (toggle) {
-        toggle.addEventListener('click', () => {
+        const toggleLanguage = () => {
             const currentLang = getStoredLanguage();
             const newLang = currentLang === 'pt' ? 'en' : 'pt';
             setLanguage(newLang);
+        };
+        toggle.addEventListener('click', toggleLanguage);
+        toggle.addEventListener('keydown', (keyboardEvent) => {
+            if (keyboardEvent.key === 'Enter' || keyboardEvent.key === ' ') {
+                keyboardEvent.preventDefault();
+                toggleLanguage();
+            }
         });
     }
 
